@@ -23,6 +23,7 @@ The **SMS index** layout is seemingly a repurposed **Directory/Top 8**, which I 
 
 _'Fake' Directory_
 ![Fake Directory](sms/directory_fake.JPG)
+
 _'Real' Directory_
 ![Real Directory](sms/directory_real.JPG)
 
@@ -31,6 +32,7 @@ The **SMS view** layout appears to just a repurposed **SOS/Emergency** layout.
 
 
 ![Example SMS](sms/message/reference_sms_message.jpeg)
+
 ![Example SOS](sms/sms_emergency.jpg)
 
 
