@@ -3,6 +3,7 @@
 
 tmp
 log
+offline
 
 # Bundler
 .bundle
