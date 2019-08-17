@@ -1,6 +1,6 @@
-# Telephone Reference
-
-## Contents
+# Wilhelm Documentation
+---
+## Telephone
 1. [Main Menu](telephone/main_menu.md)
 1. Layouts
 	1. [Default](telephone/layout/default.md)
@@ -16,7 +16,7 @@
 1. [Status](telephone/status.md)
 1. [LEDs](telephone/led.md)
 
-## Notes
+#### Notes
 
 - the reference telephone was somewhat hampered without a network connection, so some behaviour is a best guess.
 - development began with a MK1 navigation computer (i.e. GT implemented by video module), and 4:3 BMBT.
