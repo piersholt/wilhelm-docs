@@ -9,7 +9,7 @@ The data is a fixed length of one byte.
 
 Bit|7|6|5|4|3|2|1|0
 :---|:---|:---|:----|:----|:---|:---|:---|:---
-Use|NA|NA|Active|Power|NA|Incoming|Unknown|Handsfree
+**Use**|NA|NA|Active|Power|NA|Incoming|Unknown|Handsfree
 
 ## Handsfree `0`
 Switching between handset and speakerphone.
@@ -17,6 +17,7 @@ Switching between handset and speakerphone.
     # 0 = Handset
     # 1 = Handsfree
 
+### Handsfree Icon
 When set to `1`, the BMBT displays the speaker icon in the top right.
 
 ![ALT TEXT](status/handsfree/IMG_2740.JPG)
@@ -34,6 +35,7 @@ This may be for **MID**, as when sent to the IKE character display, `0xC6` is a 
 
 ![ALT TEXT](status/handsfree/IMG_2795.JPG)
 
+### Tape/Radio
 BMBT also sends `0x4B` to Radio which from my tinkering looks to be about controlling radio audio sources, so this is possibly related to mute. I've not been able to confirm this without being able to make a call- or a radio, tape, CDC... etc.
 
     # Start call
@@ -41,6 +43,10 @@ BMBT also sends `0x4B` to Radio which from my tinkering looks to be about contro
 
     # End call
     F0 <LEN> 68 4B 06 E1 <CS>
+
+### BMBT and MLF Volume Control
+
+The handsfree bit will have the BMBT and MFL send volume commands in TEL in place of RAD.
 
 ## Unknown `1`
 
