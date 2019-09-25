@@ -2,6 +2,7 @@
 ---
 ## Telephone
 1. [Main Menu](telephone/main_menu.md)
+1. [Controls](telephone/controls.md)
 1. Layouts
 	1. [Default](telephone/layout/default.md)
 	1. [Pin-Code](telephone/layout/pin.md)
@@ -23,3 +24,10 @@
 - a MK4 and widescreen BMBT has been in use since about January 2019.
 - a MID has never been tested.
 - "Inputs" (command `0x31`) are, unless otherwise mentioned, only the initial "Press" event
+
+#### TODO
+- controls
+	- MFL
+		- note how handsfree affects MFL volume and track
+	- BMBT
+- R/T IKE contacts
