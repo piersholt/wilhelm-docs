@@ -83,7 +83,9 @@ Relatively straight forward- `0` when the telephone is off, `1` when the telepho
     # 0 = Telephone Off
     # 1 = Telephone On
 
- I've not been able to discern what effect this has. Even if set to `0`, the other functions behave as expected.
+<strike>I've not been able to discern what effect this has. Even if set to `0`, the other functions behave as expected.</strike>
+
+_If bit is not set, `GT` will default to Main Menu. For example, if active bit is set for a call, upon setting to 0, GT will close Telephone and return to Main Menu._
 
 ## Active `5`
 
