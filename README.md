@@ -2,6 +2,7 @@
 ---
 ## Telephone
 1. [Main Menu](telephone/main_menu.md)
+    1. [Message Icon](telephone/main_menu/icon.md)
 1. [Controls](telephone/controls.md)
 1. Layouts
 	1. [Default](telephone/layout/default.md)
