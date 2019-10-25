@@ -70,6 +70,10 @@ The value returned by `0x31` can be specified.
 **User Defined IDs Returned by `0x31`**
 ![User Defined IDs](index/IMG_2783.JPG)
 
+
+#### _Warning!_
+_Once the button ID is set, it cannot be changed!_ It's not until GT renders Main Menu, that this value can be changed. Updating the button label, or removing the button altogether before attempting to change the value had no effect.
+
 ### Title Only
 
 Lines and Inputs can be omitted, and just the title set, ala "BLUETOOTH PAIRING".

@@ -59,6 +59,12 @@ This might be important in the event that telematics are still active in the veh
     # ID 0x77 returned by 0x31 when button selected!
     3B <LEN> C8 31 F1 77 11 <CS> # Press
 
+#### WARNING!
+**I've since noticed that once the button ID is set, _it cannot be changed_! I've tried updating the button label, hiding then showing it again, etc etc, but it's only after GT renders Main menu that the ID can be changed. This caught me out as I was using ID to keep everything stateless.**
+
+#### _Warning!_
+_Once the button ID is set, it cannot be changed!_ It's not until GT renders Main Menu, that this value can be changed. Updating the button label, or removing the button altogether before attempting to change the value had no effect.
+
 ### Default Selected Button
 
 Set the highlighted button:
