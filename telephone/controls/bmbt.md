@@ -8,7 +8,7 @@
 One byte bit field.
 
 Bit|7-6|5-0
----|---|---|
+:---|:---|:---|
 Use|Button State|Button ID
 
 

@@ -4,10 +4,12 @@
 
 ### Multifunction `0x3B`
 
+One byte bit field.
 
 Bit|7|6|5-4|3-0
----|---|---|----|----|---
+:---|:---|:---|:---|:---
 Use|Telephone|R/T|State|Back/Forward
+
 
     FORWARD = 0b0000_0001
     BACK    = 0b0000_1000
@@ -96,7 +98,7 @@ Pushing the volume buttons at a higher frequency of use will simply send single 
 The R/T mode has no effect on volume. Whether radio or telephone is the recipient of volume commands is based on [telephone status](../status.md); specifically the the "active", and "handsfree" bits being set (as per an active call on speakerphone).
 
 Bit|7-5|4|3|2|1|0
-:---|:---|:---|:----|:----|:---|:---|:---|:---
+:---|:---|:---|:---|:---|:---|:---
 Use|--|Step|--|--|--|Direction|
 
     # Direction
