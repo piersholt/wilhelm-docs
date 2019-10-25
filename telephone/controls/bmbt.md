@@ -166,7 +166,7 @@ Use|Steps|--|Direction
 
 #### Telephone Volume
 
-In order for BMBT to send volume commands to Telephone `0xc8`, [telephone status](../something.md) must have "active" and "handsfree" bits set.
+In order for BMBT to send volume commands to Telephone `0xc8`, [telephone status](../status) must have "active" and "handsfree" bits set.
 
     # Volume Down
     F0 04 C8 32 10 1E   # 1 step etc..
