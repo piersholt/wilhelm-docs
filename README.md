@@ -2,6 +2,10 @@
 ---
 ## Telephone
 1. [Main Menu](telephone/main_menu.md)
+    1. [Message Icon](telephone/main_menu/icon.md)
+1. Controls
+    1. [BMBT](telephone/controls/bmbt.md)
+    1. [MFL](telephone/controls/mfl.md)
 1. Layouts
 	1. [Default](telephone/layout/default.md)
 	1. [Pin-Code](telephone/layout/pin.md)
