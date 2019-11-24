@@ -1,5 +1,8 @@
 # Wilhelm Documentation
 ---
+## Radio
+1. [Display Arbitration](radio/arbitration.md)
+
 ## Telephone
 1. [Main Menu](telephone/main_menu.md)
     1. [Message Icon](telephone/main_menu/icon.md)
