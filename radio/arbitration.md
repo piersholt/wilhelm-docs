@@ -606,7 +606,9 @@ _Still no change..._
     # full retard with wilhelm...
     # nothing...
     
-## MK4
+## MK4 (No TV, Radio, or DSP emulation.)
+
+### No Idea?
 
     gt   rad     UI-GT           config: 00 ((0000 0000) )
     rad  gt      UI-RAD          state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
@@ -624,8 +626,97 @@ _Still no change..._
     gt      glo_l   PONG            status: 0x40 (Navi. GT (MK1/4) -> BF [Reply])
     gt      rad     UI-GT           config: 0x11 ((0001 0001) Main Menu: [ON])
 
+### KL-30
 
-**what if it's mp3 support?**
+    ike glo_l   IGN             position: 00 (Ignition: KL-30 (Pos. 0))
+    nav rad   PONG            status: 0x01 (Announce),
+    gt  glo_l   PONG            status: 0x41 (Navi. GT (MK1/4) -> BF [Announce]),
+    gt  ike   IGN-REQ   --,
+    gt  ike   REGION-GT?--,
+    gt  ike   CONF-BOOL       field: 0x01 ((Settings) Time) / control: 0x01 (Variable Request (0x24)),
+    gt  ike   CONF-BOOL       field: 0x02 ((Settings) Date) / control: 0x01 (Variable Request (0x24)),
+    ike glo_l   REGION          lang: 0x08 (Unknown?) / b2: 0x81 ((1000 0001) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42"),
+    ike anzv    ANZV-VAR-IKE*   field: 0x01 ((Settings) Time) / ike: 00 (--) / chars: 2D 2D 3A 2D 2D 20 20 ("--:--  "),
+    ike anzv    ANZV-VAR-IKE*   field: 0x02 ((Settings) Date) / ike: 00 (--) / chars: 2D 2D 2F 2D 2D 2F 32 30 31 39 ("--/--/2019"),
+    nav glo_l   PONG            status: 0xc1 (7F -> BF (Guidance Active) [Announce]),
+    ike glo_l   IGN             position: 00 (Ignition: KL-30 (Pos. 0)),
+
+
+### KL-R
+    
+    # some messages removed for brevity...
+    ike glo_l   IGN         position: 0x01 (Ignition: KL-R (Pos. I)),
+    gt  glo_l   PONG      	status: 0x40 (Navi. GT (MK1/4) -> BF [Reply])
+    gt  rad     SRC-SND   	00 00
+    gt  cid     PING      	--
+    gt  nav_jp  SRC-NAV_JP*	02 00
+    gt  bmbt    RAD-LED   	led: 0x90 ((LED) Off (Reset))
+    gt  rad     UI-GT     	config: 0x11 ((0001 0001) Main Menu: [ON])
+    gt  dsp     DSP-SET   	mode: 0x28 (Demo Off) / adjustment: 00 ((0000 0000) Band: 80hz, ±: +, magnitude: "0")
+    nav rad     TMC-REQ         1F 00,
+    nav rad     TMC-REQ         3F 00,
+    gt  ike     REGION-SET      lang: 0x01 (GB) / b2: 0x85 ((1000 0101) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42"),
+
+### KL-30
+
+    nav rad PONG      	status: 0x01 (Announce),
+    gt  glo_l PONG      	status: 0x41 (Navi. GT (MK1/4) -> BF [Announce]),
+    gt  ike IGN-REQ   --,
+    gt  ike REGION-GT?--,
+    gt  ike CONF-BOOL 	field: 0x01 ((Settings) Time) / control: 0x01 (Variable Request (0x24)),
+    gt  ike CONF-BOOL 	field: 0x02 ((Settings) Date) / control: 0x01 (Variable Request (0x24)),
+    nav glo_l PONG      	status: 0xc1 (Navi. Computer -> BF [Announce]),
+    nav ses NAV-VOICE-AF	04,
+    nav rad TMC-REQ   	10,
+    nav rad TMC-REQ   	30
+    
+### KL-R
+
+    nav rad  PONG      	status: 0x01 (Announce)
+    gt  glo_l  PONG      	status: 0x41 (Navi. GT (MK1/4) -> BF [Announce])
+    gt  ike  IGN-REQ   	--
+    ike glo_l  IGN       	position: 0x01 (Ignition: KL-R (Pos. I))
+    ike anzv   ANZV-BOOL-IKE	control_a: 00 ((0000 0000) (Settings) Memo: [OFF], (OBC) Timer: [OFF], (OBC) Limit: [OFF]) / control_b: 00 ((0000 0000) (Code) Lock: [OFF], (Aux.) Heating: [OFF], (Aux.) Timer 2: [OFF], (Aux.) Vent.: [OFF], (Aux.) Timer 1: [OFF])
+    ike glo_l  IGN       	position: 0x01 (Ignition: KL-R (Pos. I))
+    gt  ike  CONF-BOOL 	field: 0x09 ((OBC) Limit) / control: 0x02 (Boolean Request (0x2A))
+    ike anzv   ANZV-BOOL-IKE	control_a: 00 ((0000 0000) (Settings) Memo: [OFF], (OBC) Timer: [OFF], (OBC) Limit: [OFF]) / control_b: 00 ((0000 0000) (Code) Lock: [OFF], (Aux.) Heating: [OFF], (Aux.) Timer 2: [OFF], (Aux.) Vent.: [OFF], (Aux.) Timer 1: [OFF])
+    ike anzv   ANZV-VAR-IKE*	field: 0x09 ((OBC) Limit) / ike: 00 (--) / chars: 2D 2D 2D 20 4B 4D 2F 48 ("--- KM/H")
+    gt  ike  REGION-GT?	--
+    gt  ike  CONF-BOOL 	field: 0x0c ((Settings) Memo) / control: 0x02 (Boolean Request (0x2A))
+    gt  ike  CONF-BOOL 	field: 0x07 ((OBC) Distance) / control: 0x01 (Variable Request (0x24))
+    gt  lcm  LAMP-REQ  	--
+    gt  ike  CONF-BOOL 	field: 0x01 ((Settings) Time) / control: 0x01 (Variable Request (0x24))
+    lcm glo_l  LAMP      	l1: 00 ((0000 0000) ) / l2: 00 ((0000 0000) ) / l3: 00 ((0000 0000) ) / l4: 00 ((0000 0000) )
+    ike glo_l  REGION    	lang: 0x08 (Unknown?) / b2: 0x81 ((1000 0001) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    gt  ike  CONF-BOOL 	field: 0x02 ((Settings) Date) / control: 0x01 (Variable Request (0x24))
+    ike anzv   ANZV-BOOL-IKE	control_a: 00 ((0000 0000) (Settings) Memo: [OFF], (OBC) Timer: [OFF], (OBC) Limit: [OFF]) / control_b: 00 ((0000 0000) (Code) Lock: [OFF], (Aux.) Heating: [OFF], (Aux.) Timer 2: [OFF], (Aux.) Vent.: [OFF], (Aux.) Timer 1: [OFF])
+    ike anzv   ANZV-VAR-IKE*	field: 0x07 ((OBC) Distance) / ike: 00 (--) / chars: 20 20 20 30 20 4B 4D 20 ("   0 KM ")
+    ike anzv   ANZV-VAR-IKE*	field: 0x01 ((Settings) Time) / ike: 00 (--) / chars: 2D 2D 3A 2D 2D 20 20 ("--:--  ")
+    ike anzv   ANZV-VAR-IKE*	field: 0x02 ((Settings) Date) / ike: 00 (--) / chars: 2D 2D 2F 2D 2D 2F 32 30 31 39 ("--/--/2019")
+    gt  rad  SRC-SND   	00 00
+    gt  cid  PING      	--
+    gt  nav_jp   SRC-NAV_JP*	02 00
+    gt  bmbt   RAD-LED   	led: 0x90 ((LED) Off (Reset))
+    gt  rad  UI-GT     	config: 0x11 ((0001 0001) Main Menu: [ON])
+    gt  dsp  DSP-SET   	mode: 0x28 (Demo Off) / adjustment: 00 ((0000 0000) Band: 80hz, ±: +, magnitude: "0")
+    gt  ike  REGION-SET	lang: 0x01 (GB) / b2: 0x05 ((0000 0101) Time: (24h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 00 (b4: "00")
+    gt  ike  REGION-SET	lang: 0x01 (GB) / b2: 0x05 ((0000 0101) Time: (24h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 00 (b4: "00")
+    bmbt  rad  TAPE      	control: 0x05 (No Tape!)
+    ike glo_l  REGION    	lang: 0x01 (GB) / b2: 0x05 ((0000 0101) Time: (24h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    ike glo_l  REGION    	lang: 0x01 (GB) / b2: 0x05 ((0000 0101) Time: (24h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    gt  ike  REGION-SET	lang: 0x01 (GB) / b2: 0x85 ((1000 0101) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    gt  ike  REGION-SET	lang: 0x01 (GB) / b2: 0x85 ((1000 0101) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    gt  ike  CONF-VAR  	field: 0x07 ((OBC/Nav.) Distance) / input: 00 00 ( 0 )
+    ike glo_l  REGION    	lang: 0x01 (GB) / b2: 0x85 ((1000 0101) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    ike glo_l  REGION    	lang: 0x01 (GB) / b2: 0x85 ((1000 0101) Time: (12h), Temp.: (C.), Date: (mm/dd)) / b3: 0x60 ((0110 0000) Distance: (km), Consump.: (l/100km)) / b4: 42 (b4: "42")
+    ike anzv   ANZV-VAR-IKE*	field: 0x07 ((OBC) Distance) / ike: 00 (--) / chars: 20 20 20 30 20 4B 4D 20 ("   0 KM ")
+    ike anzv   ANZV-VAR-IKE*	field: 0x08 ((OBC) Arrival) / ike: 00 (--) / chars: 2D 2D 3A 2D 2D 20 20 ("--:--  ")
+
+##### note: 
+
+#### Menu
+
+df
 
 
 -------
