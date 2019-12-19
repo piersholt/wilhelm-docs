@@ -23,10 +23,3 @@
 1. [Status](telephone/status.md)
 1. [LEDs](telephone/led.md)
 
-#### Notes
-
-- the reference telephone was somewhat hampered without a network connection, so some behaviour is a best guess.
-- development began with a MK1 navigation computer (i.e. GT implemented by video module), and 4:3 BMBT.
-- a MK4 and widescreen BMBT has been in use since about January 2019.
-- a MID has never been tested.
-- "Inputs" (command `0x31`) are, unless otherwise mentioned, only the initial "Press" event
