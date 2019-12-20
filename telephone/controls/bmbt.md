@@ -1,9 +1,6 @@
-# Controls
-## Onboard-Monitor (BMBT)
+# Controls: BMBT
 
-*Note: may vary between E39 and E46 BMBTs?*
-
-### Buttons `0x48`
+## Buttons `0x48`
 
 One byte bit field.
 
@@ -91,12 +88,12 @@ Use|Button State|Button ID
     F0 04 68 48 61 B5
     F0 04 68 48 A1 75
     
-    # Mode/Mode Prev. (Legacy BMBT)
+    # Mode (Mode Prev. on 4:3 BMBT)
     F0 04 68 48 23 F7
     F0 04 68 48 63 B7
     F0 04 68 48 A3 77
     
-    # Mode Next (Legacy BMBT)
+    # Mode Next (4:3 BMBT)
     F0 04 68 48 33 E7
     F0 04 68 48 73 A7
     F0 04 68 48 B3 67
@@ -106,7 +103,7 @@ Use|Button State|Button ID
     F0 04 68 48 70 A4
     F0 04 68 48 B0 64
     
-    # Power
+    # Power (Vol. dial button)
     F0 04 68 48 06 D2
     F0 04 68 48 46 92
     F0 04 68 48 86 52
@@ -156,12 +153,12 @@ Use|Button State|Button ID
     F0 04 68 48 40 94
     F0 04 68 48 80 54
     
-    # RDS/Dolby B (Legacy BMBT)
+    # RDS/Dolby B (4:3 BMBT)
     F0 04 68 48 22 F6
     F0 04 68 48 62 B6
     F0 04 68 48 A2 76
     
-    # TP/Dolby C (Legacy BMBT)
+    # TP/Dolby C (4:3 BMBT)
     F0 04 68 48 32 E6
     F0 04 68 48 72 A6
     F0 04 68 48 B2 66
@@ -176,9 +173,7 @@ Use|Button State|Button ID
     F0 04 3B 48 45 C2
     F0 04 3B 48 85 02
 
----
-
-### "Soft" Buttons `0x47`
+## "Soft" Buttons `0x47`
 
 One byte bit field.
 
@@ -195,10 +190,12 @@ Use|Button State|Button ID
     HOLD        = 0b0100_0000
     RELEASE     = 0b1000_0000
 
-#### Info
+### Info `0b0011_1000` / `0x38`
 
 BMW Service Training:
 > The "INFO" button reduces the number of variants. Traffic information can be called up using the "INFO" button. The country-specific functions will be activated or deactivated depending on the country variant set.
+
+![Example Dial Layout](bmbt_info_vm_gt.JPG)
 
 The Info button will open a new menu and list any supported features such as RDS, and TP. Upon selecting a feature, the GT will emulate a button press from the legacy BMBT. i.e. Selecting "RDS" from the Info menu would send `0x48` with the button ID for RDS `0x22`.
 
@@ -207,18 +204,16 @@ The Info button will open a new menu and list any supported features such as RDS
     F0 05 FF 47 00 78 35
     F0 05 FF 47 00 B8 F5
 
-#### Select
+### Select `0b0000_1111` / `0x0f`
 
-The Select button is no longer sent via `0x48`. No variance in behaviour compared to legacy BMBT?
+The Select button is no longer sent via `0x48`. (No variance in behaviour compared to legacy BMBT?)
 
     # Select    
     F0 05 FF 47 00 0F 42
     F0 05 FF 47 00 4F 02
     F0 05 FF 47 00 8F C2
 
----
-
-### Volume Dial `0x32`
+## Volume Dial `0x32`
 
 One byte bit field.
 
@@ -234,21 +229,21 @@ Use|Steps|--|Direction
     DOWN    = 0b0000_0000
     UP      = 0b0001_0000
 
-#### Radio Volume
+#### Radio Volume (Default)
 
     # Volume Down
     F0 04 68 32 10 BE   # 1 step
     F0 04 68 32 20 8E   # 2 steps
     F0 04 68 32 30 9E   # 3 steps
-    F0 04 68 32 40 EE   # 4 steps
+    F0 04 68 32 40 EE   # 4 steps and so on...
 
     # Volume Up
     F0 04 68 32 11 BF   # 1 step
     F0 04 68 32 21 8F   # 2 steps
     F0 04 68 32 31 9F   # 3 steps
-    F0 04 68 32 41 EF   # 4 steps
+    F0 04 68 32 41 EF   # 4 steps and so on...
 
-#### Telephone Volume
+#### Telephone Volume (active call on handsfree)
 
 In order for BMBT to send volume commands to Telephone `0xc8`, [telephone status](../status) must have "active" and "handsfree" bits set.
 
@@ -258,9 +253,7 @@ In order for BMBT to send volume commands to Telephone `0xc8`, [telephone status
     # Volume Up
     F0 04 C8 32 11 1F   # 1 step etc..
 
----
-
-### Navigation Dial `0x49`
+## Navigation Dial `0x49`
 
 One byte bit field. Reversed fields as compared to volume control `0x32`, but otherwise the same in operation.
 
