@@ -1,4 +1,4 @@
-# SMS
+# SMS Overview
 
 ![Telephone SMS Option](dial/IMG_2774.JPG)
 
@@ -19,14 +19,21 @@ Nonetheless, I did find one [useful thread from 2004](https://www.bimmerfest.com
 
 The implementation does feel like a bit of an afterthought considering most functionality via the BMBT has custom layouts (DSP, Aux. Heat/Vent, OBC, Settings etc), but given MOST was already in production vehicles, and the 68k, OS-9 based VDO/Dayton platform was already long in the tooth, I'm not entirely surprised.
 
+The functionality itself isn't particularly useful- particularly without a factory phone. However the layouts introduce more options for custom UIs.
+
+## SMS Index `0xf0`
+
 The **SMS index** layout is seemingly a repurposed **Directory/Top 8**, which I say because the top right cell (where the phone icon usually is) is addressed with an out of order index.
 
-_'Fake' Directory_
+**Simulated *Directory* with `0xf0`**
+
 ![Fake Directory](sms/directory_fake.JPG)
 
-_'Real' Directory_
+**Standard *Directory* `0x42`**
+
 ![Real Directory](sms/directory_real.JPG)
 
+## SMS View/Emergency `0xf0`
 
 The **SMS view** layout appears to just a repurposed **SOS/Emergency** layout.
 
@@ -34,6 +41,3 @@ The **SMS view** layout appears to just a repurposed **SOS/Emergency** layout.
 ![Example SMS](sms/message/reference_sms_message.jpeg)
 
 ![Example SOS](sms/sms_emergency.jpg)
-
-
-The functionality itself isn't particularly useful- particularly without a factory phone. However the layouts introduce more options for custom UIs.

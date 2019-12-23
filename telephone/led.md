@@ -1,4 +1,4 @@
-# `0x2b` Telephone Indicator Lamps
+# `0x2b` Telephone LEDs
 
 The telephone sends LED settings to ANZV `0xe7` via command `0x2b`. The data is a fixed length of one byte, and is a bit field.
 
