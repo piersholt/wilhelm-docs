@@ -1,4 +1,4 @@
-# Telephone Status
+# Telephone Status `0x2c`
 
 The telephone sends it's status to ANZV `0xe7` via command `0x2c`. Similar to IKE sending updates to ANZV, the data is simply a bit field.
 
@@ -9,9 +9,18 @@ The data is a fixed length of one byte.
 
 Bit|7|6|5|4|3|2|1|0
 :---|:---|:---|:----|:----|:---|:---|:---|:---
-**Use**|NA|NA|Active|Power|NA|Incoming|Unknown|Handsfree
+**Use**|-|-|Active|Power|-|Incoming|Unknown|Handsfree
 
-## Handsfree `0`
+    # Bitmasks
+    
+    HANDSFREE   = 0b0000_0001
+    UNKNOWN     = 0b0000_0010
+    INCOMING    = 0b0000_0100
+    
+    POWER       = 0b0001_0000
+    ACTIVE      = 0b0010_0000
+
+## Handsfree `0b0000_0001`
 Switching between handset and speakerphone.
 
     # 0 = Handset
@@ -48,7 +57,7 @@ BMBT also sends `0x4B` to Radio which from my tinkering looks to be about contro
 
 The handsfree bit will have the BMBT and MFL send volume commands in TEL in place of RAD.
 
-## Unknown `1`
+## Unknown `0b0000_0010`
 
 I've not been able to discern what this represents.
 
@@ -56,7 +65,7 @@ It's initially `0`, and after some tinkering with the handset it is set to `1`, 
 
 I reviewed the logs from when the telephone was still installed, and I couldn't see an obvious trigger, so it's perhaps related to the handset?
 
-## Incoming `2`
+## Incoming `0b0000_0100`
 Based on the display that appeared when set to `1`, if I were to hazard a guess- this bit denotes if a call is incoming.
 
     # 0 = No friends
@@ -76,7 +85,7 @@ The layout has no text by default, so I generated commands to see if text can be
 
 The layout does seem a tad sparse, but I haven't been able to find _any_ documentation or images to provide further insight. It's possible there's more.
 
-## Power `4`
+## Power `0b0001_0000`
 
 Relatively straight forward- `0` when the telephone is off, `1` when the telephone is on.
 
@@ -87,7 +96,7 @@ Relatively straight forward- `0` when the telephone is off, `1` when the telepho
 
 _If bit is not set, `GT` will default to Main Menu. For example, if active bit is set for a call, upon setting to 0, GT will close Telephone and return to Main Menu._
 
-## Active `5`
+## Active `0b0010_0000`
 
 Denotes if the telephone is currently on a call.
 

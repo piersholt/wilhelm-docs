@@ -1,6 +1,6 @@
-# Message Icon
+# SMS Icon `0xa6`
 
-![icon](icon.JPG)
+![icon](icon/icon.JPG)
 
 Presumably a component of messaging function originally introducted with BMW Assist.
         

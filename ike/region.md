@@ -4,7 +4,7 @@ This command is analogous to language and region settings found in desktop opera
 
 ## User Configuration
 
-![Settings](settings.jpg)
+![Settings](region/settings.jpg)
 
 There are five configurable language/region settings available to users.
 

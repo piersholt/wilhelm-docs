@@ -1,7 +1,5 @@
 # Wilhelm Documentation
 ---
-## Radio
-1. [Display Arbitration](radio/arbitration.md)
 
 ## Telephone
 1. `0x02` Announce
@@ -17,13 +15,13 @@
 	1. [SMS](telephone/layout/sms.md)
 		1. `0xf0`[SMS Index](telephone/layout/sms/index.md)
 		1. `0x01`[SMS Message/Emergency](telephone/layout/sms/message.md)
-1. `0x2b` [Indicator Lamps](telephone/led.md)
-1. `0x2c` [Status](telephone/status.md)
-1. `0xa6` [SMS Icon](telephone/main_menu/icon.md)
+1. `0x2b` [Telephone Indicator Lamps](telephone/led.md)
+1. `0x2c` [Telephone Status](telephone/status.md)
+1. `0xa6` [SMS Icon](telephone/icon.md)
 
 ## On-board Computer Control Panel (BMBT)
 
-1. [Controls](telephone/controls/bmbt.md)
+1. [Controls](bmbt/controls.md)
     1. `0x48` Buttons
     1. `0x47` "Soft" Buttons (i.e. INFO)
     1. `0x32` Volume Dial
@@ -32,13 +30,10 @@
 
 ## Multifunctional Steering Wheel (MFL)
 
-1. [Controls](telephone/controls/mfl.md)
+1. [Controls](mfl/controls.md)
     1. `0x3b` Buttons
-        1. Back/Forward
-        1. Telephone
-        1. "R/T"
     1. `0x32` Volume
 
 ## Cluster (IKE)
 
-1. `0x15` [Region](ike/region.md)
+1. `0x15` [Language & Region](ike/region.md)

@@ -1,7 +1,7 @@
 
 # Main Menu
 
-![Main Menu](main_menu/IMG_2713.JPG)
+![Main Menu](main_menu/main_menu.JPG)
 
 When Telephone is selected from the main menu, the graphics stage (GT) `0x3b` sends to broadcast high `0xff` the command:
 
