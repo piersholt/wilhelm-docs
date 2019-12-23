@@ -11,7 +11,7 @@ Squeezed into **Dial** is **Last Numbers**.
 
 As this command is also used for "next" last number, a number is rendered upon open.
 
-![Open Last Numbers](last_numbers/IMG_2796.JPG)
+![Open Last Numbers](last_numbers/last_numbers_create.JPG)
 
 
     # Close "Last Numbers"
@@ -20,7 +20,7 @@ As this command is also used for "next" last number, a number is rendered upon o
 Last Numbers is closed by confirming with the rotary knob. A `0x31` command isn't sent to the telephone, meaning the last written number remains on the display unless otherwise cleared. This may be normal behaviour, but TBC.
 
 
-![Close Last Numbers](last_numbers/IMG_2797.JPG)
+![Close Last Numbers](last_numbers/last_numbers_destroy.JPG)
 
 Navigating the numbers is then done with the rotary knob. Unlike volume controls, there's no "magnitude", and rotating the control at a faster rate simply sends the same command at a higher frequency.
 

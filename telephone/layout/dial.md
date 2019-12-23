@@ -1,7 +1,6 @@
-
 # Dial
 
-![Example Dial Layout](dial/IMG_2774.JPG)
+![Example Dial Layout](dial/dial_create.JPG)
 
 ## Create
 
@@ -55,7 +54,7 @@ _NOTE: Last Numbers is in a separate doc._
 
 ### Digits
 
-![Dial Layout Digits](dial/IMG_2756.JPG)
+![Dial Layout Digits](dial/dial_update_digits.JPG)
 
     # Dial number buffer
     # factory telephone has leading character "_", i.e. "123_"

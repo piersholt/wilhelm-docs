@@ -2,7 +2,7 @@
 
 Top 8 is essentially identical to Directory, with only the absence of "<<" and ">>" inputs. It still has a limit of 8 contacts.
 
-![Top 8 Example](top_8/IMG_2724.JPG)
+![Top 8 Example](top_8/top_8_create.JPG)
 
 ## Create
 

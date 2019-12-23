@@ -1,4 +1,3 @@
-
 # `0x20` Menu > Telephone
 
 ![Main Menu](main_menu/main_menu.JPG)
@@ -16,12 +15,12 @@ It's important to note that the same command is sent when **Top 8** is selected 
 
 This isn't an issue on the MID and MK1, MK2, and MK3 <= 3-1/31, as **Top 8** is the default Telephone home screen. Whether you select Telephone from the main menu, or Top 8 from the Telephone submenu, the result is the same. Everyone is happy.
 
-![Top 8 4x3](layout/top_8/IMG_1816.JPG)
+![Top 8 4x3](main_menu/top_8_old.JPG)
 
 However, following the UI update, the MK3 (<= 3-1/40) and MK4 would open the **Dial** interface which was redesigned to double as Telephone home screen. Bye bye stateless commands...
 
-![Redesigned Dial Layout](layout/dial/IMG_2774.JPG)
+![Redesigned Dial Layout](main_menu/dial_new.JPG)
 
-![Original Dial Layout](layout/dial/IMG_1818.JPG)
+![Original Dial Layout](main_menu/dial_old.JPG)
 
 The telephone emulation will just need to maintain a session state as to be able to differentiate between opening Telephone from the main menu, vs. opening **Top 8** from the Telephone submenu. Not the end of the world, but required if emulating existing behaviour.

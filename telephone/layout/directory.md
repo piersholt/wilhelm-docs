@@ -1,7 +1,6 @@
-
 # Directory
 
-![Directory Example](directory/IMG_2723.JPG)
+![Directory Example](directory/directory_create.JPG)
 
 ## Create
 

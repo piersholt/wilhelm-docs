@@ -1,6 +1,6 @@
 # SMS Overview
 
-![Telephone SMS Option](dial/IMG_2774.JPG)
+![Telephone SMS Option](dial/dial_create.JPG)
 
 When I installed the MK4, the Telephone menu had a new option **SMS** which sparked my interest.
 

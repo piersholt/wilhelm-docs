@@ -1,11 +1,10 @@
-
 # Pin-Code
 
 This may have only been pertinent to the earlier factory built in phones, but it's useful for other purposes.
 
-![BMBT Pin-Code Example](pin/IMG_2715.JPG)
+![BMBT Pin-Code Example](pin/pin_gt.JPG)
 
-![IKE Pin-Code Example](pin/IMG_2716.JPG)
+![IKE Pin-Code Example](pin/pin_ike.JPG)
 
 
 ## Create
@@ -14,7 +13,7 @@ This may have only been pertinent to the earlier factory built in phones, but it
 - does not support carriage return/line break
 - similar to other uses of `0x23` in sending to broadcast `0xff` or `0xbf` will also write to IKE character display
 
-![Create Pin-Code Layout](pin/IMG_2721.JPG)
+![Create Pin-Code Layout](pin/pin_create.JPG)
 
 	# Pin-code
 	C8 <LEN> 3B 23 05 00 "23 05 Layout Pin-Code" <CS>
@@ -55,7 +54,7 @@ This may have only been pertinent to the earlier factory built in phones, but it
 
 ## Updates
 
-![Enter PIN](pin/IMG_2772.JPG)
+![Enter PIN](pin/pin_update.JPG)
 
 
     # Set Pin

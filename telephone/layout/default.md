@@ -1,10 +1,8 @@
-
 # Default
-
 
 This is the fallback layout which I believe is only used in the event of a Telephone error.
 
-![Default Layout Example](default/IMG_2719.JPG)
+![Default Layout Example](default/default_error.JPG)
 
 The CMT4000 in the 528i would (prior to sourcing a SIM card the size of a surfboard) display "INSERT CARD!" using this layout.
 
@@ -16,7 +14,7 @@ I stumbled upon another message "Phone Connected?" in a random YouTube video whi
 - there is only a single line
 - not possible to use carriage return/link break
 
-![Create Default Layout](default/IMG_2718.JPG)
+![Create Default Layout](default/default_create.JPG)
 
 
     C8 <LEN> 3B 23 00 00 "23 00 Default Layout" <CS>

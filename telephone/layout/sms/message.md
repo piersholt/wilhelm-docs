@@ -1,6 +1,4 @@
-
 # SMS Message
-
 
 ![SMS Message Reference](message/reference_sms_message.jpeg)
 
@@ -8,7 +6,7 @@
 
 This is, near as makes no difference, the same as creating radio layouts with a few minor differences.
 
-![Create SMS Laout](message/IMG_2786.JPG)
+![Create SMS Layout](message/message_create.JPG)
 
     # Lines
     C8 <LEN> 3B 21 F1 00 60 "Line 0" <CS> # Always grey!
@@ -37,7 +35,7 @@ This is, near as makes no difference, the same as creating radio layouts with a 
 - the buttons will only be displayed if their label is set
 - this includes the "Back" button, which can also be omitted
 
-![Subset Of Buttons](message/IMG_2757.JPG)
+![Subset Of Buttons](message/message_buttons.JPG)
 
     # Display only "Back" and middle buttons
     # Lines...
@@ -69,7 +67,7 @@ _Once the button ID is set, it cannot be changed!_ It's not until GT renders Mai
 
 Set the highlighted button:
 
-![Default Button](message/IMG_2765.JPG)
+![Default Button](message/message_button_left.JPG)
 
     # Select LEFT button by default
 
@@ -85,7 +83,7 @@ Set the highlighted button:
     C8 <LEN> 3B A5 F1 00 00 "Vote Left! 0xd1" <CS>
 
 
-![Default Button 2](message/IMG_2767.JPG)
+![Default Button 2](message/message_button_right.JPG)
 
     # Select RIGHT button by default
     # 0b1000_000|0x52 => 0xd2
@@ -98,7 +96,7 @@ Set the highlighted button:
 
 These must be used with care. The GT definitely has a fixed buffer size, and exceeding it causes all kinds of mayhem!
 
-![Line Break](message/IMG_2785.JPG)
+![Line Break](message/message_cr.JPG)
 
     # Line Break
     C8 <LEN> 3B 21 F1 00 60 "Line 0" <CS>
@@ -127,7 +125,7 @@ Ensure the "flush" bit isn't set on any commands, which will otherwise clear the
 
 ### Add Button
 
-![Add Button](message/IMG_2761.JPG)
+![Add Button](message/message_button_update_add.JPG)
 
     # Add a button
     C8 <LEN> 3B 21 F1 00 52 "I'm new" <CS>
@@ -139,7 +137,7 @@ Ensure the "flush" bit isn't set on any commands, which will otherwise clear the
 
 ### Remove Button
 
-![Remove Button](message/IMG_2762.JPG)
+![Remove Button](message/message_button_update_remove.JPG)
 
     # Remove a button
     # Use null-terminated string

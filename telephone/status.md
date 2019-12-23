@@ -29,8 +29,8 @@ Switching between handset and speakerphone.
 ### Handsfree Icon
 When set to `1`, the BMBT displays the speaker icon in the top right.
 
-![ALT TEXT](status/handsfree/IMG_2740.JPG)
-![ALT TEXT](status/handsfree/IMG_2741.JPG)
+![ALT TEXT](status/handsfree/handsfree_telephone.JPG)
+![ALT TEXT](status/handsfree/handsfree_directory.JPG)
 
 I've noticed that switching between handset/handsfree also causes the following to be sent:
 
@@ -42,7 +42,7 @@ I've noticed that switching between handset/handsfree also causes the following 
 
 This may be for **MID**, as when sent to the IKE character display, `0xC6` is a familiar speaker icon.
 
-![ALT TEXT](status/handsfree/IMG_2795.JPG)
+![ALT TEXT](status/handsfree/handsfree_char.JPG)
 
 ### Tape/Radio
 BMBT also sends `0x4B` to Radio which from my tinkering looks to be about controlling radio audio sources, so this is possibly related to mute. I've not been able to confirm this without being able to make a call- or a radio, tape, CDC... etc.
@@ -73,7 +73,7 @@ Based on the display that appeared when set to `1`, if I were to hazard a guess-
 
 One thing to note is: I've noticed that if the BMBT is already displaying any telephone function (Dial, Directory etc), this layout doesn't appear. I assume there's alternative behaviour in this case- TBC.
 
-![ALT TEXT](status/incoming/IMG_2578_.JPG)
+![ALT TEXT](status/incoming/incoming.JPG)
 
 The layout has no text by default, so I generated commands to see if text can be added and found the following options:
 
@@ -81,7 +81,7 @@ The layout has no text by default, so I generated commands to see if text can be
     C8 <LEN> E7 23 81 20 "Incoming Call" <CS>
     C8 <LEN> E7 23 82 20 "Incoming Call" <CS>
 
-![ALT TEXT](status/incoming/IMG_2739_.JPG)
+![ALT TEXT](status/incoming/incoming_title.JPG)
 
 The layout does seem a tad sparse, but I haven't been able to find _any_ documentation or images to provide further insight. It's possible there's more.
 
@@ -105,9 +105,8 @@ Denotes if the telephone is currently on a call.
 
 When set to `1`, the telephone icon on the BMBT will change to red, suggesting it is to end a call.
 
-![ALT TEXT](status/active/IMG_2736.JPG)
-![ALT TEXT](status/active/IMG_2737.JPG)
-![ALT TEXT](status/active/IMG_2738.JPG)
+![ALT TEXT](status/active/active_telephone.JPG)
+![ALT TEXT](status/active/active_directory.JPG)
 
 
 Like Handsfree, there's an additional message sent to ANZV, which may be for the **MID**.
@@ -118,4 +117,4 @@ Like Handsfree, there's an additional message sent to ANZV, which may be for the
     # End Call
     C8 07 E7 23 01 00 "20 20" 0A
 
-![ALT TEXT](status/active/IMG_2795.JPG)
+![ALT TEXT](status/active/active_chars.JPG)
