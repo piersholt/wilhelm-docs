@@ -1,26 +1,127 @@
-Module|Variant|Announce|
-:---|:---|:---|
-BMBT|4x3|0x01|
-BMBT|16x9|0x31|
-Radio|C23|0x01|
-Radio|BM53|0x01|
-GT|VM|0x11|
-GT|Nav. (MK1, MK4)|0x41|
-
 Module|Variant|Note|Command|Argument|
 :---|:---|:---|:---|:---|
+Radio|C23|Hide Overlay|0x46|0b0000_1110
 GT|MK1|Ignition|0x45|0b0000_0000
 GT|VM|Ignition|0x45|0b0000_0000|
 GT|VM|Ignition|0x46|0b0000_0001|
-Radio|C23|Hide Overlay|0x46|0b0000_1110
 GT|MK1|Menu|0x45|0b0000_0001
 Radio|C23|Menu|0x46|0b0000_0001
 Radio|C23|Turn Off|0x46|0b0000_1110
 Radio|C23|Hide Tone|0x46|0b0000_1000
 GT|MK1|Audio OBC|0x45|0b0000_0011
 
+----
+
+## Radio UI Management
+
+0x45 and 0x46 are for the purpose of managing, and configuring the radio UI. Essentially, managing *when* the radio is in the foreground, and to a lesser extent, *how* it behaves in the foreground.
+
+The need for this is a function of how how the GT UI came to be, which was by shoehorning an aftermarket standalone navigation system into what I'd argue was BMW's first in-vehicle infotainment (IVI) system, while avoiding change how anything else worked!
 
 
+
+Look familiar?
+
+
+
+This is a byproduct of the GT UI needing to remain backwards compatible with radios. This is somewhat apparent in the design of the original BMBT.
+
+--
+
+
+The applicable events are:
+- the GT requesting the radio draw the radio UI at KL-R if the radio was on at ignition off.
+
+The following events fall within the scope:
+
+- resuming the last UI state at ignition (KL-R, Position 1)
+- user presses "overlay" to hide radio/turn off radio
+- user presses "menu" to return to main menu while overlay is active
+- audio+obc is enabled/disabled (legacy UI)
+- radio hides TONE
+- radio hides SELECT
+
+
+#### Hide Overlay
+    
+    # C23
+    0x46 0b0000_1110
+    
+    # BM53
+    0x46 0b0000_0010
+    0x46 0b0000_1100
+
+#### Return to Main Menu
+
+## `0x45` GT Control
+
+`0x45` is a one byte bit field.
+
+Bit|7|6|5|4|3|2|1|0|
+:---|:---|:---|:---|:---|:---|:---|:---|:---|
+**Description**|Updated UI: unknown|-|-|Updated UI|-|-|Audio OBC|Hide Radio
+
+    # 0x45
+    HIDE_RADIO      = 0b0000_0001
+    FLAG_AUDIO_OBC  = 0b0000_0010
+
+    FLAG_NEW_UI     = 0b0001_0000
+    FLAG_NEW_UI_TBC = 0b1000_0000
+
+### "Hide" `0b0000_0001`
+
+- MENU button
+- hide 
+
+### Audio+OBC `0b0000_0010`
+
+The Audio and Onboard Computer (OBC) display "Audio+OBC" is a feature of the original UI, and allowed OBC data to be displayed alongside radio information.
+
+![Audio+OBC](audio_obc/mk1_gt/audio_obc_enabled.JPG)
+_Audio+OBC: The MK1 GT, and BM53 with the Audio+OBC feature enabled._
+![Audio+OBC](audio_obc/vm_gt/audio_obc_enabled.JPG)
+_Audio+OBC: A video module GT, and BM53 with the Audio+OBC feature enabled._
+
+The bit is set/unset when "Audio+OBC" is enabled/disabled via the "Set" menu. It prevents (_or possibly makes menus a timeout?_) the radio from rendering any menus, thus the OBC remains in the foreground.
+
+![Audio+OBC](audio_obc/vm_gt/set_audio_obc.JPG)
+![Audio+OBC](audio_obc/mk1_gt/set_audio_obc.JPG)
+_Audio+OBC: Audio+OBC settings..._
+
+While this feature was removed from the updated UI (MK3 3-1/40+, MK4), all radio variants, including next generation (NG) radios will support it.
+
+Note: this is really only relevant to BM24, BM54... 
+
+### Bit `4`
+
+This bit is set when the GT is running navigation system software with the updated UI.
+
+![Updated UI](updated_ui.png)
+
+This is only applicable to a subset of navigation computers:
+
+Variant|Software|Announce|
+:---|:---|:---|
+MK1|1-1/80|`0`|
+MK2|2-1/63|`0`|
+MK3|< 3-1/31|`0`|
+MK3|> 3-1/40|`1`|
+MK4|4-1/00|`1`|
+Video Module|.|`0`|
+
+This is only applicable to the MK3 from version 40 onwards (`3-1/40`), and MK4 which was shipped with updated UI.
+
+MK3 3-1/40+ and MK4
+
+### Bit `7`
+
+MK3 3-1/40+ and MK4
+
+## `0x46` Radio Control
+
+abc
+
+----
 
 ## GT: MK1, BMBT: Wide, Radio: None
 
@@ -606,7 +707,8 @@ _Still no change..._
     # full retard with wilhelm...
     # nothing...
     
-## MK4 (No TV, Radio, or DSP emulation.)
+## GT: MK4 (Screen: Split), Radio: None
+**Emulation: No TV, or DSP**
 
 ### No Idea?
 
@@ -712,14 +814,92 @@ _Still no change..._
     ike anzv   ANZV-VAR-IKE*	field: 0x07 ((OBC) Distance) / ike: 00 (--) / chars: 20 20 20 30 20 4B 4D 20 ("   0 KM ")
     ike anzv   ANZV-VAR-IKE*	field: 0x08 ((OBC) Arrival) / ike: 00 (--) / chars: 2D 2D 3A 2D 2D 20 20 ("--:--  ")
 
-##### note: 
+### Screen: Full
 
-#### Menu
+no difference mate!
 
-df
+### Screen: Coded for Full Screen
+
+no difference!
+
+    rad	glo_l	PONG      	status: 0x01 (Announce)
+    gt	rad	UI-GT     	config: 0x11 ((0001 0001) Main Menu: [ON])
+    
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x61 ((0110 0001) Block: [ON], Flush: [ON], Zone: A/1) / chars: 61 35 20 36 32 20 30 31 20 30 31 20 29 59 34 46 36 4B 75 65 35 28 ("a5 62 01 01 )Y4F6Kue5(")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x42 ((0100 0010) Block: [ON], Zone: B/2) / chars: 61 35 20 36 32 20 30 31 20 30 32 20 64 39 24 3B 70 53 6E 2F 67 6A ("a5 62 01 02 d9$;pSn/gj")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x43 ((0100 0011) Block: [ON], Zone: C/3) / chars: 61 35 20 36 32 20 30 31 20 30 33 20 4C 44 4E 3F 5F 5E 4E 6C 57 23 ("a5 62 01 03 LDN?_^NlW#")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x44 ((0100 0100) Block: [ON], Zone: D/4) / chars: 61 35 20 36 32 20 30 31 20 30 34 20 40 4E 2F 72 6F 26 37 6D 49 58 ("a5 62 01 04 @N/ro&7mIX")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x45 ((0100 0101) Block: [ON], Zone: E/5) / chars: 61 35 20 36 32 20 30 31 20 30 35 20 33 6B 3D 69 40 5B 5E 53 28 43 ("a5 62 01 05 3k=i@[^S(C")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x46 ((0100 0110) Block: [ON], Zone: H2/6) / chars: 61 35 20 36 32 20 30 31 20 30 36 20 6C 58 6C 5C 25 3A 6C 75 6B 48 ("a5 62 01 06 lXl\%:lukH")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x47 ((0100 0111) Block: [ON], Zone: H3/7) / chars: 61 35 20 36 32 20 30 31 20 30 37 20 22 23 2D 72 2D 21 25 39 41 29 ("a5 62 01 07 "#-r-!%9A)")
+    rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 00 ((0000 0000) Zone: 0) / chars:  ("")
+    
+    bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
+    bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    gt	rad	UI-GT     	config: 0x91 ((1001 0001) Main Menu: [ON])
+
+
+### Ignition Off (KL-R to KL-30)
+
+#### With Overlay
+    radio announce
+    radio draw
+    ignition off
+    ignition on
+    radio announce
+    gt 0x45 as 0x10
+
+
+#### Without Overlay
+    radio announce
+    radio draw
+    radio hide (0x02 | 0x0c)
+    ignition off
+    ignition on
+    radio announce
+    gt 0x45 as 0x11
+
+### Menu
+    
+    rad glo_l   PONG      status: 00 (Reply)
+    rad gt      RAD-23    gt: 0x62 ((RDS)) / ike: 0x10 (Overwrite) / chars: 42 2E 67 7A 4F 68 62 6B 3B 3E 60 ("B.gzOhbk;>`")
+    bmbt        glo_h	  BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
+    bmbt        glo_h	  BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    gt  rad     UI-GT     config: 0x91 ((1001 0001) Main Menu: [ON])
+    
+#### Hmmm
+
+    gt	rad	UI-GT     	config: 0x11 ((0001 0001) Main Menu: [ON])
+    # some time later
+    nav	gt2	NAV-GT2-AB	11
+    gt	rad	UI-GT     	config: 0x10 ((0001 0000) )
+    nav	gt2	NAV-GT2-AB	21
+
+### Notes
+- GT will send 0x45 at KL-R as response to Radio annoucement.
+- but GT will also send 0x45 at KL-R after reset
+- GT will retain last display state and render it, and not rely upon radio.
+- If radio does not announce/reply- GT will clear display.
+
+## Add Radio
+**note: radio was on and attempts to resume after power cycle**
+
+### Incoming Call
+
+    tel	anzv	ANZV-BOOL-TEL	status: 0x04 ((0000 0100) Incoming Call: [ON])
+    gt	rad	UI-GT     	config: 0x11 ((0001 0001) Main Menu: [ON])
+    rad	gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
+    
+    # Return
+    gt	bmbt	GT-BMBT*  	a: 0x10 ((0001 0000) Power: [ON], Source: [Nav. GT])
+    bmbt	gt	BMBT-GT*  	0x05 (0000 0101) :bmbt_confirm   	[Confirm]      	Press 
+    gt	rad	UI-GT     	config: 0x10 ((0001 0000) )
+
 
 
 -------
+
+
 
 
 ## Lifecycle
