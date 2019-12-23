@@ -1,4 +1,4 @@
-# Telephone Status `0x2c`
+# `0x2c` Telephone Status
 
 The telephone sends it's status to ANZV `0xe7` via command `0x2c`. Similar to IKE sending updates to ANZV, the data is simply a bit field.
 

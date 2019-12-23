@@ -1,4 +1,4 @@
-# `0x15` Region
+# `0x15` Language & Region
 
 This command is analogous to language and region settings found in desktop operating systems.
 

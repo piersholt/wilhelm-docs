@@ -19,7 +19,7 @@ Use|Telephone|R/T|Button State|Button ID
     
     TEL     = 0b1000_0000
 
-### Radio/Telephone "R/T" `0b0100_0000` / ` 0x40`
+### Radio/Telephone "R/T" `0b0100_0000`
 
 The **R/T** button will determine if Radio `0x68` or Telephone `0xc8` is the recipient of applicable messages.
 
@@ -44,7 +44,7 @@ The bit will only be set for the **R/T** button press, and not with any other bu
 
 R/T selecting telephone mode will also turn a telephone on.
 
-### Forward `0b0000_0001` / ` 0x01`
+### Forward `0b0000_0001`
 
 #### Radio Mode
 
@@ -60,7 +60,7 @@ R/T selecting telephone mode will also turn a telephone on.
     50 04 C8 3B 11 B6   # Hold
     50 04 C8 3B 21 86   # Release
 
-### Back `0b0000_1000` / ` 0x08`
+### Back `0b0000_1000`
 
 #### Radio Mode
 
@@ -76,7 +76,7 @@ R/T selecting telephone mode will also turn a telephone on.
     50 04 C8 3B 18 BF   # Hold
     50 04 C8 3B 28 8F   # Release
     
-### Telephone `0b1000_0000` / ` 0x80`
+### Telephone `0b1000_0000`
 
 Note: depending on year, and options, the button icon may be either a "telephone", or "speaking".
     

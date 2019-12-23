@@ -190,12 +190,12 @@ Use|Button State|Button ID
     HOLD        = 0b0100_0000
     RELEASE     = 0b1000_0000
 
-### Info `0b0011_1000` / `0x38`
+### Info `0b0011_1000`
 
 BMW Service Training:
 > The "INFO" button reduces the number of variants. Traffic information can be called up using the "INFO" button. The country-specific functions will be activated or deactivated depending on the country variant set.
 
-![Example Dial Layout](bmbt_info_vm_gt.JPG)
+![Example Dial Layout](controls/bmbt_info_vm_gt.JPG)
 
 The Info button will open a new menu and list any supported features such as RDS, and TP. Upon selecting a feature, the GT will emulate a button press from the legacy BMBT. i.e. Selecting "RDS" from the Info menu would send `0x48` with the button ID for RDS `0x22`.
 
@@ -204,7 +204,7 @@ The Info button will open a new menu and list any supported features such as RDS
     F0 05 FF 47 00 78 35
     F0 05 FF 47 00 B8 F5
 
-### Select `0b0000_1111` / `0x0f`
+### Select `0b0000_1111`
 
 The Select button is no longer sent via `0x48`. (No variance in behaviour compared to legacy BMBT?)
 
