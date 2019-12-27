@@ -36,4 +36,5 @@
 
 ## Cluster (IKE)
 
+1. `0x11` [Ignition](ike/ignition.md)
 1. `0x15` [Language & Region](ike/region.md)
