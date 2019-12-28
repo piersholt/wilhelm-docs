@@ -8,14 +8,14 @@ This command is analogous to language and region settings found in desktop opera
 
 There are five configurable language/region settings available.
 
-Setting|||||||||
+Setting|1|2|3|4|5|6|7|8|9
 :---|:---|:---|:---|:---|:---|:---|:---|:---|:---
 **Language**|DE|GB|US|IT|ES|JP|FR|CA|AR
-**Distance**|km|miles
-**Consumption**|l/100km|MPG|km/l
-**Temperature**|℃|℉
-**Clock**|24h|12h
-_Date_*|dd.mm|mm/dd
+**Distance**|km|miles|||||||
+**Consumption**|l/100km|MPG|km/l||||||
+**Temperature**|℃|℉|||||||
+**Clock**|24h|12h|||||||
+_Date_*|dd.mm|mm/dd|||||||
 
 While each setting is global, each applicable property maintained by the IKE needs to be configured to use the selected unit/format. For example, selecting 24 hour time affects the *clock*, *navigation arrival time*, and *aux. timers*. This is outlined below:
 
