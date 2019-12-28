@@ -38,3 +38,8 @@
 
 1. `0x11` [Ignition](ike/ignition.md)
 1. `0x15` [Language & Region](ike/region.md)
+
+#### Redundant Data Storage
+1. `0x53` Redundant Data Request
+1. `0x54` Redundant Data
+1. `0x55` Replicate Data
