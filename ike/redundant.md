@@ -22,7 +22,7 @@ Reviewing the LCM coding via INPA provides a good overview of the stored data, a
 
 ### Properties
 
-Property|Index\*|Length|Note
+Property|Index|Length|Note
 :---|:---|:---|:---
 **VIN**|`0`|`5`|
 **Mileage**|`5`|`2`|
@@ -122,8 +122,8 @@ Examples of *fuel*, and *day* being updated within the same mileage interval.
 
 The data sent by the cluster has the same structure as that returned by the LCM. The only difference is the absence of the VIN.
 
-Property|Index\*|Length
-:---|:---|:---|:---
+Property|Index|Length
+:---|:---|:---
 **Mileage**|`0`|`2`|
 **TBC**|`2`|`1`
 **Fuel**|`3`|`1`|
