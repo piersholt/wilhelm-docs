@@ -10,7 +10,7 @@ The command has no arguments (that I'm aware of), so the frame should always be:
     
     80 03 D0 53 00  # Redundant Data Request 0x53
 
---
+---
 
 # `0x54` Redundant Data
 
@@ -102,7 +102,7 @@ Byte 1|Byte 2|16 bit integer|Value|Time
 :---|:---|:---|:---|:---
 `0x05`|`0xee`|`0x05ee`|`1518`| *1,518 days* 
 
---
+---
 
 # `0x55` Replicate Data
 

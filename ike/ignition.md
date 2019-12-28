@@ -30,7 +30,7 @@ The command has a single byte bit field, of which the least significant 3 bits a
     80 04 BF 11 03 29   # KL-15
     80 04 BF 11 07 2D   # KL-50
 
---
+---
 
 # `0x10` Ignition Request
 
