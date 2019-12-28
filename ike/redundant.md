@@ -36,8 +36,8 @@ Property|Index\*|Length|Note
     # Frame
     D0 10 80 54 41 42 12 34 50 09 86 40 46 00 00 04 03 EF
 
-Property|VIN|Mileage|TBC|Fuel|Oil|Time|
-:---|:---|:---|:---|:---|:---|:---|:---|:---|:---
+Property|VIN|Mileage|TBC|Fuel|Oil|Time
+---|---|---|---|---|---|---
 **Data**|`41 42 12 34 50`|`09 86`|`40`|`46`|`00 00`|`04 03`
 
 ## VIN
