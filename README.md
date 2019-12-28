@@ -42,6 +42,6 @@
 1. `0x15` [Language & Region](ike/region.md)
 
 #### Redundant Data Storage
-1. `0x53` Redundant Data Request
-1. `0x54` Redundant Data
-1. `0x55` Replicate Data
+1. `0x53` [Redundant Data Request](ike/redundant.md)
+1. `0x54` [Redundant Data](ike/redundant.md)
+1. `0x55` [Replicate Data](ike/redundant.md)
