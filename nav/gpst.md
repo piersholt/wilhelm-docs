@@ -1,5 +1,8 @@
 # `0x1f` GPS Time
 
+- top of the minute
+- pending GPS signal
+
 ## Properties
 
 Property|Index|Length|Note
@@ -8,20 +11,21 @@ Property|Index|Length|Note
 **Hour**|`1`|`1`|
 **Minute**|`2`|`1`|
 **Day**|`3`|`1`|
-***Second\****|`4`|`1`|Seemingly always `0x00`. Given command is sent at top of the minute, possibly seconds?!
+***Unknown\****|`4`|`1`|Seemingly always `0x00`. Given command is sent at top of the minute, possibly seconds?!
 **Month**|`5`|`1`|
 **Year**|`6`|`2`|
 
 ## GPS Week Number Rollover
 
-As of 7 April 2019, the navigation computer (MK2+) will report what appears to be the incorrect date.
+As of 7 April 2019, the navigation computer (ex. early MK1) will no longer report the correct date.
 
-***service mode image***
+![GPS Status Date Error](gpst/status_epoch.jpg)
+**1 June 2000** reported on **16 January 2020**.
 
 This is a result of the [GPS week number rollover](https).
 
-***From the U.S. Naval. Observatory report:***
 > ![Presentation](gpst/gps_week_roll_over_issue_20170926.jpg)
+> U.S. Naval. Observatory 2017 GPS Week Roll Over Issue
 
 .
 
