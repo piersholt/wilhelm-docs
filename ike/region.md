@@ -46,6 +46,7 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     # Byte 2
     FORMAT_TIME           = 0b0000_0001 << 16
     UNIT_TEMPERATURE      = 0b0000_0010 << 16
+
     UNIT_AVG_SPEED        = 0b0001_0000 << 16
     UNIT_LIMIT            = 0b0010_0000 << 16
     UNIT_DISTANCE         = 0b0100_0000 << 16
@@ -54,6 +55,7 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     # Byte 3
     UNIT_CONSUMP_1        = 0b0000_0011 << 8
     UNIT_CONSUMP_2        = 0b0000_1100 << 8
+
     UNIT_RANGE            = 0b0001_0000 << 8
     FORMAT_AUX_TIMER_1    = 0b0010_0000 << 8
     FORMAT_AUX_TIMER_2    = 0b0100_0000 << 8
@@ -61,6 +63,7 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     # Byte 4
     EQUIPPED_AUX_HEATING  = 0b0000_0001 << 0
     EQUIPPED_AUX_VENT     = 0b0000_0010 << 0
+
     EQUIPPED_AUX_CONTROL  = 0b0100_0000 << 0
 
 ## Byte 1
