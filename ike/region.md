@@ -42,6 +42,8 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     
     # Byte 1
     LANGUAGE              = 0b0000_1111 << 32
+
+    UNALLOCATED           = 0b1111_0000 << 32   # Unallocated
     
     # Byte 2
     FORMAT_TIME           = 0b0000_0001 << 16
@@ -66,9 +68,11 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     # Byte 4
     EQUIPPED_AUX_HEATING  = 0b0000_0001 << 0
     EQUIPPED_AUX_VENT     = 0b0000_0010 << 0
+    UNALLOCATED           = 0b0000_0100 << 0    # Unallocated
     CODING_MOTOR_TYPE     = 0b0000_1000 << 0
 
     CODING_RCC_TIME       = 0b0001_0000 << 0  
+    UNALLOCATED           = 0b0010_0000 << 0    # Unallocated
     EQUIPPED_AUX_CONTROL  = 0b0100_0000 << 0
 
 ## Byte 1
