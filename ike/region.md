@@ -79,14 +79,15 @@ There are also a number of coded options.
     MEMO_TYPE             = 0b1000_0000 << 8
 
     # Byte 4
-    EQUIPPED_AUX_HEATING  = 0b0000_0001 << 0
-    EQUIPPED_AUX_VENT     = 0b0000_0010 << 0
+    AUX_HEATING           = 0b0000_0001 << 0
+    AUX_VENTILATION       = 0b0000_0010 << 0
     UNALLOCATED           = 0b0000_0100 << 0    # Unallocated
     CODING_MOTOR_TYPE     = 0b0000_1000 << 0
 
     CODING_RCC_TIME       = 0b0001_0000 << 0  
     UNALLOCATED           = 0b0010_0000 << 0    # Unallocated
     EQUIPPED_AUX_CONTROL  = 0b0100_0000 << 0
+    UNALLOCATED           = 0b1000_0000 << 0    # Unallocated
 
 ## Byte 1
 
@@ -199,15 +200,19 @@ There are also a number of coded options.
     
 ## Byte 4
 
-#### Equipped: Aux. Heating `0b0000_0001`
+#### Aux. Heating `0b0000_0001`
 
     AUX_HEAT_FALSE      = 0b0000_0000
     AUX_HEAT_TRUE       = 0b0000_0001
+    
+*Aux. heating option available via GT if enabled.*
 
-#### Equipped: Aux. Ventilation `0b0000_0010`
+#### Aux. Ventilation `0b0000_0010`
 
     AUX_VENT_FALSE      = 0b0000_0000
     AUX_VENT_TRUE       = 0b0000_0010
+    
+*Aux. ventilation option available via GT if enabled.*
     
 #### Motor Type `0b0000_1000`
 
@@ -223,6 +228,7 @@ There are also a number of coded options.
 
 *The navigation computer will broadcast GPS Time (`0x1f`) by default, and enabling GPS time in IKE coding does not affect this command, so presumably the RCC module will only broadcast time if this is set?*
 
-#### Equipped: Aux. Controller (TBC)
+#### Aux. Controller Type
 
-    AUX_CONT_LEGACY     = 0b0100_0000
+    BMBT_PRE_PU96       = 0b0000_0000
+    BMBT_POST_PU96      = 0b0100_0000   # Also applies to MID
