@@ -49,9 +49,9 @@ There are also a number of coded options.
 - OBC resume at ignition
 - OBC speed correction
 - Memo type
-- Aux. heating
-- Aux. ventilation
-- Aux. controller type
+- Aux. heating equipped
+- Aux. ventilation equipped
+- Aux. heating/ventilation controller type
 - Motor type
 - Radio Controlled Clock (RCC) time
 
