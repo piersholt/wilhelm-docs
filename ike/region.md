@@ -10,7 +10,7 @@ There are five configurable language/region settings available.
 
 Setting|1|2|3|4|5|6|7|8|9
 :---|:---|:---|:---|:---|:---|:---|:---|:---|:---
-**Language**|DE|GB|US|IT|ES|JP|FR|CA|AR
+**Language**|DE|GB|US|IT|ES|JP|FR|CA|GOLF?
 **Distance**|km|miles|||||||
 **Consumption**|l/100km|MPG|km/l||||||
 **Temperature**|℃|℉|||||||
@@ -93,14 +93,16 @@ There are also a number of coded options.
 #### Language `0b0000_1111`
 
     LANG_DE             = 0b000_0000
-    LANG_GB             = 0b000_0001
-    LANG_US             = 0b000_0010
+    LANG_EN_GB          = 0b000_0001
+    LANG_EN_US          = 0b000_0010
     LANG_IT             = 0b000_0011
     LANG_ES             = 0b000_0100
     LANG_JP             = 0b000_0101
     LANG_FR             = 0b000_0110
-    LANG_CA             = 0b000_0111
-    LANG_AR             = 0b000_1000
+    LANG_EN_CA          = 0b000_0111
+    LANG_GOLF           = 0b000_1000    # Oceania?
+    
+*`0x08` "GOLF" was default language for Australian 2001 E39, and 2005 E53.*
 
 #### Cluster Type `0b1111_0000`
 
