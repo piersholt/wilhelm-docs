@@ -2,7 +2,11 @@
 
 This command is analogous to language and region settings found in desktop operating systems.
 
+Various modules depend on this configuration in order to correctly interpret data (e.g. temperature, speed) which is transmitted between modules.
+
 ## User Configuration
+
+*Note: this is only applicable to on-board monitor, "high" cluster equipped vehicles.*
 
 ![Settings](region/settings.jpg)
 
@@ -17,7 +21,7 @@ Setting|1|2|3|4|5|6|7|8|9
 **Clock**|24h|12h|||||||
 _Date_*|dd.mm|mm/dd|||||||
 
-While each setting is global, each applicable property maintained by the IKE needs to be configured to use the selected unit/format. For example, selecting 24 hour time affects the *clock*, *navigation arrival time*, and *aux. timers*. This is outlined below:
+While each unit and format setting is presented as a single, universal setting, each applicable property maintained by the IKE needs to be configured to use the selected unit/format. For example, selecting 24 hour time affects the *clock*, *navigation arrival time*, and *aux. timers*, each of which needs to be individually configured. This is outlined below:
 
 Property|Clock|Distance|Temp.|Consump.
 :---|:---|:---|:----|:----
@@ -33,7 +37,7 @@ Range||✅||
 Aux. Timer 1|✅|||
 Aux. Timer 2|✅|||
 
-When a unit/format is selected, the GT will set the bits for _all_ applicable fields. However, it's possible to set the desired format/unit for individual properties if desired.
+When a unit/format is selected, the GT will set the bits for _all_ applicable fields. However, it's possible to set the desired format/unit for individual properties via manually generated commands.
 
 **Note on _Date_**
 This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, selecting *dd/mm* will default to *24h*.
