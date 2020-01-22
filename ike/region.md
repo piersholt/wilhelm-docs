@@ -38,18 +38,31 @@ When a unit/format is selected, the GT will set the bits for _all_ applicable fi
 **Note on _Date_**
 This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, selecting *dd/mm* will default to *24h*.
 
+## Vehicle Configuration
+
+There are also a number of coded options.
+
+- OBC resume at ignition
+- OBC speed correction
+- Memo type
+- Aux. heating
+- Aux. ventilation
+- Aux. controller type
+- Motor type
+- Radio Controlled Clock (RCC) time
+
 ## Bitmasks
     
     # Byte 1
     LANGUAGE              = 0b0000_1111 << 32
-
-    UNALLOCATED           = 0b1111_0000 << 32   # Unallocated
+    
+    CLUSTER_TYPE          = 0b1111_0000 << 32
     
     # Byte 2
     FORMAT_TIME           = 0b0000_0001 << 16
     UNIT_TEMPERATURE      = 0b0000_0010 << 16
-    CODING_OBC_RESUME     = 0b0000_0100 << 16
-    CODING_OBC_SPEED      = 0b0000_1000 << 16
+    OBC_RESUME_AT_KLR     = 0b0000_0100 << 16
+    OBC_SPEED_CORRECTION  = 0b0000_1000 << 16
 
     UNIT_AVG_SPEED        = 0b0001_0000 << 16
     UNIT_LIMIT            = 0b0010_0000 << 16
@@ -63,7 +76,7 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     UNIT_RANGE            = 0b0001_0000 << 8
     FORMAT_AUX_TIMER_1    = 0b0010_0000 << 8
     FORMAT_AUX_TIMER_2    = 0b0100_0000 << 8
-    CODING_MEMO_TYPE      = 0b1000_0000 << 8
+    MEMO_TYPE             = 0b1000_0000 << 8
 
     # Byte 4
     EQUIPPED_AUX_HEATING  = 0b0000_0001 << 0
@@ -89,6 +102,19 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     LANG_CA             = 0b000_0111
     LANG_AR             = 0b000_1000
 
+#### Cluster Type `0b1111_0000`
+
+    CLUSTER_HIGH    = 0b0000_0000   # E38 standard, E39/E53 option
+    CLUSTER_LOW     = 0b0000_0011   # E39/E53 standard
+    
+    CLUSTER_E46_A   = 0b0100_0000   # ?
+    CLUSTER_E46_B   = 0b0110_0000   # ?
+    CLUSTER_E46_C   = 0b1111_0000   # ?
+    
+    CLUSTER_E85     = 0b1010_0000   # Z4, X3 TBC
+
+*LCM is coded for high or low cluster, so this may be applicable to radio, and telephone, neither of which have coding for cluster type.*
+
 ## Byte 2
 
 #### Format: Time `0b0000_0001`
@@ -100,6 +126,16 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
 
     TEMP_CELSIUS        = 0b0000_0000   # +18.0
     TEMP_FAHRENHEIT     = 0b0000_0010   # + 64
+
+#### OBC Resume at KL-R
+
+    OBC_RESUME_FALSE      = 0b0000_0000
+    OBC_RESUME_TRUE       = 0b0000_0100
+
+#### OBC Speed Correction `0b0000_1000`
+
+    OBC_SPEED_CORRECTION_FALSE  = 0b0000_0000
+    OBC_SPEED_CORRECTION_TRUE   = 0b0000_1000
 
 #### Unit: Average Speed `0b0001_0000 `
 
@@ -152,6 +188,13 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
     TIMER_2_24H         = 0b0000_0000   # 17:30
     TIMER_2_12H         = 0b0100_0000   # 5:30pm
     
+#### Memo Type
+
+    MEMO_IKE            = 0b0000_0000   # Hourly gong
+    MEMO_LCM            = 0b1000_0000   # Hourly gong with trip duration
+    
+*If enabled, LCM is responsible for memo, which is generated via check control message.*
+    
 ## Byte 4
 
 #### Equipped: Aux. Heating `0b0000_0001`
@@ -163,6 +206,20 @@ This is a meta setting; selecting *12h* will default to *mm.dd*. Similarly, sele
 
     AUX_VENT_FALSE      = 0b0000_0000
     AUX_VENT_TRUE       = 0b0000_0010
+    
+#### Motor Type `0b0000_1000`
+
+    MOTOR_GASOLINE      = 0b0000_0000
+    MOTOR_DIESEL        = 0b0000_1000
+    
+#### Radio Controlled Clock (RCC) Time `0b0001_0000`
+
+    RCC_TIME_FALSE      = 0b0000_0000
+    RCC_TIME_TRUE       = 0b0001_0000
+
+*RCC was E38 option. RDS specification allows for clock time (CT).*
+
+*The navigation computer will broadcast GPS Time (`0x1f`) by default, and enabling GPS time in IKE coding does not affect this command, so presumably the RCC module will only broadcast time if this is set?*
 
 #### Equipped: Aux. Controller (TBC)
 
