@@ -45,3 +45,7 @@
 1. `0x53` [Redundant Data Request](ike/redundant.md)
 1. `0x54` [Redundant Data](ike/redundant.md)
 1. `0x55` [Replicate Data](ike/redundant.md)
+
+## Navigation
+
+1. `0x1f` [GPS Time](nav/gpst.md)
