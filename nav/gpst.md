@@ -38,7 +38,7 @@ Property|--|Hour|Minute|Day|--|Month|Year
 
 As of *7 April 2019*, navigation computers shipped from 1999, or older units that have been updated since ~1999, will no longer report the correct date.
 
-![GPS Status Date Error](gpst/status_epoch.jpg)
+![GPS Status Date Error](gpst/gps_status_date_error.jpg)
 
 An example of this above, whereby an MK4 (`4-1/00`) navigation computer in service mode is reporting an incorrect date of **1 June 2000** (`01.06.00`) on  **16 January 2020** (`16.01.2020`).
 
