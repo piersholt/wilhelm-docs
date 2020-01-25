@@ -1,64 +1,87 @@
 # `0x1f` GPS Time
 
-- top of the minute
-- pending GPS signal
+With sufficient GPS signal strength, the navigation computer will begin sending GPS [date and] time.
+
+- Dependent on GPS signal
+- Time is expressed as a **24-hour clock**
+- Time is in **UTC**
+- Sent at the **top of every minute**, e.g. `17:23:00`, `17:24:00`
+- The message recipient is the instrument cluster `0x80`
+- The message length is fixed at 13 bytes
 
 ## Properties
 
-Property|Index|Length|Note
-:---|:---|:---|:---
-**Unknown**|`0`|`1`|To date always `0x40`?
-**Hour**|`1`|`1`|
-**Minute**|`2`|`1`|
-**Day**|`3`|`1`|
-***Unknown\****|`4`|`1`|Seemingly always `0x00`. Given command is sent at top of the minute, possibly seconds?!
-**Month**|`5`|`1`|
-**Year**|`6`|`2`|
+Property|Index|Length|Type|Note
+:---|:---|:---|:---|:---
+**Unknown**|`0`|`1`|-|Default of `0x40`?
+**Hour**|`1`|`1`|Packed BCD| `hh`
+**Minute**|`2`|`1`|Packed BCD| `mm`
+**Day**|`3`|`1`|Packed BCD| `DD`
+**Unknown**|`4`|`1`|-|Default of `0x00`?
+**Month**|`5`|`1`|Packed BCD| `MM`
+**Year**|`6`|`2`|Packed BCD| `YYYY`
+
+### Example
+
+    7F 0B 80 1F 40 10 18 27 00 01 20 19 BC  # GPST frame
+        
+Property|--|Hour|Minute|Day|--|Month|Year
+---|---|---|---|---|---|---|---
+**Data**|`40`|`10`|`18`|`27`|`00`|`01`|`2019`
+
+**Time**: 10:18am
+**Date**: 27 January 2019
+
+**ISO 8601**: `2019-01-27T10:18:00+00:00`
 
 ## GPS Week Number Rollover
 
-As of 7 April 2019, the navigation computer (ex. early MK1) will no longer report the correct date.
+As of *7 April 2019*, navigation computers shipped from 1999, or older units that have been updated since ~1999, will no longer report the correct date.
 
 ![GPS Status Date Error](gpst/status_epoch.jpg)
-**1 June 2000** reported on **16 January 2020**.
 
-This is a result of the [GPS week number rollover](https).
+An example of this above, whereby an MK4 (`4-1/00`) navigation computer in service mode is reporting an incorrect date of **1 June 2000** (`01.06.00`) on  **16 January 2020** (`16.01.2020`).
 
-> ![Presentation](gpst/gps_week_roll_over_issue_20170926.jpg)
-> U.S. Naval. Observatory 2017 GPS Week Roll Over Issue
+This is a result of [GPS week number rollover](https://en.wikipedia.org/wiki/GPS_Week_Number_Rollover), a known limitation in GPS.
 
-.
+### The Problem
 
-> The GPS date is expressed as a week number and a seconds-into-week number.
+GPS expresses time as:
 
-The week number represents the number of weeks since the GPS epoch on 6 January 1980. It is stored as a 10 bit integer, allowing for a week number of 0 to 1023 (`2^10`), thus every 1024 weeks, or ~19.7 years the week number will rollover.
+- **number of weeks** since the GPS epoch on 6 January 1980
+- **number of seconds** into the given week
 
+The number of weeks is represented by a 10-bit integer, which has an inherent limitation...
 
-In summary, the epochs are as follows:
+10 bits allows for 1024 possible values (`2^10`), or 0 to 1023 weeks since the GPS epoch. Thus, on 21 August 1999, after 1024 weeks, or ~19.7 years, the GPS date would effectively reset.
 
-Epoch|Start|End
-:---|:---|:---
-**1**|`1980-01-06`|`1999-08-21`
-**2**|`1999-08-22`|`2019-04-06`
-**3**|`2019-04-07`|`.`
+GPS obsolesence not withstanding, this reset or rollover will occur every 1024 weeks in perputuity, and as of January 2020, has occured twice.
 
-Presumably a navi. OS software update was released in 1999 to handle the epoch 1/2 rollover event. However, in the absence of an update to handle the epoch 2/3 rollover, the navigation computer will no longer report the correct date.
+Epoch|Start|End|Duration
+:---|:---|:---|:---
+**1**|`1980-01-06`|`1999-08-21`|1024 weeks
+**2**|`1999-08-22`|`2019-04-06`|1024 weeks
+**3**|`2019-04-07`|`...`|`...`
 
-### Epoch Offset
+### The Solution
 
-The aforementioned "week number ambiguity" can be handled by applying the same logic that would otherwise be the responsibility of a GPS receiver.
+It is the responsibility of GPS receivers to correct the date for the current epoch. and presumably a navigation OS software update was released in anticipation of the first rollover event in 1999, but in the absence of another update, the navigation computer will continue to calculate the date as if GPS is the second epoch.
 
-As of `V30` or `4-1/00`, navigation computers should be configured for epoch 2. As such, the reported date can simply be offset by 1 epoch, or 1024 weeks.
+However, the date correction can be handled by applying the same logic that is otherwise the responsibility of the navigation computer.
 
-In the case of ruby, the base unit for time is seconds, so to get a period of 1024 weeks, we calculate the number of seconds in one week, and multiply it by 1024.
+As of `V30` or `4-1/00`, navigation computers should be configured for epoch 2. So to correct for epoch 3, the reported date can simply be offset by 1 epoch. `2 + 1 = 3 # Wow! :D`
 
-    epoch_size      = 2**10             # 2^10
-    week_seconds    = 60 * 60 * 24 * 7  # 604800 seconds
+In the case of ruby, the base unit for time is seconds, so to get a period of 1 epoch, calculate the number of seconds in one week, and multiply it by 1024.
 
-    epoch = epoch_size * week_seconds   # 619315200 seconds
+    epoch_size      = 2**10                 # 1024
+    week_secs       = 60 * 60 * 24 * 7      # 604800 seconds
+
+    epoch_offset = epoch_size * week_secs   # 619315200 seconds (1024 weeks)
+
+The date reported by the navigation computer can be offset by 1 epoch:
     
-    # 1024 weeks = 619315200 seconds
-    
-    # Reported time: 2000-01-01
-    gpst = Time.new("2000-01-01 00:00")
-    corrected_gpst = gpst + epoch
+    gpst = Time.new("2000-06-01 06:52")     # 1 June 2000
+    corrected_gpst = gpst + epoch_offset    # Offset by 1 epoch
+    print corrected_gpst                    # 16 January 2020
+
+*Drive off into sunset.*
