@@ -5,7 +5,13 @@ This command has two purposes:
 1. Annoucing the presence of a module on the bus.
 2. "Pong" in response to a "Ping" `0x01`.
 
+### Examples
+
 The length of the message does not vary. The single data byte is a bitmask.
+
+    60 04 F0 02 00 96
+    3B 04 C8 02 10 E5
+    BB 04 68 02 00 D5
 
 ## Bitmasks
     
@@ -27,21 +33,19 @@ The announce bit is set when a module becomes active on the bus. This is most fr
 
     C8 04 FF 02 31 00       # Telephone broadcasting an announcement
 
-The announcement is what determines the availability of numerous features. For example, Television, Telephone, and DSP will all appear in the BMBT main menu upon announcement.
+The announcement is what determines the availability of numerous features. For example, Television, Telephone, and DSP will all appear in the BMBT main menu following announcement.
 
-It also allows the announcing module to establish it's state, and any applicable modules will respond as necessary. The response will depend on the module, but will at minimum, include ignition state `0x11` from the cluster.
+An annoucement also allows the new module to establish it's state. and any applicable modules will respond as necessary. The response will depend on the announcing module, but will at minimum, include ignition state `0x11` from the cluster.
 
 After a module has announced, it's ongoing presence will be checked by interested modules via "pings" `0x01`, for which this bit will never be set.
 
-    C8 04 FF 02 30 01       # Telephone replying to a "ping"
+    C8 04 FF 02 30 01       # Telephone replying to a "ping" (no announce bit!)
 
 ### Signature `0b1111_0000`
 
 In the case that a module has variants, and that variant affects behaviour of other modules on the bus, a "signature" is used to allow variants to be identified.
 
 A good working example of this is the BMBT which was introduced with the 4x3 display, and was later upgraded to the larger 16x9 display. In order for the navi. computer/video module to output a video signal with the correct aspect ratio, it must be able to identify the BMBT variant.
-
-Note: while the need for a signature is likely predicated upon a module hardware/software revision, *it's only in the case that the module must be differentiated on the bus that a signature will be used*. Some modules, despite having one or more revisions, will make no use of signatures.
 
 #### GT `0x3b`
 
@@ -54,8 +58,8 @@ GT|Nav. GT (incl. MK1)|`0x40`|`3B 04 BF 02 41 C3`
 
 Module|Variant|Signature|Frame|
 :---|:---|:---|:---|
-Nav.|MK4|`0x40`|`7F 04 BF 02 41 87`
-Nav.|MK4 + BMW Assist|`0xc0`|`7F 04 BF 02 C1 07`
+Nav.|MK4?|`0x40`|`7F 04 BF 02 41 87`
+Nav.|MK4? + BMW Assist|`0xc0`|`7F 04 BF 02 C1 07`
 
 - telephone to presumably configure BMW Assist
 - may affect MRS and sending impact notification
@@ -78,7 +82,11 @@ BMBT|16x9|`0x30`|`F0 04 BF 02 31 78`
 
 - GT/VM should set correct aspect ratio and encoding.
 
-### No known variants...
+### No Signatures
+
+While the need for a signature is likely predicated upon a module hardware/software revision, *it's only in the case that the module must be differentiated on the bus that a signature will be used*. Some modules, despite having one or more revisions, will not distinguish variants.
+
+The following module variants do not appear to have a signature:
 
 Module|Module ID|Variant|Signature|Frame|
 :---|:---|:---|:---|:---|
