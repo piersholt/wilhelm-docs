@@ -2,7 +2,7 @@
 ---
 
 ## Telephone
-1. `0x02` [Announce](announce.md)
+1. `0x02` [Announce](announce.md#telephone-0xc8)
 1. `0x20` [Main Menu](telephone/main_menu.md)
 1. `0x21` UI
 	1. `0x00` [Default](telephone/layout/default.md)
@@ -21,7 +21,7 @@
 
 ## On-board Computer Control Panel (BMBT)
 
-1. `0x02` [Announce](announce.md)
+1. `0x02` [Announce](announce.md#bmbt-0xf0)
 1. `0x4f` [Monitor Control](bmbt/monitor.md)
 
 #### Controls
@@ -49,5 +49,5 @@
 
 ## Navigation
 
-1. `0x02` [Announce](announce.md)
+1. `0x02` [Announce](announce.md#nav-computer-0x7f)
 1. `0x1f` [GPS Time](nav/gpst.md)
