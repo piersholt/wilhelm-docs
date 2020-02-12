@@ -2,20 +2,20 @@
 
 This command is used to configure which of the 12 available functions are recalled on the high (IKE) cluster character display.
 
-No. | Function | Display
-----|----------|--------
-1. | Clock | `"TIME 2:40PM"`
-2. | Date | `"DATE 12/02/2020"`
-3. | Consump. 1 | `"CONS1 10.1 L/100"`
-4. | Consump. 2 | `"CONS2 13.2 L/100"`
-5. | Range | `"RANGE 22 KM"`
-6. | Distance | `"DIST 17 KM"`
-7. | Arrival | `"ARRIVAL 3:22PM"`
-8. | Limit | `"LIMIT 60 KM/H"`
-9. | Avg. Speed | `"SPEED 59.9 KM/H"`
-10. | Timer (Stopwatch) | `"STOPW 2:02 MIN"`
-11. | Auxiliary Timer 1 | `"*TIMER1 11:03 PM"`
-12. | Auxiliary Timer 2 | `" TIMER2  2:54 AM"`
+No.|Function|Display
+:--|--------|-------
+1.|Clock|`"TIME 2:40PM"`
+2.|Date|`"DATE 12/02/2020"`
+3.|Consump. 1|`"CONS1 10.1 L/100"`
+4.|Consump. 2|`"CONS2 13.2 L/100"`
+5.|Range|`"RANGE 22 KM"`
+6.|Distance|`"DIST 17 KM"`
+7.|Arrival|`"ARRIVAL 3:22PM"`
+8.|Limit|`"LIMIT 60 KM/H"`
+9.|Avg. Speed|`"SPEED 59.9 KM/H"`
+10.|Timer (Stopwatch)|`"STOPW 2:02 MIN"`
+11.|Auxiliary Timer 1|`"*TIMER1 11:03 PM"`
+12.|Auxiliary Timer 2|`" TIMER2  2:54 AM"`
 
 It has two uses which work in sequence:
 
