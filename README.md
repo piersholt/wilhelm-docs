@@ -41,6 +41,7 @@
 
 1. `0x11` [Ignition](ike/ignition.md)
 1. `0x15` [Language & Region](ike/region.md)
+1. `0x42` [Remote Control](ike/prog.md)
 
 #### Redundant Data Storage
 1. `0x53` [Redundant Data Request](ike/redundant.md)
