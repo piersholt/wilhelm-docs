@@ -40,8 +40,8 @@
 ## Cluster (IKE)
 
 1. `0x11` [Ignition](ike/ignition.md)
-1. `0x14` [Language & Region Request](ike/region.md)
-1. `0x15` [Language & Region](ike/region.md)
+1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
+1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
 1. `0x42` [Remote Control](ike/prog.md)
 
 #### Redundant Data Storage
