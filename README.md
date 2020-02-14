@@ -40,6 +40,7 @@
 ## Cluster (IKE)
 
 1. `0x11` [Ignition](ike/ignition.md)
+1. `0x14` [Language & Region Request](ike/region.md)
 1. `0x15` [Language & Region](ike/region.md)
 1. `0x42` [Remote Control](ike/prog.md)
 
