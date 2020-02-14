@@ -6,7 +6,7 @@ Various modules depend on this configuration in order to correctly interpret dat
 
 There are also a number of flags for vehicle coding which alter behaviour of some modules.
 
-*Note: this is predominately applicable to E38, E39, and E53 clusters. The E46 cluster, although visually similar, is- at least in respect to coding, a simpler unit.*
+*Note: this is predominately applicable to E38, E39, and E53 clusters. The E46 cluster, although visually similar, is- at least in respect to coding, a less complex unit.*
 
 ## Overview
 
@@ -25,11 +25,11 @@ Setting|1|2|3|4|5|6|7|8|9
 **Clock**|24h|12h|||||||
 _Date_*|dd.mm|mm/dd|||||||
 
-_*Note: date is a virtual setting; selecting *12h* will default to *mm.dd*. Similarly, selecting *dd/mm* will default to *24h*._
+_* Date is a virtual setting; selecting *12h* will default to *mm.dd*. Similarly, selecting *dd/mm* will default to *24h*._
 
 While there is a global setting for each unit/format, properties are configured individually. For example, selecting 24 hour time affects the *clock*, *navigation arrival time*, and *aux. timers*, each of which needs to be configured for 24 hour time.
 
-When a unit/format is selected, the GT will set the bits for _all_ applicable properties. The relationship between settings and properties is outlined in the below table:
+When a unit/format is selected, the GT will set the bits for _all_ applicable properties. This relationship between settings and properties is outlined in the below table:
 
 Property|Clock|Distance|Temp.|Consump.
 :---|:---|:---|:----|:----
@@ -42,8 +42,8 @@ Speed Limit||✅||
 Distance||✅||
 Range||✅||
 Temperature|||✅|
-Fuel Consumption 1||||✅
-Fuel Consumption 2||||✅
+Consumption 1||||✅
+Consumption 2||||✅
 
 ### Vehicle Configuration
 
@@ -71,7 +71,7 @@ There are also a number of flags for vehicle equipment, and configuration which 
 
 ## Properties
 
-4 byte bit field.
+4 byte bit field. Fixed length.
     
     # Byte 1
     
@@ -109,6 +109,9 @@ There are also a number of flags for vehicle equipment, and configuration which 
     EQUIPPED_AUX_CONTROL  = 0b0100_0000 << 0
     UNALLOCATED           = 0b1000_0000 << 0    # Unallocated
 
+
+---
+
 ### Language `0b0000_1111 << 24`
 
     LANG_DE             = 0b000_0000
@@ -137,6 +140,8 @@ There are also a number of flags for vehicle equipment, and configuration which 
 LCM is coded for high/low cluster, and doesn't appear to be affected by this setting. 
 
 However, this may affect the behaiour of radio, and telephone, neither of which is coded for a specific type of cluster, but will make use of high cluster character display when available.
+
+---
 
 ### Format: Time `0b0000_0001 << 16`
 
@@ -178,6 +183,8 @@ However, this may affect the behaiour of radio, and telephone, neither of which 
     ARRIVAL_24H         = 0b0000_0000   # 17:30
     ARRIVAL_12H         = 0b1000_0000   # 5:30pm
 
+---
+
 ### Unit: Consumption 1 `0b0000_0011 << 8`
 
     CONSUMP_1_L_100     = 0b0000_0000   # 39.5 L/100
@@ -192,7 +199,7 @@ However, this may affect the behaiour of radio, and telephone, neither of which 
     CONSUMP_2_MPG_US    = 0b0000_1000   # 7.1 MPG
     CONSUMP_2_KM_L      = 0b0000_1100   # 2.5 KM/L
     
-### Unit: Range `0b0001_0000`
+### Unit: Range `0b0001_0000 << 8`
     
     RANGE_KM            = 0b0000_0000   # 100 KM
     RANGE_MILES         = 0b0001_0000   # 62 MLS
@@ -213,6 +220,8 @@ However, this may affect the behaiour of radio, and telephone, neither of which 
     MEMO_LCM            = 0b1000_0000   # Hourly gong with trip duration
     
 If enabled, LCM is responsible for memo, which is generated via check control message.
+
+---
 
 ### Aux. Heating `0b0000_0001 << 0`
 
@@ -242,7 +251,7 @@ RCC was E38 option. RDS specification allows for clock time (CT).
 
 The navigation computer will broadcast GPS Time (`0x1f`) by default, and enabling GPS time in IKE coding does not affect this command, so presumably the RCC module will only broadcast time if this is set?
 
-### Aux. Controller Type `0b0100_0000`
+### Aux. Controller Type `0b0100_0000 << 0`
 
     BMBT_PRE_PU96       = 0b0000_0000
     BMBT_POST_PU96      = 0b0100_0000   # Also applies to MID
