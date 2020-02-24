@@ -131,15 +131,15 @@ There are also a number of flags for vehicle equipment, and configuration which 
     CLUSTER_HIGH    = 0b0000_0000   # E38 standard, E39/E53 option
     CLUSTER_LOW     = 0b0000_0011   # E39/E53 standard
     
-    CLUSTER_E46_A   = 0b0100_0000   # ?
-    CLUSTER_E46_B   = 0b0110_0000   # ?
-    CLUSTER_E46_C   = 0b1111_0000   # ?
+    CLUSTER_E46_A   = 0b0100_0000   # Variant A?
+    CLUSTER_E46_B   = 0b0110_0000   # Variant B?
+    CLUSTER_E46_C   = 0b1111_0000   # Variant C?
     
-    CLUSTER_E85     = 0b1010_0000   # Z4, X3 TBC
+    CLUSTER_E85     = 0b1010_0000   # E85 Z4, E83 X3
+
+This may affect the behaiour of radio, and telephone, neither of which is coded for a specific type of cluster, but will make use of high cluster (IKE/IKI) character display if available.
 
 LCM is coded for high/low cluster, and doesn't appear to be affected by this setting. 
-
-However, this may affect the behaiour of radio, and telephone, neither of which is coded for a specific type of cluster, but will make use of high cluster character display when available.
 
 ---
 
