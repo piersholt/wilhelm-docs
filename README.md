@@ -14,7 +14,7 @@
 	1. `0x90` [Info](telephone/layout/info.md)
 	1. [SMS Overview](telephone/layout/sms.md)
 		1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
-		1. `0x01` [SMS Message/Emergency](telephone/layout/sms/message.md)
+		1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
 1. `0x2b` [Telephone LEDs](telephone/led.md)
 1. `0x2c` [Telephone Status](telephone/status.md)
 1. `0xa6` [SMS Icon](telephone/icon.md)
