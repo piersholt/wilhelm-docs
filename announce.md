@@ -1,4 +1,4 @@
-# `0x02` "Pong"
+# `0x02` "Pong" & Announce
 
 This command has two purposes:
 
@@ -80,7 +80,7 @@ Module|Variant|Signature|Frame|
 BMBT|4x3|`0x00`|`F0 04 BF 02 01 48`
 BMBT|16x9|`0x30`|`F0 04 BF 02 31 78`
 
-- GT/VM should set correct aspect ratio and encoding.
+- GT/VM will set correct aspect ratio and encoding.
 
 ### No Signatures
 

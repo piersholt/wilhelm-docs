@@ -51,7 +51,7 @@ GPS expresses time as:
 - **number of weeks** since the GPS epoch on 6 January 1980
 - **number of seconds** into the given week
 
-The number of weeks is represented by a 10-bit integer, which has an inherent limitation...
+The number of weeks is represented by a 10-bit integer, and herein lies the problem.
 
 10 bits allows for 1024 possible values (`2^10`), or 0 to 1023 weeks since the GPS epoch. Thus, on 21 August 1999, after 1024 weeks, or ~19.7 years, the GPS date would effectively reset.
 
@@ -65,7 +65,7 @@ Epoch|Start|End|Duration
 
 ### The Solution
 
-It is the responsibility of GPS receivers to correct the date for the current epoch. and presumably a navigation OS software update was released in anticipation of the first rollover event in 1999, but in the absence of another update, the navigation computer will continue to calculate the date as if GPS is the second epoch.
+It is the responsibility of GPS receivers to correct the date for the current epoch. and presumably a navigation OS software update was released in anticipation of the first rollover event in 1999, but in the absence of another update, the navigation computer will continue to calculate the date as if GPS is in the second epoch.
 
 However, the date correction can be handled by applying the same logic that is otherwise the responsibility of the navigation computer.
 
