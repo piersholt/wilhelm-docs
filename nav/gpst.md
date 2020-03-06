@@ -9,6 +9,12 @@ With sufficient GPS signal strength, the navigation computer will begin sending 
 - The message recipient is the instrument cluster `0x80`
 - The message length is fixed at 13 bytes
 
+## Examples
+
+    7F 0B 80 1F 40 07 16 26 00 01 20 19 A4
+    7F 0B 80 1F 40 05 40 18 00 01 20 19 CE
+    7F 0B 80 1F 40 12 30 17 00 03 20 00 BD
+
 ## Properties
 
 Property|Index|Length|Type|Note
