@@ -1,36 +1,38 @@
 # `0x2c` Telephone Status
 
-The telephone sends it's status to ANZV `0xe7` via command `0x2c`. Similar to IKE sending updates to ANZV, the data is simply a bit field.
+The telephone reports it's status to ANZV `0xe7` via command `0x2c`.
 
-The data is a fixed length of one byte.
+## Examples
 
-    # Telephone status
     C8 04 E7 2C 00 07
+    C8 04 E7 2C 12 15
+    C8 04 E7 2C 10 17 
 
-Bit|7|6|5|4|3|2|1|0
-:---|:---|:---|:----|:----|:---|:---|:---|:---
-**Use**|-|-|Active|Power|-|Incoming|Unknown|Handsfree
+## Properties
+
+Fixed length bitfield of one byte.
 
     # Bitmasks
+    HANDSFREE           = 0b0000_0001
+    UNKNOWN             = 0b0000_0010
+    ESTABLISHING_CALL   = 0b0000_0100
     
-    HANDSFREE   = 0b0000_0001
-    UNKNOWN     = 0b0000_0010
-    INCOMING    = 0b0000_0100
-    
-    POWER       = 0b0001_0000
-    ACTIVE      = 0b0010_0000
+    POWER               = 0b0001_0000
+    ON_CALL             = 0b0010_0000
 
 ## Handsfree `0b0000_0001`
-Switching between handset and speakerphone.
 
-    # 0 = Handset
-    # 1 = Handsfree
+Denotes whether the call is taking place via handset, or via handsfree (speaker phone). This flag has several effects discussed below.
 
-### Handsfree Icon
-When set to `1`, the BMBT displays the speaker icon in the top right.
+    HANDSET     = 0b0000_0000
+    HANDSFREE   = 0b0000_0001
+
+### Handsfree Icon (BMBT)
+When handsfree is active the BMBT displays the speaker phone icon.
 
 ![ALT TEXT](status/handsfree/handsfree_telephone.JPG)
-![ALT TEXT](status/handsfree/handsfree_directory.JPG)
+
+### Handsfree Icon (MID)
 
 I've noticed that switching between handset/handsfree also causes the following to be sent:
 
@@ -40,75 +42,70 @@ I've noticed that switching between handset/handsfree also causes the following 
     # Handsfree Off
     C8 06 E7 23 02 00 "20" 28
 
-This may be for **MID**, as when sent to the IKE character display, `0xC6` is a familiar speaker icon.
+This is likely for **MID**, as `0xc6` is the character code for the speaker icon.
 
 ![ALT TEXT](status/handsfree/handsfree_char.JPG)
 
-### Tape/Radio
-BMBT also sends `0x4B` to Radio which from my tinkering looks to be about controlling radio audio sources, so this is possibly related to mute. I've not been able to confirm this without being able to make a call- or a radio, tape, CDC... etc.
+### Volume Control
 
-    # Start call
-    F0 <LEN> 68 4B 06 E2 <CS>
+When handsfree is active, the BMBT and MFL will send volume control commands to telephone instead of radio.
 
-    # End call
-    F0 <LEN> 68 4B 06 E1 <CS>
-
-### BMBT and MLF Volume Control
-
-The handsfree bit will have the BMBT and MFL send volume commands in TEL in place of RAD.
+    # Handsfree: volume control sent to telephone
+    F0 04 C8 32 21 2F   # BMBT
+    50 04 C8 32 11 BF   # MFL
+    
+    # Handset: volume conrol sent to radio
+    F0 04 68 32 21 8F   # BMBT
+    50 04 68 32 11 1F   # MFL
+    
+This is due to the telephone having an audio output that- unlike most audio sources,  is not routed via the radio, thus requiring independent volume control.
 
 ## Unknown `0b0000_0010`
 
-I've not been able to discern what this represents.
+I've not been able to discern what this represents. It might be related to an action on the handset.
 
-It's initially `0`, and after some tinkering with the handset it is set to `1`, at which point is seems to remain as `1`.
+    NFI_OFF = 0b0000_0000
+    NFI_ON  = 0b0000_0001
 
-I reviewed the logs from when the telephone was still installed, and I couldn't see an obvious trigger, so it's perhaps related to the handset?
+## Establishing Call `0b0000_0100`
 
-## Incoming `0b0000_0100`
-Based on the display that appeared when set to `1`, if I were to hazard a guess- this bit denotes if a call is incoming.
+This denotes an incoming, or outgoing call.
+    
+    # INACTIVE      = 0b0000_0000
+    # ESTABLISHING  = 0b0000_0100
 
-    # 0 = No friends
-    # 1 = Phone is ringing!
+When set, the following screen is displayed:
 
-One thing to note is: I've noticed that if the BMBT is already displaying any telephone function (Dial, Directory etc), this layout doesn't appear. I assume there's alternative behaviour in this case- TBC.
+![ALT TEXT](status/incoming/incoming_title.JPG)
 
-![ALT TEXT](status/incoming/incoming.JPG)
+### Caller ID
 
-The layout has no text by default, so I generated commands to see if text can be added and found the following options:
+The layout will have no text, but this can be added via:
 
     C8 <LEN> E7 23 80 20 "Incoming Call" <CS>
     C8 <LEN> E7 23 81 20 "Incoming Call" <CS>
     C8 <LEN> E7 23 82 20 "Incoming Call" <CS>
 
-![ALT TEXT](status/incoming/incoming_title.JPG)
-
-The layout does seem a tad sparse, but I haven't been able to find _any_ documentation or images to provide further insight. It's possible there's more.
-
 ## Power `0b0001_0000`
 
-Relatively straight forward- `0` when the telephone is off, `1` when the telephone is on.
+    # TELEPHONE_OFF = 0b0000_0000
+    # TELEPHONE_ON  = 0b0001_0000
 
-    # 0 = Telephone Off
-    # 1 = Telephone On
+_Note: If bit is not set, GT will default to Main Menu. For example, if active bit is set for a call, upon setting to 0, GT will close Telephone and return to Main Menu._
 
-<strike>I've not been able to discern what effect this has. Even if set to `0`, the other functions behave as expected.</strike>
+## On Call `0b0010_0000`
 
-_If bit is not set, `GT` will default to Main Menu. For example, if active bit is set for a call, upon setting to 0, GT will close Telephone and return to Main Menu._
+Denotes if the a call is active.
 
-## Active `0b0010_0000`
+     # NO_CALL  = 0b0000_0000
+     # ON_CALL  = 0b0010_0000
 
-Denotes if the telephone is currently on a call.
-
-     # 0 = No call
-     # 1 = Call in progress
-
-When set to `1`, the telephone icon on the BMBT will change to red, suggesting it is to end a call.
+### On Call Icon (BMBT)
+When on a call the telephone icon on the BMBT will change to red, denoting "end call".
 
 ![ALT TEXT](status/active/active_telephone.JPG)
-![ALT TEXT](status/active/active_directory.JPG)
 
-
+### On Call Icon (MID)
 Like Handsfree, there's an additional message sent to ANZV, which may be for the **MID**.
 
     # Start Call

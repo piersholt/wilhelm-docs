@@ -1,65 +1,57 @@
-# `0x4f` Monitor
+# `0x4f` Monitor Control
 
-This command is used to control the monitor integrated into the BMBT. It's used by both GT, and TV.
+This command is used to control the BMBT monitor.
 
-It's very helpful when debugging various navigation computers, and video modules on a testbench. The extra byte used by **TV** `0xed` to control *aspect ratio*, and *encoding*, can be included in commands issued by **GT** `0x3b`.
+It's very helpful when testing navigation computers, and video modules which might not support automatic encoding, and aspect ratio switching.
 
-## Byte 1: Power, Source
+## Examples
+    
+    # GT
+    3B 04 F0 4F 10 90       # Monitor on at KL-R
+    3B 04 F0 4F 00 80       # Select "Monitor Off"
+    
+    # TV
+    ED 05 F0 4F 11 12 54    # Open "Television" (On, TV, 16x9, NTSC)
+    ED 05 F0 4F 12 11 54    # Return to Main Menu (On, Nav. GT, 16x9, PAL)
 
-Most **GT** messages will only have this byte.
+## Properties
 
-Bit|7|6|5|4|3|2|1|0
-:---|:---|:---|:----|:----|:---|:---|:---|:---
-Use|-|-|-|Power|-|-| Source |Source
+Two byte bitfield, although the second byte is often negated by GT.
+  
+    # Byte 1
+    SOURCE       = 0b0000_0011 << 8
+    POWER        = 0b0001_0000 << 8
 
-    # Power 
-    POWER_OFF     = 0b0000_0000
-    POWER_ON      = 0b0001_0000
+    # Byte 2 (Optional)
+    ENCODING     = 0b0000_0011 << 0
+    ASPECT_RATIO = 0b0011_0000 << 0
+   
+## Source `0b0000_0011 << 8`
 
-    # Source
     SOURCE_NAV_GT = 0b0000_0000
     SOURCE_TV     = 0b0000_0001
     SOURCE_VID_GT = 0b0000_0010
 
+The input source switching in handled by the video module, but each source has it's own brightness settings which is recalled.
 
-### Power
+## Power `0b0001_0000 << 8`
 
-The **GT** will switch the monitor on at ignition position 1 (KL-R).
-   
-### Source
+    POWER_OFF     = 0b0000_0000
+    POWER_ON      = 0b0001_0000
 
-The input source switching in handled by the video module, but each source has it's own brightness settings.
+This will turn the monitor on, or off accordingly.
 
-### GT `0x3b` Examples
+The GT will turn the monitor on at ignition position 1 (KL-R), and off at ignitition position 0.
 
-    3B 04 F0 4F 10 90   # Monitor on at KL-R
-    3B 04 F0 4F 00 80   # Select "Monitor Off"
+## Encoding `0b0000_0011 << 0`
 
-## Byte 2 (Optional): Aspect Ratio, Encoding
+    ENCODING_NTSC = 0b0000_0001
+    ENCODING_PAL  = 0b0000_0010
 
-**TV** `0xed` has both aspect ratio, and encoding settings available when TV is the selected source.
+Encoding issues are commonly seen when switching between different generation navigation computers, or video modules, as there did seem to be a switch between PAL and NTSC as the encoding for navigation computer video. Incorrect encoding is usually denoted by "scrolling" video image.
 
+## Aspect Radio `0b0011_0000 << 0`
 
-Bit|7|6|5|4|3|2|1|0
-:---|:---|:---|:----|:----|:---|:---|:---|:---
-Use|-|-|Aspect Ratio|Aspect Ratio|-|-|Encoding|Encoding
-
-    # Aspect Ratio
     ASPECT_4_3    = 0b0000_0000
     ASPECT_16_9   = 0b0001_0000
     ASPECT_ZOOM   = 0b0011_0000
-
-    # Encoding
-    ENCODING_NTSC = 0b0000_0001
-    ENCODING_PAL  = 0b0000_0010
-    
-### Aspect Radio
-
-### Encoding
-
-Encoding issues are commonly seen when switching between various navigation computers, or video modules as there did seem to be a transition between PAL and NTSC as the encoding for navigation computer video. Incorrect encoding is usually denoted by "scrolling" video image.
-
-### TV `0xed` Examples
-
-    ED 05 F0 4F 11 12 54 # Open "Television" (On, TV, 16x9, NTSC)
-    ED 05 F0 4F 12 11 54 # Return to Main Menu (On, Nav. GT, 16x9, PAL)
