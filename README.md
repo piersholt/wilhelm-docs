@@ -1,7 +1,52 @@
 # Wilhelm Documentation
----
 
-## Telephone
+## Overview
+
+- The protocol was reverse engineered while developing wilhelm, namesake
+- The "K" in K-Bus stands for "Karosserie", or "Body" 
+
+- **this documentation is not authoritive**, 
+ - reverse engineered
+ - simply the result of hundreds of hours
+- **this is not comprehensive**
+ - many commands are simply yet to be documented
+ - given the number of models, the number of modules is rather large (i.e. there is more than 10 instrument clusters)
+ - some equipment is simply hard to find due to rarity or value (i.e. Z8 instrument cluster..)
+ - the equipment might be region dependent (i.e. Traffic Management Channel, or Radio Controlled Clock)
+ - the equipment may no longer function, hampering it's testing (i.e. earlier factory telephones)
+
+## Appliable Vehicles
+
+The bus system to which this protocol applies is implemented in the vehicles listed below.
+
+MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
+
+Model|Series|Term|K-Bus|Note
+:--|:--|:--|:--|:--
+E31|8 Series|1989 - 1999|✅|_Known as I-Bus_
+E38|7 Series|1999 - 2001|✅|_Secondary, functionally identical bus- I-Bus_
+E39|5 Series|1995 - 2004|✅|.
+E46|3 Series|1997 - 2006|✅|.
+E52|Z8|2000 - 2003|✅|.
+E53|X5|1999 - 2006|✅|.
+
+## Contents
+
+1. [Command Groups](#functions)
+    The protocol commands categorised by function.
+
+    1. Telephone
+    1. On-board Monitor Control Panel
+    1. Multi-function Steering Wheel
+    1. Instrument Cluster
+    1. Navigation
+
+1. [Command Index](#command-index)
+    Global command index.
+
+## Command Groups
+
+### Telephone
 1. `0x02` [Announce](announce.md#telephone-0xc8)
 1. `0x20` [Main Menu](telephone/main_menu.md)
 1. `0x21` UI
@@ -12,51 +57,60 @@
 	1. `0x43` [Directory](telephone/layout/directory.md)
 	1. `0x80` [Top 8](telephone/layout/top_8.md)
 	1. `0x90` [Info](telephone/layout/info.md)
-	1. [SMS Overview](telephone/layout/sms.md)
-		1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
-		1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
+	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
+	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
 1. `0x2b` [Telephone LEDs](telephone/led.md)
 1. `0x2c` [Telephone Status](telephone/status.md)
 1. `0xa6` [SMS Icon](telephone/icon.md)
 
-## On-board Computer Control Panel (BMBT)
+1. Appendix
+    1. [SMS Overview](telephone/layout/sms.md)
+
+---
+
+### On-board Computer Control Panel (BMBT)
 
 1. `0x02` [Announce](announce.md#bmbt-0xf0)
 1. `0x4f` [Monitor Control](bmbt/monitor.md)
 
-#### Controls
+##### Controls
 1. `0x48` [Buttons](bmbt/controls.md)
 1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/controls.md)
 1. `0x32` [Volume Dial](bmbt/controls.md)
 1. `0x49` [Navigation Dial](bmbt/controls.md)
 
+---
 
-## Multifunctional Steering Wheel (MFL)
+### Multifunctional Steering Wheel (MFL)
 
-#### Controls
+##### Controls
 1. `0x3b` [Buttons](mfl/controls.md)
 1. `0x32` [Volume](mfl/controls.md)
 
-## Cluster (IKE)
+---
+
+### Instrument Cluster (IKE)
 
 1. `0x11` [Ignition](ike/ignition.md)
 1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
 1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
 1. `0x42` [Remote Control](ike/prog.md)
 
-#### Redundant Data Storage
+##### Redundant Data Storage
 1. `0x53` [Redundant Data Request](ike/redundant.md)
 1. `0x54` [Redundant Data](ike/redundant.md)
 1. `0x55` [Replicate Data](ike/redundant.md)
 
-## Navigation
+---
+
+### Navigation
 
 1. `0x02` [Announce](announce.md#nav-computer-0x7f)
 1. `0x1f` [GPS Time](nav/gpst.md)
 
 ## Command Index
 
-ID|Reference
+Command|Reference
 :--|:--
 `0x01`|Ping
 `0x02`|[Pong & Announce](announce.md)
