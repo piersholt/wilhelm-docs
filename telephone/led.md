@@ -1,28 +1,50 @@
 # `0x2b` Telephone LEDs
 
-The telephone sends LED settings to ANZV `0xe7` via command `0x2b`. The data is a fixed length of one byte, and is a bit field.
+The telephone indicator LEDs on the BMBT and MID are set with this command, which is sent to ANZV `0xe7`.
 
-    # Telephone Status LEDs
+### Examples
+
     C8 04 E7 2B 00 00
+    C8 04 E7 2B 10 10
+    C8 04 E7 2B 14 14
 
+## Properties
 
-Bit|7|6|5|4|3|2|1|0
-:---|:---|:---|:----|:----|:---|:---|:---|:---
-Use|-|-|Green|Green|Yellow|Yellow|Red|Red
+The message length is a fixed. The single data byte is a bitfield.
+    
+    LED_RED     = 0b0000_0011
+    LED_YELLOW  = 0b0000_1100
+    LED_GREEN   = 0b0011_0000
+    
+### Red `0b0000_0011`
+    
+    LED_RED_OFF         = 0b0000_0000
+    LED_RED_ON          = 0b0000_0001
+    LED_RED_BLINK       = 0b0000_0011
 
+##### Example
 
-    C8 04 E7 2B 00 <CS>   # 0b0000_0000 # All off
+    C8 04 E7 2B 01 01   # Red On
+    C8 04 E7 2B 03 03   # Red Blink
 
-    C8 04 E7 2B 01 <CS>   # 0b0000_0001 # Red ON
-    C8 04 E7 2B 03 <CS>   # 0b0000_0011 # Red BLINK
+### Yellow `0b0000_1100`
 
-    C8 04 E7 2B 04 <CS>   # 0b0000_0100 # Yellow ON
-    C8 04 E7 2B 0c <CS>   # 0b0000_1100 # Yellow BLINK
+    LED_YELLOW_OFF      = 0b0000_0000
+    LED_YELLOW_ON       = 0b0000_0100
+    LED_YELLOW_BLINK    = 0b0000_1100
 
-    C8 04 E7 2B 10 <CS>   # 0b0001_0000 # Green ON
-    C8 04 E7 2B 30 <CS>   # 0b0011_0000 # Green BLINK
+##### Example
+    
+    C8 04 E7 2B 04 04   # Yellow On
+    C8 04 E7 2B 0C 0C   # Yellow Blink
 
-    # For any combination, apply bitwise OR.
-    # Example: Red BLINK and Green ON
-    # 0b0000_0011 | 0b0001_0000 = 0b0001_0011 (0x13)
-    C8 04 E7 2B 13 <CS>
+### Green `0b0011_0000`
+
+    LED_GREEN_OFF       = 0b0000_0000
+    LED_GREEN_ON        = 0b0001_0000
+    LED_GREEN_BLINK     = 0b0011_0000
+
+##### Examples
+
+    C8 04 E7 2B 10 10   # Green On
+    C8 04 E7 2B 30 30   # Green Blink
