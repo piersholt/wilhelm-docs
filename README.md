@@ -2,30 +2,31 @@
 
 ## Overview
 
-- The protocol was reverse engineered while developing wilhelm, namesake
-- The "K" in K-Bus stands for "Karosserie", or "Body" 
 
-- **this documentation is not authoritive**, 
- - reverse engineered
- - simply the result of hundreds of hours
-- **this is not comprehensive**
- - many commands are simply yet to be documented
- - given the number of models, the number of modules is rather large (i.e. there is more than 10 instrument clusters)
- - some equipment is simply hard to find due to rarity or value (i.e. Z8 instrument cluster..)
- - the equipment might be region dependent (i.e. Traffic Management Channel, or Radio Controlled Clock)
- - the equipment may no longer function, hampering it's testing (i.e. earlier factory telephones)
+- K-Bus: Karosserie ("Body") Bus
+- I-Bus: Instrumentation Bus
 
-## Appliable Vehicles
+This documentation _should not be considered authoritive_. The protocol was progressively reverse engineered while developing [Walter](#), and as with any black box system, functionality is a deduction at best.
 
-The bus system to which this protocol applies is implemented in the vehicles listed below.
+This documentation is _not comprehensive_.
+
+- many commands are simply yet to be documented
+- given the number of models, it's not realistic to test all equipment/variants (i.e. there is more than 10 variants of instrument cluster)
+- some equipment is hard to find due to rarity, or value (i.e. Z8 instrument cluster...)
+- equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing.
+
+
+## Applicable Models
+
+This protocol applies to the bus system in the models listed below.
 
 MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
 
 Model|Series|Term|K-Bus|Note
 :--|:--|:--|:--|:--
-E31|8 Series|1989 - 1999|✅|_Known as I-Bus_
-E38|7 Series|1999 - 2001|✅|_Secondary, functionally identical bus- I-Bus_
-E39|5 Series|1995 - 2004|✅|.
+E31|8 Series|1989 - 1999|✅|_Known as Information Bus_
+E38|7 Series|1999 - 2001|✅|_I-Bus_
+E39|5 Series|1995 - 2004|✅|_I-Bus_
 E46|3 Series|1997 - 2006|✅|.
 E52|Z8|2000 - 2003|✅|.
 E53|X5|1999 - 2006|✅|.
@@ -35,21 +36,14 @@ E87|1 series|2004 - 2013|✅|.
 
 ## Contents
 
-1. [Command Groups](#functions)
-    The protocol commands categorised by function.
+1. [Telephone](#)
+1. [On-board Monitor Control Panel](#)
+1. [Multi-function Steering Wheel](#)
+1. [Instrument Cluster](#)
+1. [Navigation](#)
+1. [Index](#command-index)  
 
-    1. Telephone
-    1. On-board Monitor Control Panel
-    1. Multi-function Steering Wheel
-    1. Instrument Cluster
-    1. Navigation
-
-1. [Command Index](#command-index)
-    Global command index.
-
-## Command Groups
-
-### Telephone
+## Telephone
 1. `0x02` [Announce](announce.md#telephone-0xc8)
 1. `0x20` [Main Menu](telephone/main_menu.md)
 1. `0x21` UI
@@ -69,9 +63,7 @@ E87|1 series|2004 - 2013|✅|.
 1. Appendix
     1. [SMS Overview](telephone/layout/sms.md)
 
----
-
-### On-board Computer Control Panel (BMBT)
+## On-board Computer Control Panel (BMBT)
 
 1. `0x02` [Announce](announce.md#bmbt-0xf0)
 1. `0x4f` [Monitor Control](bmbt/monitor.md)
@@ -82,17 +74,13 @@ E87|1 series|2004 - 2013|✅|.
 1. `0x32` [Volume Dial](bmbt/controls.md)
 1. `0x49` [Navigation Dial](bmbt/controls.md)
 
----
-
-### Multifunctional Steering Wheel (MFL)
+## Multifunctional Steering Wheel (MFL)
 
 ##### Controls
 1. `0x3b` [Buttons](mfl/controls.md)
 1. `0x32` [Volume](mfl/controls.md)
 
----
-
-### Instrument Cluster (IKE)
+## Instrument Cluster (IKE)
 
 1. `0x11` [Ignition](ike/ignition.md)
 1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
@@ -104,14 +92,12 @@ E87|1 series|2004 - 2013|✅|.
 1. `0x54` [Redundant Data](ike/redundant.md)
 1. `0x55` [Replicate Data](ike/redundant.md)
 
----
-
-### Navigation
+## Navigation
 
 1. `0x02` [Announce](announce.md#nav-computer-0x7f)
 1. `0x1f` [GPS Time](nav/gpst.md)
 
-## Command Index
+## Index
 
 Command|Reference
 :--|:--
