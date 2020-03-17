@@ -2,17 +2,21 @@
 
 ## Overview
 
-
-- K-Bus: Karosserie ("Body") Bus
+- K-Bus: Karosserie (Body) Bus
 - I-Bus: Instrumentation Bus
 
-This documentation _should not be considered authoritive_. The protocol was progressively reverse engineered while developing [Walter](#), and as with any black box system, functionality is a deduction at best.
+This documentation is **not authoritive**.
 
-This documentation is _not comprehensive_.
+- no association with BMW et al.
+- the protocol was reverse engineered while developing [Walter](https://github.com/piersholt/walter)
+- as with any black box system, functionality is at best, a deduction
+- caveat emptor! If you're not prepared to bork it, don't put 'ya fork it
+
+This documentation is **not comprehensive**.
 
 - many commands are simply yet to be documented
 - given the number of models, it's not realistic to test all equipment/variants (i.e. there is more than 10 variants of instrument cluster)
-- some equipment is hard to find due to rarity, or value (i.e. Z8 instrument cluster...)
+- some equipment is hard to find due to rarity, or value (i.e. Z8 instrument cluster)
 - equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing.
 
 
@@ -22,7 +26,7 @@ This protocol applies to the bus system in the models listed below.
 
 MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
 
-Model|Series|Term|K-Bus|Note
+Model|Series|Period|K-Bus|Note
 :--|:--|:--|:--|:--
 E31|8 Series|1989 - 1999|✅|_Known as Information Bus_
 E38|7 Series|1999 - 2001|✅|_I-Bus_
