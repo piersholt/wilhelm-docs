@@ -2,23 +2,7 @@
 
 ## Overview
 
-- K-Bus: Karosserie (Body) Bus
-- I-Bus: Instrumentation Bus
-
-This documentation is **not authoritive**.
-
-- no association with BMW et al.
-- the protocol was reverse engineered while developing [Walter](https://github.com/piersholt/walter)
-- as with any black box system, functionality is at best, a deduction
-- caveat emptor! If you're not prepared to bork it, don't put 'ya fork it
-
-This documentation is **not comprehensive**.
-
-- many commands are simply yet to be documented
-- given the number of models, it's not realistic to test all equipment/variants (i.e. there is more than 10 variants of instrument cluster)
-- some equipment is hard to find due to rarity, or value (i.e. Z8 instrument cluster)
-- equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing.
-
+Instrument (I-Bus), and Body (K-Bus) protocol documentation.
 
 ## Applicable Models
 
@@ -26,17 +10,44 @@ This protocol applies to the bus system in the models listed below.
 
 MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
 
-Model|Series|Period|K-Bus|Note
+Model|Series|Period|I-Bus|K-Bus
 :--|:--|:--|:--|:--
-E31|8 Series|1989 - 1999|✅|_Known as Information Bus_
-E38|7 Series|1999 - 2001|✅|_I-Bus_
-E39|5 Series|1995 - 2004|✅|_I-Bus_
-E46|3 Series|1997 - 2006|✅|.
-E52|Z8|2000 - 2003|✅|.
-E53|X5|1999 - 2006|✅|.
-E83|X3|2003 - 2010|✅|.
-E85|Z4|2002 - 2008|✅|.
-E87|1 series|2004 - 2013|✅|.
+E31|8 Series|1989 - 1999|✅|
+E38|7 Series|1999 - 2001|✅|✅
+E39|5 Series|1995 - 2004|✅|✅
+E46|3 Series|1997 - 2006||✅
+E52\*|Z8|2000 - 2003||✅
+E53|X5|1999 - 2006|✅|✅|
+E83|X3|2003 - 2010||✅
+E85\*|Z4|2002 - 2008||✅
+E87\*|1 series|2004 - 2013||✅
+
+## Disclaimer
+
+This documentation is **not authoritive**.
+
+- no association with BMW et al.
+- the protocol was reverse engineered while developing [Walter](https://github.com/piersholt/walter)
+- as with any black box system, functionality is at best, a deduction
+- caveat emptor! If you're not prepared to bork it, don't put ya' fork it
+
+This documentation is **not comprehensive**.
+
+- many commands are simply yet to be documented
+- given the number of models, it's not realistic to test all equipment (i.e. there is more than 10 variants of instrument cluster)
+- some equipment is hard to access due to rarity, or value. *"Would you mind terribly if I dismantled your Z8?"*
+- equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing
+
+## Terminology
+
+- **I-Bus** (Instrument Bus)
+> I-Bus was introduced on the E31 as the information bus. The E31 version of the I-Bus was used for body electronics and driver information systems. With the introduction of the E38, the I-Bus is now referred to as the instrument bus.
+ 
+- **K-Bus** (Karosserie "Body" Bus)
+ > K-Bus was added to the E38 along with the I-Bus. Models without Navigation or IKE will use the K-Bus only. Both of these bus systems are technically identical, the only difference is their use by model.
+ 
+- **Gateway**
+ > On vehicles equipped with an I-Bus (E38, E39, E53 High) messages to be sent back and forth between the K-Bus and I-Bus have to be transferred via a Gateway. This Gateway is the IKE. The IKE determines by the address of the message recipient whether the message needs to be passed along to the other bus.
 
 ## Contents
 
