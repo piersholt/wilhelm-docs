@@ -121,9 +121,76 @@ Fixed length. Two byte bitfield.
 
     # Byte 2
 
-    REQUEST_STRING          = 0b0000_0001   # Reply: 0x24
-    REQUEST_BOOLEAN         = 0b0000_0010   # Reply: 0x2a
+    REQUEST_STRING          = 0b0000_0001
+    REQUEST_BOOLEAN         = 0b0000_0010
     ON_START                = 0b0000_0100
     OFF_STOP                = 0b0000_1000
     RECALCULATE             = 0b0001_0000
     SET_AS_CURRENT_SPEED    = 0b0010_0000
+    
+## Request String `0b0000_0001`
+A request for a given property to be writen to the display. The cluster will reply with `0x24`.
+
+This is most frequently used by GT at ignition to request trip computer properties.
+
+Other properties are lazy loaded when user requests a display that requires the selected property, i.e. aux. timers.
+
+## Request Boolean `0b0000_0010`
+
+A request for the status of a given property. The cluster will reply with `0x2a`.
+
+## On/Start `0b0000_0100`
+
+The nuances of verbiage aside, basically "activate" the given property. There will be an applicable "activated" UI state.
+
+- Memo: On.
+- Speed Limit: On
+- Timer: Start
+- Aux. Timer 1: On
+- Aux. Timer 2: On
+
+**Aux. vent., aux. heating do not use these flags!**
+
+## Off/Stop `0b0000_1000`
+
+You guessed it... the opposite of On/Start!
+
+## Recalculate `0b0001_0000`
+
+Does what it says on the tin.
+
+- Consump. 1
+- Consump. 2
+- Avg. Speed
+
+## Set As Current Speed `0b0010_0000`
+
+- Limit: set limit to current vehicle speed
+
+## Overview
+
+ID|Property|String|Boolean|On|Off|Recalc.|Set.
+:--|-------|------|------|------|------|------|------
+`0x01`|Time|✅|||||
+`0x02`|Date|✅|||||
+`0x03`|Temperature|✅|||||
+`0x04`|Consump. 1|✅||||✅|
+`0x05`|Consump. 2|✅||||✅|
+`0x06`|Range|✅|||||
+`0x07`|Distance|✅|||||
+`0x08`|Arrival|✅|||||
+`0x09`|Limit|✅|✅|✅|✅||✅
+`0x0a`|Avg. Speed|✅||||✅|
+`0x0b`|_PROG_||||||
+`0x0c`|Memo|✅|✅|✅|✅||
+`0x0d`|Code||✅||||
+`0x0e`|Timer|✅|✅|✅|✅||
+`0x0f`|Aux. Timer 1|✅|✅|✅|✅||
+`0x10`|Aux. Timer 2|✅|✅|✅|✅||
+`0x11`|Aux. Heat. (Off)|||⚠️|⚠️||
+`0x12`|Aux. Heat. (On)|||⚠️|⚠️||
+`0x13`|Aux. Vent. (Off)|||⚠️|⚠️||
+`0x14`|Aux. Vent. (On)|||⚠️|⚠️||
+`0x16`|Emergency Disarm||||||
+`0x1a`|Timer (Lap)|✅|||||
+`0x1b`|Aux. Status|✅|✅||||
