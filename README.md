@@ -4,6 +4,34 @@
 
 Instrument (I-Bus), and Body (K-Bus) protocol documentation.
 
+While great care, and effort has been taken in creating this documentation, it's important to note the following:
+
+This documentation is **not authoritive**.
+
+- I am not affiliated with BMW or it's partners
+- the protocol was reverse engineered while developing [Walter](https://github.com/piersholt/walter)
+- the functionality is a deducation at best (as with any black box system)
+- use at your own risk!
+
+This documentation is **not comprehensive**.
+
+- many commands are simply yet to be documented
+- given the number of models, it's not realistic to test all equipment (i.e. there is more than 10 variants of instrument cluster)
+- some equipment is hard to access due to rarity, or value. *"Would you mind terribly if I dismantled your Z8?"*
+- equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing
+
+## Contents
+
+1. [Applicable Models](#)
+1. [Terminology](#)
+1. Commands by Function
+ 1. [Telephone](#)
+ 1. [On-board Monitor Control Panel](#)
+ 1. [Multi-function Steering Wheel](#)
+ 1. [Instrument Cluster](#)
+ 1. [Navigation](#)
+1. [Command Index](#command-index)  
+
 ## Applicable Models
 
 This protocol applies to the bus system in the models listed below.
@@ -16,27 +44,11 @@ E31|8 Series|1989 - 1999|✅|
 E38|7 Series|1999 - 2001|✅|✅
 E39|5 Series|1995 - 2004|✅|✅
 E46|3 Series|1997 - 2006||✅
-E52\*|Z8|2000 - 2003||✅
+E52|Z8|2000 - 2003||✅
 E53|X5|1999 - 2006|✅|✅|
 E83|X3|2003 - 2010||✅
-E85\*|Z4|2002 - 2008||✅
-E87\*|1 series|2004 - 2013||✅
-
-## Disclaimer
-
-This documentation is **not authoritive**.
-
-- no association with BMW et al.
-- the protocol was reverse engineered while developing [Walter](https://github.com/piersholt/walter)
-- as with any black box system, functionality is at best, a deduction
-- caveat emptor! If you're not prepared to bork it, don't put ya' fork it
-
-This documentation is **not comprehensive**.
-
-- many commands are simply yet to be documented
-- given the number of models, it's not realistic to test all equipment (i.e. there is more than 10 variants of instrument cluster)
-- some equipment is hard to access due to rarity, or value. *"Would you mind terribly if I dismantled your Z8?"*
-- equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing
+E85|Z4|2002 - 2008||✅
+E87|1 series|2004 - 2013||✅
 
 ## Terminology
 
@@ -49,75 +61,12 @@ This documentation is **not comprehensive**.
 - **Gateway**
 > On vehicles equipped with an I-Bus (E38, E39, E53 High) messages to be sent back and forth between the K-Bus and I-Bus have to be transferred via a Gateway. This Gateway is the IKE. The IKE determines by the address of the message recipient whether the message needs to be passed along to the other bus.
 
-## Contents
-
-1. [Telephone](#)
-1. [On-board Monitor Control Panel](#)
-1. [Multi-function Steering Wheel](#)
-1. [Instrument Cluster](#)
-1. [Navigation](#)
-1. [Index](#command-index)  
-
-## Telephone
-1. `0x02` [Announce](announce.md#telephone-0xc8)
-1. `0x20` [Main Menu](telephone/main_menu.md)
-1. `0x21` UI
-	1. `0x00` [Default](telephone/layout/default.md)
-	1. `0x05` [Pin-Code](telephone/layout/pin.md)
-	1. `0x42` [Dial](telephone/layout/dial.md)
-		1. [Last Numbers](telephone/layout/last_numbers.md)
-	1. `0x43` [Directory](telephone/layout/directory.md)
-	1. `0x80` [Top 8](telephone/layout/top_8.md)
-	1. `0x90` [Info](telephone/layout/info.md)
-	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
-	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
-1. `0x2b` [Telephone LEDs](telephone/led.md)
-1. `0x2c` [Telephone Status](telephone/status.md)
-1. `0xa6` [SMS Icon](telephone/icon.md)
-
-1. Appendix
-    1. [SMS Overview](telephone/layout/sms.md)
-
-## On-board Computer Control Panel (BMBT)
-
-1. `0x02` [Announce](announce.md#bmbt-0xf0)
-1. `0x4f` [Monitor Control](bmbt/monitor.md)
-
-##### Controls
-1. `0x48` [Buttons](bmbt/controls.md)
-1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/controls.md)
-1. `0x32` [Volume Dial](bmbt/controls.md)
-1. `0x49` [Navigation Dial](bmbt/controls.md)
-
-## Multifunctional Steering Wheel (MFL)
-
-##### Controls
-1. `0x3b` [Buttons](mfl/controls.md)
-1. `0x32` [Volume](mfl/controls.md)
-
-## Instrument Cluster (IKE)
-
-1. `0x11` [Ignition](ike/ignition.md)
-1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
-1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
-1. `0x42` [Remote Control](ike/prog.md)
-
-##### Redundant Data Storage
-1. `0x53` [Redundant Data Request](ike/redundant.md)
-1. `0x54` [Redundant Data](ike/redundant.md)
-1. `0x55` [Replicate Data](ike/redundant.md)
-
-## Navigation
-
-1. `0x02` [Announce](announce.md#nav-computer-0x7f)
-1. `0x1f` [GPS Time](nav/gpst.md)
-
 ## Index
 
 Command|Reference
 :--|:--
 `0x01`|Ping
-`0x02`|[Pong & Announce](announce.md)
+`0x02`|[Pong & Announce (alive and wake?)](announce.md)
 `0x10`|[Ignition Request](ike/ignition.md)
 `0x11`|[Ignition](ike/ignition.md)
 `0x12`|Sensors Request
@@ -180,7 +129,61 @@ Command|Reference
 `0x7a`|Door Status
 `0xa2`|Telematics Coordinates
 `0xa4`|Telematics Location
-`0xa5`|Title/Menu Text (MK3 3-1/40+, MK4)
+`0xa5`|Body Text (Telematics, MP3)
 `0xa6`|[SMS Icon](telephone/icon.md)
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
+
+## Telephone
+1. `0x02` [Announce](announce.md#telephone-0xc8)
+1. `0x20` [Main Menu](telephone/main_menu.md)
+1. `0x21` UI
+	1. `0x00` [Default](telephone/layout/default.md)
+	1. `0x05` [Pin-Code](telephone/layout/pin.md)
+	1. `0x42` [Dial](telephone/layout/dial.md)
+		1. [Last Numbers](telephone/layout/last_numbers.md)
+	1. `0x43` [Directory](telephone/layout/directory.md)
+	1. `0x80` [Top 8](telephone/layout/top_8.md)
+	1. `0x90` [Info](telephone/layout/info.md)
+	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
+	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
+1. `0x2b` [Telephone LEDs](telephone/led.md)
+1. `0x2c` [Telephone Status](telephone/status.md)
+1. `0xa6` [SMS Icon](telephone/icon.md)
+
+1. Appendix
+    1. [SMS Overview](telephone/layout/sms.md)
+
+## On-board Computer Control Panel (BMBT)
+
+1. `0x02` [Announce](announce.md#bmbt-0xf0)
+1. `0x4f` [Monitor Control](bmbt/monitor.md)
+
+##### Controls
+1. `0x48` [Buttons](bmbt/controls.md)
+1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/controls.md)
+1. `0x32` [Volume Dial](bmbt/controls.md)
+1. `0x49` [Navigation Dial](bmbt/controls.md)
+
+## Multifunctional Steering Wheel (MFL)
+
+##### Controls
+1. `0x3b` [Buttons](mfl/controls.md)
+1. `0x32` [Volume](mfl/controls.md)
+
+## Instrument Cluster (IKE)
+
+1. `0x11` [Ignition](ike/ignition.md)
+1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
+1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
+1. `0x42` [Remote Control](ike/prog.md)
+
+##### Redundant Data Storage
+1. `0x53` [Redundant Data Request](ike/redundant.md)
+1. `0x54` [Redundant Data](ike/redundant.md)
+1. `0x55` [Replicate Data](ike/redundant.md)
+
+## Navigation
+
+1. `0x02` [Announce](announce.md#nav-computer-0x7f)
+1. `0x1f` [GPS Time](nav/gpst.md)
