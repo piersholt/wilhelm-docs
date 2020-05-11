@@ -157,6 +157,8 @@ LCM is coded for high/low cluster, and doesn't appear to be affected by this set
 
     OBC_RESUME_FALSE      = 0b0000_0000
     OBC_RESUME_TRUE       = 0b0000_0100
+    
+Recall the last displayed remote control function.
 
 ### OBC Speed Correction `0b0000_1000 << 16`
 
