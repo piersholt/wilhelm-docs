@@ -1,42 +1,35 @@
 # Wilhelm Documentation
 
+*Documentation for the I/K-Bus protocol found in BMW vehicles from 1989 to 2013.*
+
 ## Overview
 
-Instrument (I-Bus), and Body (K-Bus) protocol documentation.
+The goal of this project is to create *reasonably* comprehensive documentation.
 
-While great care, and effort has been taken in creating this documentation, it's important to note the following:
+Only the I/K-Bus protocol is covered. Secondary buses (D-Bus, P-Bus, and M-Bus) are not discussed.
 
-This documentation is **not authoritive**.
+This is an ongoing project, and the documentation will be expanded as time allows.
 
-- I am not affiliated with BMW or it's partners
-- the protocol was reverse engineered while developing [Walter](https://github.com/piersholt/walter)
-- the functionality is a deducation at best (as with any black box system)
-- use at your own risk!
+#### Warning!
 
-This documentation is **not comprehensive**.
-
-- many commands are simply yet to be documented
-- given the number of models, it's not realistic to test all equipment (i.e. there is more than 10 variants of instrument cluster)
-- some equipment is hard to access due to rarity, or value. *"Would you mind terribly if I dismantled your Z8?"*
-- equipment can be region dependent (i.e. Traffic Management Channel), or completely obsolete (i.e. factory telephone), both of which hamper testing
+This documentation should not be considered authouratative. While great care, and effort has been taken in creating it, if you choose to use it, you do so at your own risk.
 
 ## Contents
 
 1. [Applicable Models](#)
 1. [Terminology](#)
 1. Commands by Function
- 1. [Telephone](#)
- 1. [On-board Monitor Control Panel](#)
+ 1. [Telephone](#telephone)
+ 1. [On-board Monitor Control Panel](#on-board-computer-control-panel-bmbt)
  1. [Multi-function Steering Wheel](#)
  1. [Instrument Cluster](#)
  1. [Navigation](#)
 1. [Command Index](#command-index)  
 
+
 ## Applicable Models
 
 This protocol applies to the bus system in the models listed below.
-
-MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
 
 Model|Series|Period|I-Bus|K-Bus
 :--|:--|:--|:--|:--
@@ -50,23 +43,34 @@ E83|X3|2003 - 2010||✅
 E85|Z4|2002 - 2008||✅
 E87|1 series|2004 - 2013||✅
 
+MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
+
 ## Terminology
 
-- **I-Bus** (Instrument Bus)
-> I-Bus was introduced on the E31 as the information bus. The E31 version of the I-Bus was used for body electronics and driver information systems. With the introduction of the E38, the I-Bus is now referred to as the instrument bus.
- 
-- **K-Bus** (Karosserie "Body" Bus)
+ - **Body (Karosserie) Bus** (K-Bus)
 > K-Bus was added to the E38 along with the I-Bus. Models without Navigation or IKE will use the K-Bus only. Both of these bus systems are technically identical, the only difference is their use by model.
+
+- **Diagnosis Bus** (D-Bus)
+> The D-Bus was introduced as TXD (and RXD) in 1987. The term D-Bus was adopted with the introduction of the E38 in 1995, however it is still referred to as TXD in the ETM [electrical troubleshooting manual].  
+All modules in the vehicle are not connected directly to the D-Bus, some systems are connected through a gateway such as the IKE or cluster. The gateway handles all diag- nostic “traffic” and routes the necessary information to the correct bus system.
  
 - **Gateway**
 > On vehicles equipped with an I-Bus (E38, E39, E53 High) messages to be sent back and forth between the K-Bus and I-Bus have to be transferred via a Gateway. This Gateway is the IKE. The IKE determines by the address of the message recipient whether the message needs to be passed along to the other bus.
 
+- **Instrument Bus** (I-Bus)
+> I-Bus was introduced on the E31 as the **information bus**. The E31 version of the I-Bus was used for body electronics and driver information systems. With the introduction of the E38, the I-Bus is now referred to as the **instrument bus**.
+
+- **M-Bus**
+> The M-Bus is used exclusively in the climate control systems for the control of the “smart:” stepper motors. These stepper motors are used to control various air distribu- tion flaps.  The M-Bus was introduced on the E38 climate control system (IHKA). The M-Bus was also installed on subsequent models equipped with IHKA and IHKR.
+
+- **Peripheral Bus** (P-Bus)> The P-Bus is a single wire serial communications bus that is used exclusively on vehicle that are equipped with ZKE III. These vehicles are the E38, E39 and E53.  The P-Bus provides the Central Body Electronics system with a low speed bus for use by the General Module (GM) to control various functions. 
+
 ## Index
 
-Command|Reference
+Command|Description
 :--|:--
 `0x01`|Ping
-`0x02`|[Pong & Announce (alive and wake?)](announce.md)
+`0x02`|[Pong & Announce](announce.md)
 `0x10`|[Ignition Request](ike/ignition.md)
 `0x11`|[Ignition](ike/ignition.md)
 `0x12`|Sensors Request
