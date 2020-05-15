@@ -2,11 +2,11 @@
 
 *Documentation for the I/K-Bus protocol found in BMW vehicles from 1989 to 2013.*
 
-## Overview
+## Introduction
 
-The goal of this project is to create *reasonably* comprehensive documentation.
+This documentation covers the common functions of the I-Bus and K-Bus.
 
-Only the I/K-Bus protocol is covered. Secondary buses (D-Bus, P-Bus, and M-Bus) are not discussed.
+P-Bus, and M-Bus are not covered. D-Bus is also not discussed, although it may be added in the future.
 
 This is an ongoing project, and the documentation will be expanded as time allows.
 
@@ -18,13 +18,13 @@ This documentation should not be considered authouratative. While great care, an
 
 1. [Applicable Models](#)
 1. [Terminology](#)
-1. Commands by Function
+1. [Command Index](#command-index)
+1. Commands by Device
  1. [Telephone](#telephone)
  1. [On-board Monitor Control Panel](#on-board-computer-control-panel-bmbt)
  1. [Multi-function Steering Wheel](#)
  1. [Instrument Cluster](#)
  1. [Navigation](#)
-1. [Command Index](#command-index)  
 
 
 ## Applicable Models
@@ -43,7 +43,7 @@ E83|X3|2003 - 2010||✅
 E85|Z4|2002 - 2008||✅
 E87|1 series|2004 - 2013||✅
 
-MINI and Range Rover (early L322) implementations are not covered owing to lack of familiarity.
+MINI and Range Rover (early L322) implementations are not discussed.
 
 ## Terminology
 
@@ -65,7 +65,7 @@ All modules in the vehicle are not connected directly to the D-Bus, some systems
 
 - **Peripheral Bus** (P-Bus)> The P-Bus is a single wire serial communications bus that is used exclusively on vehicle that are equipped with ZKE III. These vehicles are the E38, E39 and E53.  The P-Bus provides the Central Body Electronics system with a low speed bus for use by the General Module (GM) to control various functions. 
 
-## Index
+## Command Index
 
 Command|Description
 :--|:--
