@@ -1,62 +1,73 @@
 # Wilhelm Documentation
----
 
-## Telephone
-1. `0x02` [Announce](announce.md#telephone-0xc8)
-1. `0x20` [Main Menu](telephone/main_menu.md)
-1. `0x21` UI
-	1. `0x00` [Default](telephone/layout/default.md)
-	1. `0x05` [Pin-Code](telephone/layout/pin.md)
-	1. `0x42` [Dial](telephone/layout/dial.md)
-		1. [Last Numbers](telephone/layout/last_numbers.md)
-	1. `0x43` [Directory](telephone/layout/directory.md)
-	1. `0x80` [Top 8](telephone/layout/top_8.md)
-	1. `0x90` [Info](telephone/layout/info.md)
-	1. [SMS Overview](telephone/layout/sms.md)
-		1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
-		1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
-1. `0x2b` [Telephone LEDs](telephone/led.md)
-1. `0x2c` [Telephone Status](telephone/status.md)
-1. `0xa6` [SMS Icon](telephone/icon.md)
+*Documentation for the I/K-Bus protocol found in BMW vehicles from 1989 to 2013.*
 
-## On-board Computer Control Panel (BMBT)
+## Introduction
 
-1. `0x02` [Announce](announce.md#bmbt-0xf0)
-1. `0x4f` [Monitor Control](bmbt/monitor.md)
+This documentation covers the common functions of the I-Bus and K-Bus.
 
-#### Controls
-1. `0x48` [Buttons](bmbt/controls.md)
-1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/controls.md)
-1. `0x32` [Volume Dial](bmbt/controls.md)
-1. `0x49` [Navigation Dial](bmbt/controls.md)
+P-Bus, and M-Bus are not covered. D-Bus is also not discussed, although it may be added in the future.
+
+This is an ongoing project, and the documentation will be expanded as time allows.
+
+#### Warning!
+
+This documentation should not be considered authouratative. While great care, and effort has been taken in creating it, if you choose to use it, you do so at your own risk.
+
+## Contents
+
+1. [Applicable Models](#)
+1. [Terminology](#)
+1. [Command Index](#command-index)
+1. Commands by Device
+ 1. [Telephone](#telephone)
+ 1. [On-board Monitor Control Panel](#on-board-computer-control-panel-bmbt)
+ 1. [Multi-function Steering Wheel](#)
+ 1. [Instrument Cluster](#)
+ 1. [Navigation](#)
 
 
-## Multifunctional Steering Wheel (MFL)
+## Applicable Models
 
-#### Controls
-1. `0x3b` [Buttons](mfl/controls.md)
-1. `0x32` [Volume](mfl/controls.md)
+This protocol applies to the bus system in the models listed below.
 
-## Cluster (IKE)
+Model|Series|Period|I-Bus|K-Bus
+:--|:--|:--|:--|:--
+E31|8 Series|1989 - 1999|✅|
+E38|7 Series|1999 - 2001|✅|✅
+E39|5 Series|1995 - 2004|✅|✅
+E46|3 Series|1997 - 2006||✅
+E52|Z8|2000 - 2003||✅
+E53|X5|1999 - 2006|✅|✅|
+E83|X3|2003 - 2010||✅
+E85|Z4|2002 - 2008||✅
+E87|1 series|2004 - 2013||✅
 
-1. `0x11` [Ignition](ike/ignition.md)
-1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
-1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
-1. `0x42` [Remote Control](ike/prog.md)
+MINI and Range Rover (early L322) implementations are not discussed.
 
-#### Redundant Data Storage
-1. `0x53` [Redundant Data Request](ike/redundant.md)
-1. `0x54` [Redundant Data](ike/redundant.md)
-1. `0x55` [Replicate Data](ike/redundant.md)
+## Terminology
 
-## Navigation
+ - **Body (Karosserie) Bus** (K-Bus)
+> K-Bus was added to the E38 along with the I-Bus. Models without Navigation or IKE will use the K-Bus only. Both of these bus systems are technically identical, the only difference is their use by model.
 
-1. `0x02` [Announce](announce.md#nav-computer-0x7f)
-1. `0x1f` [GPS Time](nav/gpst.md)
+- **Diagnosis Bus** (D-Bus)
+> The D-Bus was introduced as TXD (and RXD) in 1987. The term D-Bus was adopted with the introduction of the E38 in 1995, however it is still referred to as TXD in the ETM [electrical troubleshooting manual].  
+All modules in the vehicle are not connected directly to the D-Bus, some systems are connected through a gateway such as the IKE or cluster. The gateway handles all diag- nostic “traffic” and routes the necessary information to the correct bus system.
+ 
+- **Gateway**
+> On vehicles equipped with an I-Bus (E38, E39, E53 High) messages to be sent back and forth between the K-Bus and I-Bus have to be transferred via a Gateway. This Gateway is the IKE. The IKE determines by the address of the message recipient whether the message needs to be passed along to the other bus.
+
+- **Instrument Bus** (I-Bus)
+> I-Bus was introduced on the E31 as the **information bus**. The E31 version of the I-Bus was used for body electronics and driver information systems. With the introduction of the E38, the I-Bus is now referred to as the **instrument bus**.
+
+- **M-Bus**
+> The M-Bus is used exclusively in the climate control systems for the control of the “smart:” stepper motors. These stepper motors are used to control various air distribu- tion flaps.  The M-Bus was introduced on the E38 climate control system (IHKA). The M-Bus was also installed on subsequent models equipped with IHKA and IHKR.
+
+- **Peripheral Bus** (P-Bus)> The P-Bus is a single wire serial communications bus that is used exclusively on vehicle that are equipped with ZKE III. These vehicles are the E38, E39 and E53.  The P-Bus provides the Central Body Electronics system with a low speed bus for use by the General Module (GM) to control various functions. 
 
 ## Command Index
 
-ID|Reference
+Command|Description
 :--|:--
 `0x01`|Ping
 `0x02`|[Pong & Announce](announce.md)
@@ -122,7 +133,61 @@ ID|Reference
 `0x7a`|Door Status
 `0xa2`|Telematics Coordinates
 `0xa4`|Telematics Location
-`0xa5`|Title/Menu Text (MK3 3-1/40+, MK4)
+`0xa5`|Body Text (Telematics, MP3)
 `0xa6`|[SMS Icon](telephone/icon.md)
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
+
+## Telephone
+1. `0x02` [Announce](announce.md#telephone-0xc8)
+1. `0x20` [Main Menu](telephone/main_menu.md)
+1. `0x21` UI
+	1. `0x00` [Default](telephone/layout/default.md)
+	1. `0x05` [Pin-Code](telephone/layout/pin.md)
+	1. `0x42` [Dial](telephone/layout/dial.md)
+		1. [Last Numbers](telephone/layout/last_numbers.md)
+	1. `0x43` [Directory](telephone/layout/directory.md)
+	1. `0x80` [Top 8](telephone/layout/top_8.md)
+	1. `0x90` [Info](telephone/layout/info.md)
+	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
+	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
+1. `0x2b` [Telephone LEDs](telephone/led.md)
+1. `0x2c` [Telephone Status](telephone/status.md)
+1. `0xa6` [SMS Icon](telephone/icon.md)
+
+1. Appendix
+    1. [SMS Overview](telephone/layout/sms.md)
+
+## On-board Computer Control Panel (BMBT)
+
+1. `0x02` [Announce](announce.md#bmbt-0xf0)
+1. `0x4f` [Monitor Control](bmbt/monitor.md)
+
+##### Controls
+1. `0x48` [Buttons](bmbt/controls.md)
+1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/controls.md)
+1. `0x32` [Volume Dial](bmbt/controls.md)
+1. `0x49` [Navigation Dial](bmbt/controls.md)
+
+## Multifunctional Steering Wheel (MFL)
+
+##### Controls
+1. `0x3b` [Buttons](mfl/controls.md)
+1. `0x32` [Volume](mfl/controls.md)
+
+## Instrument Cluster (IKE)
+
+1. `0x11` [Ignition](ike/ignition.md)
+1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
+1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
+1. `0x42` [Remote Control](ike/prog.md)
+
+##### Redundant Data Storage
+1. `0x53` [Redundant Data Request](ike/redundant.md)
+1. `0x54` [Redundant Data](ike/redundant.md)
+1. `0x55` [Replicate Data](ike/redundant.md)
+
+## Navigation
+
+1. `0x02` [Announce](announce.md#nav-computer-0x7f)
+1. `0x1f` [GPS Time](nav/gpst.md)
