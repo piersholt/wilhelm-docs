@@ -17,7 +17,7 @@ This documentation should not be considered authouratative. While great care, an
 ## Contents
 
 1. [Applicable Models](#)
-1. [Terminology](#)
+1. [Glossary](#)
 1. [Command Index](#command-index)
 1. Commands by Device
  1. [Telephone](#telephone)
@@ -45,9 +45,9 @@ E87|1 series|2004 - 2013||✅
 
 MINI and Range Rover (early L322) implementations are not discussed.
 
-## Terminology
+## Glossary
 
- - **Body (Karosserie) Bus** (K-Bus)
+ - **Body [Karosserie) Bus** (K-Bus)
 > K-Bus was added to the E38 along with the I-Bus. Models without Navigation or IKE will use the K-Bus only. Both of these bus systems are technically identical, the only difference is their use by model.
 
 - **Diagnosis Bus** (D-Bus)
