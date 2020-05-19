@@ -20,11 +20,11 @@ This documentation should not be considered authouratative. While great care, an
 1. [Glossary](#glossary)
 1. [Command Index](#command-index)
 1. Commands by Device
-  1. [Telephone](#telephone)
-  1. [On-board Monitor Control Panel](#on-board-computer-control-panel-bmbt)
-  1. [Multi-function Steering Wheel](#multifunctional-steering-wheel-mfl)
-  1. [Instrument Cluster](#instrument-cluster-ike)
-  1. [Navigation](#navigation)
+    1. [Telephone](#telephone)
+    1. [On-board Monitor Control Panel](#on-board-computer-control-panel-bmbt)
+    1. [Multi-function Steering Wheel](#multifunctional-steering-wheel-mfl)
+    1. [Instrument Cluster](#instrument-cluster-ike)
+    1. [Navigation](#navigation)
 
 
 ## Applicable Models
