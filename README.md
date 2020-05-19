@@ -76,11 +76,11 @@ Command|Description
 :--|:--
 `0x01`|Ping
 `0x02`|[Pong & Announce](announce.md)
-`0x10`|[Ignition Request](ike/ignition.md)
+`0x10`|[Ignition Request](ike/ignition_request.md)
 `0x11`|[Ignition](ike/ignition.md)
 `0x12`|Sensors Request
 `0x13`|Sensors
-`0x14`|[Language & Region Request](ike/region.md)
+`0x14`|[Language & Region Request](ike/region_request.md)
 `0x15`|[Language & Region](ike/region.md)
 `0x16`|Mileage Request
 `0x17`|Mileage
@@ -99,30 +99,30 @@ Command|Description
 `0x2b`|[Telephone LEDs](telephone/led.md)
 `0x2c`|[Telephone Status](telephone/status.md)
 `0x31`|Menu Button
-`0x32`|[BMBT Volume (Dial)](bmbt/controls.md) & [MFL Volume (Buttons)](mfl/controls.md)
+`0x32`|[BMBT Volume](bmbt/32.md) & [MFL Volume](mfl/32.md)
 `0x34`|DSP Control
 `0x36`|Radio EQ.
 `0x37`|Radio Tone/Select
 `0x38`|CDC Status Request
 `0x39`|CDC Status
-`0x3b`|[MFL Buttons](mfl/controls.md)
+`0x3b`|[MFL Buttons](mfl/3b.md)
 `0x40`|Variable Input
 `0x41`|Boolean Input
 `0x42`|[Remote Control](ike/prog.md)
 `0x45`|Radio UI Request
 `0x46`|Radio UI
-`0x47`|[BMBT "Soft" Buttons](bmbt/controls.md)
-`0x48`|[BMBT Buttons](bmbt/controls.md)
-`0x49`|[BMBT Navigation Dial](bmbt/controls.md)
+`0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
+`0x48`|[BMBT Buttons](bmbt/48.md)
+`0x49`|[BMBT Navigation Dial](bmbt/49.md)
 `0x4a`|Tape Control/Radio LED
 `0x4b`|Tape Status
 `0x4f`|[BMBT Monitor Control](bmbt/monitor.md)
 `0x50`|Check Control Status Request
 `0x51`|Check Control Status
 `0x52`|Check Control Message Relay
-`0x53`|[Redundant Data Request](ike/redundant.md)
-`0x54`|[Redundant Data](ike/redundant.md)
-`0x55`|[Replicate Data](ike/redundant.md)
+`0x53`|[Redundant Data Request](ike/53.md)
+`0x54`|[Redundant Data](ike/54.md)
+`0x55`|[Replicate Data](ike/55.md)
 `0x57`|Check Control/Remote Control Buttons
 `0x59`|Rain/driving Lights Status
 `0x5a`|Lamp Status Request
@@ -169,28 +169,29 @@ Command|Description
 1. `0x4f` [Monitor Control](bmbt/monitor.md)
 
 ##### Controls
-1. `0x48` [Buttons](bmbt/controls.md)
-1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/controls.md)
-1. `0x32` [Volume Dial](bmbt/controls.md)
-1. `0x49` [Navigation Dial](bmbt/controls.md)
+1. `0x48` [Buttons](bmbt/48.md)
+1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/47.md)
+1. `0x32` [Volume Dial](bmbt/32.md)
+1. `0x49` [Navigation Dial](bmbt/49.md)
 
 ## Multifunctional Steering Wheel (MFL)
 
 ##### Controls
-1. `0x3b` [Buttons](mfl/controls.md)
-1. `0x32` [Volume](mfl/controls.md)
+1. `0x3b` [Buttons](mfl/3b.md)
+1. `0x32` [Volume](mfl/32.md)
 
 ## Instrument Cluster (IKE)
 
+1. `0x10` [Ignition Request](ike/ignition_request.md)
 1. `0x11` [Ignition](ike/ignition.md)
-1. `0x14` [Language & Region Request](ike/region.md0x14-language--region-request)
-1. `0x15` [Language & Region](ike/region.md#0x15-language--region)
+1. `0x14` [Language & Region Request](ike/region_request.md)
+1. `0x15` [Language & Region](ike/region.md)
 1. `0x42` [Remote Control](ike/prog.md)
 
 ##### Redundant Data Storage
-1. `0x53` [Redundant Data Request](ike/redundant.md)
-1. `0x54` [Redundant Data](ike/redundant.md)
-1. `0x55` [Replicate Data](ike/redundant.md)
+1. `0x53` [Redundant Data Request](ike/53.md)
+1. `0x54` [Redundant Data](ike/54.md)
+1. `0x55` [Replicate Data](ike/55.md)
 
 ## Navigation
 
