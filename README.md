@@ -94,8 +94,8 @@ Command|Description
 `0x21`|Menu Text
 `0x22`|Menu Text Buffer
 `0x23`|Title Text
-`0x24`|Variable Output
-`0x2a`|Boolean Output
+`0x24`|OBC Text
+`0x2a`|OBC Status
 `0x2b`|[Telephone LEDs](telephone/led.md)
 `0x2c`|[Telephone Status](telephone/status.md)
 `0x31`|Menu Button
@@ -107,7 +107,7 @@ Command|Description
 `0x39`|CDC Status
 `0x3b`|[MFL Buttons](mfl/3b.md)
 `0x40`|Variable Input
-`0x41`|Boolean Input
+`0x41`|OBC Control
 `0x42`|[Remote Control](ike/prog.md)
 `0x45`|Radio UI Request
 `0x46`|Radio UI
