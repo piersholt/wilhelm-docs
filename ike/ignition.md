@@ -29,18 +29,3 @@ The command has a single byte bit field, of which the least significant 3 bits a
     80 04 BF 11 01 2B   # KL-R
     80 04 BF 11 03 29   # KL-15
     80 04 BF 11 07 2D   # KL-50
-
----
-
-# `0x10` Ignition Request
-
-A device can request ignition status.
-
-### Examples
-
-    18 03 80 10 8B  # CDC
-    30 03 80 10 A3  # CCM
-    3B 03 80 10 A8  # GT
-    AC 03 80 10 3F  # EHC
-    ED 03 80 10 7E  # TV
-    F0 03 80 10 63  # BMBT

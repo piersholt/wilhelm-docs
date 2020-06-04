@@ -28,18 +28,18 @@ The message length is fixed, irrespective of the number of enabled functions. An
 
 Property|Index|Length|Type
 :---|:---|:---|:---
-**Function**|`0`|`1`|Bit field
-**Function**|`1`|`1`|Bit field
-**Function**|`2`|`1`|Bit field
-**Function**|`3`|`1`|Bit field
-**Function**|`4`|`1`|Bit field
-**Function**|`5`|`1`|Bit field
-**Function**|`6`|`1`|Bit field
-**Function**|`7`|`1`|Bit field
-**Function**|`8`|`1`|Bit field
-**Function**|`9`|`1`|Bit field
-**Function**|`10`|`1`|Bit field
-**Function**|`11`|`1`|Bit field
+**Function 1**|`0`|`1`|Bit field
+**Function 2**|`1`|`1`|Bit field
+**Function 3**|`2`|`1`|Bit field
+**Function 4**|`3`|`1`|Bit field
+**Function 5**|`4`|`1`|Bit field
+**Function 6**|`5`|`1`|Bit field
+**Function 7**|`6`|`1`|Bit field
+**Function 8**|`7`|`1`|Bit field
+**Function 9**|`8`|`1`|Bit field
+**Function 10**|`9`|`1`|Bit field
+**Function 11**|`10`|`1`|Bit field
+**Function 12**|`11`|`1`|Bit field
 
 #### Examples
 
@@ -59,7 +59,7 @@ Property|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.
 ---|---|---|---|---|---|---|---|---|---|---|---|---
 **Data**|`10`|`02`|`06`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`
 
-## Function
+## Function [1 - 12]
 
 1 byte. Combination bit field.
     
