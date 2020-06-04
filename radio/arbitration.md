@@ -1,132 +1,46 @@
-Module|Variant|Note|Command|Argument|
-:---|:---|:---|:---|:---|
-Radio|C23|Hide Overlay|0x46|0b0000_1110
-GT|MK1|Ignition|0x45|0b0000_0000
-GT|VM|Ignition|0x45|0b0000_0000|
-GT|VM|Ignition|0x46|0b0000_0001|
-GT|MK1|Menu|0x45|0b0000_0001
-Radio|C23|Menu|0x46|0b0000_0001
-Radio|C23|Turn Off|0x46|0b0000_1110
-Radio|C23|Hide Tone|0x46|0b0000_1000
-GT|MK1|Audio OBC|0x45|0b0000_0011
-
-----
-
-## Radio UI Management
+# Radio UI and Display Contention
 
 0x45 and 0x46 are, for the best part, to manage *when* the radio is in the foreground, and to a lesser extent, *how* it behaves in the foreground.
 
 The need for this is a function of how how the GT UI came to be, which was by shoehorning an aftermarket standalone navigation system into what I'd argue was BMW's first in-vehicle infotainment (IVI) system, while avoiding change how anything else worked!
 
 
-
 Look familiar?
-
 
 
 This is a byproduct of the GT UI needing to remain backwards compatible with radios. This is somewhat apparent in the design of the original BMBT.
 
+When first presented with the BMBT, I couldn't figure out how to turn the radio on. There's two metaphores.
+
+_The need for arbitration is a result of heretounforeseen resource contention. The radio no longer had a dedicated display_
+
 --
 
+Module|Variant|Note|Command|Argument
+:-----|:------|:---|:------|:-------
+Radio|C23|Hide Overlay|`46`|`0b0000_1110`
+Radio|C23|Menu (Reply?)|`46`|`0b0000_0001`
+Radio|C23|Hide Tone|`46`|`0b0000_1000`
+Radio|C23|Hide Select|`46`|`0b0000_0100`
+Radio|C23|Turn Off|`46`|`0b0000_1110`
 
-The applicable events are:
-- the GT requesting the radio draw the radio UI at KL-R if the radio was on at ignition off.
+Module|Variant|Note|Command|Argument
+:-----|:------|:---|:------|:-------
+GT|MK1|Ignition|`45`|`0b0000_0000`
+GT|MK1|Menu|`45`|`0b0000_0001`
+GT|MK1|Audio OBC|`45`|`0b0000_0011`
+GT|VM|Ignition|`45`|`0b0000_0000`
+GT|VM|Ignition|`46`|`0b0000_0001`
 
-The following events fall within the scope:
-
-- resuming the last UI state at ignition (KL-R, Position 1)
-- user presses "overlay" to hide radio/turn off radio
-- user presses "menu" to return to main menu while overlay is active
-- audio+obc is enabled/disabled (legacy UI)
-- radio hides TONE
-- radio hides SELECT
-
-
-#### Hide Overlay
-    
-    # C23
-    0x46 0b0000_1110
-    
-    # BM53
-    0x46 0b0000_0010
-    0x46 0b0000_1100
-
-#### Return to Main Menu
-
-## `0x45` GT Control
-
-`0x45` is a one byte bit field.
-
-Bit|7|6|5|4|3|2|1|0|
-:---|:---|:---|:---|:---|:---|:---|:---|:---|
-**Description**|Updated UI: unknown|-|-|Updated UI|-|-|Audio OBC|Hide Radio
-
-    # 0x45
-    HIDE_RADIO      = 0b0000_0001
-    FLAG_AUDIO_OBC  = 0b0000_0010
-
-    FLAG_NEW_UI     = 0b0001_0000
-    FLAG_NEW_UI_TBC = 0b1000_0000
-
-### "Hide" `0b0000_0001`
-
-- MENU button
-- hide 
-
-### Audio+OBC `0b0000_0010`
-
-The Audio and Onboard Computer (OBC) display "Audio+OBC" is a feature of the original UI, and allowed OBC data to be displayed alongside radio information.
-
-![Audio+OBC](audio_obc/mk1_gt/audio_obc_enabled.JPG)
-_Audio+OBC: The MK1 GT, and BM53 with the Audio+OBC feature enabled._
-![Audio+OBC](audio_obc/vm_gt/audio_obc_enabled.JPG)
-_Audio+OBC: A video module GT, and BM53 with the Audio+OBC feature enabled._
-
-The bit is set/unset when "Audio+OBC" is enabled/disabled via the "Set" menu. It prevents (_or possibly makes menus a timeout?_) the radio from rendering any menus, thus the OBC remains in the foreground.
-
-![Audio+OBC](audio_obc/vm_gt/set_audio_obc.JPG)
-![Audio+OBC](audio_obc/mk1_gt/set_audio_obc.JPG)
-_Audio+OBC: Audio+OBC settings..._
-
-While this feature was removed from the updated UI (MK3 3-1/40+, MK4), all radio variants, including next generation (NG) radios will support it.
-
-Note: this is really only relevant to BM24, BM54... 
-
-### Bit `4`
-
-This bit is set when the GT is running navigation system software with the updated UI.
-
-![Updated UI](arbitration/updated_ui.jpg)
-
-This is only applicable to a subset of navigation computers:
-
-Variant|Software|Announce|
-:---|:---|:---|
-MK1|1-1/80|`0`|
-MK2|2-1/63|`0`|
-MK3|< 3-1/31|`0`|
-MK3|> 3-1/40|`1`|
-MK4|4-1/00|`1`|
-Video Module|.|`0`|
-
-This is only applicable to the MK3 from version 40 onwards (`3-1/40`), and MK4 which was shipped with updated UI.
-
-MK3 3-1/40+ and MK4
-
-### Bit `7`
-
-MK3 3-1/40+ and MK4
-
-## `0x46` Radio Control
-
-abc
 
 ----
 
+# Testing
+
 ## GT: MK1, BMBT: Wide, Radio: None
 
-
 ### Ignition (KL-R)
+
     bmbt    glo_l	PONG      	status: 0x30 
     tv      glo_h	PONG      	status: 0x01 (Announce)
     
@@ -190,15 +104,15 @@ abc
 
 #### hide overlay
 
-    bmbt  rad	BMBT-RAD* 	0x30 (0011 0000) :bmbt_overlay   	[Overlay]      	Press 
+    bmbt  rad	BMBT-RAD* 	0x30 (0011 0000) :bmbt_overlay [Overlay] Press 
     rad   gt	UI-RAD    	state: 0x0e ((0000 1110) Hide: Menu, Hide Header: [ON])
-    bmbt  rad	BMBT-RAD* 	0xb0 (1011 0000) :bmbt_overlay   	[Overlay]      	Release
+    bmbt  rad	BMBT-RAD* 	0xb0 (1011 0000) :bmbt_overlay [Overlay] Release
     
 #### menu button
-    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
+    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
     gt    rad	UI-GT     	config: 0x01 ((0000 0001) Main Menu: [ON])
     rad   gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
-    bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     
 #### radio off
     bmbt    rad     BMBT-RAD* 	0x06 (0000 0110) :bmbt_power     	[Power]        	Press 
@@ -394,10 +308,10 @@ remove battery.. plug radio in..
     bmbt	rad	BMBT-RAD* 	0xb0 (1011 0000) :bmbt_overlay   	[Overlay]      	Release
     
     # show then MENU
-    bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
+    bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
     gt	rad	UI-GT     	config: 0x03 ((0000 0011) Audio+OBC (MK1/TV): [ON], Main Menu: [ON])
     rad	gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
-    bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     
     # show then ignition off
     # nothing!
@@ -463,8 +377,8 @@ remove battery.. plug radio in..
     rad	gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
     rad	gt	UI-RAD    	state: 0x0c ((0000 1100) Hide: Menu)
     
-    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
-    bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
+    bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     gt    rad	UI-GT     	config: 0x01 ((0000 0001) Main Menu: [ON])
     rad   gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
 
@@ -485,8 +399,8 @@ remove battery.. plug radio in..
     
 ### Menu (Radio Off)
 
-    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
-    bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
+    bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     gt    rad	UI-GT     	config: 0x01 ((0000 0001) Main Menu: [ON])
     rad   gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
 
@@ -607,9 +521,9 @@ _I wonder if this is due to no date/time being set? Won't let Radio draw at KL-R
     21:51:45 [INFO ] [     virtual] [             Display] rad	gt	UI-RAD    	state: 0x0c ((0000 1100) Hide: Menu)
     
     # Hit Menu... still nothing...
-    21:52:18 [INFO ] [     virtual] [             Display] bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
+    21:52:18 [INFO ] [     virtual] [             Display] bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
     21:52:18 [WARN ] [         tel] [ Telephone::Emulated] Menu pressed! @layout -> :background
-    21:52:18 [INFO ] [     virtual] [             Display] bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    21:52:18 [INFO ] [     virtual] [             Display] bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     21:52:18 [INFO ] [     virtual] [             Display] gt	rad	UI-GT     	config: 0x01 ((0000 0001) Main Menu: [ON])
     21:52:18 [INFO ] [     virtual] [             Display] rad	gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
     21:52:19 [INFO ] [     virtual] [             Display] rad	dsp	PING      	--
@@ -834,8 +748,8 @@ no difference!
     rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 0x47 ((0100 0111) Block: [ON], Zone: H3/7) / chars: 61 35 20 36 32 20 30 31 20 30 37 20 22 23 2D 72 2D 21 25 39 41 29 ("a5 62 01 07 "#-r-!%9A)")
     rad	gt	RAD-A5*   	layout: 0x62 (Header) / padding: 0x01 (No Padding) / zone: 00 ((0000 0000) Zone: 0) / chars:  ("")
     
-    bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
-    bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    bmbt	glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
+    bmbt	glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     gt	rad	UI-GT     	config: 0x91 ((1001 0001) Main Menu: [ON])
 
 
@@ -863,8 +777,8 @@ no difference!
     
     rad glo_l   PONG      status: 00 (Reply)
     rad gt      RAD-23    gt: 0x62 ((RDS)) / ike: 0x10 (Overwrite) / chars: 42 2E 67 7A 4F 68 62 6B 3B 3E 60 ("B.gzOhbk;>`")
-    bmbt        glo_h	  BMBT-GLO  	0x34 (0011 0100) :bmbt_menu      	[Menu]         	Press 
-    bmbt        glo_h	  BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu      	[Menu]         	Release
+    bmbt        glo_h	  BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
+    bmbt        glo_h	  BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     gt  rad     UI-GT     config: 0x91 ((1001 0001) Main Menu: [ON])
     
 #### Hmmm
@@ -894,42 +808,3 @@ no difference!
     gt	bmbt	GT-BMBT*  	a: 0x10 ((0001 0000) Power: [ON], Source: [Nav. GT])
     bmbt	gt	BMBT-GT*  	0x05 (0000 0101) :bmbt_confirm   	[Confirm]      	Press 
     gt	rad	UI-GT     	config: 0x10 ((0001 0000) )
-
-
-
--------
-
-
-
-
-## Lifecycle
-
-Radio exits overlay mode:
-
-    rad	 gt 46 (0000_0010) Hide Panel [ON]
-    rad	 gt 46 (0000_1100) Hide Menu [ON]
-
-The radio will still write titles:
-
-    rad gt 23 62 10 "☐ 89.3☐      "
-
-but clear them after 8 second timeout:
-
-    rad gt 46 02 (0000 0010) Hide Panel [ON]
-    rad gt 46 0c (0000 1100) Hide Menu [ON]
-
-A MENU press does not get sent to radio, but is broadcast, and instead handled by the GT, which will in turn, message the Radio relinquish (as presumably the radio does not listen for global button )
-
-    gt  rad 45 91 (1001 0001) Info? [ON] Main Menu [ON]
-    rad gt  46 01 (0000 0001) Main Menu [ON]
-
-
-## C2x vs. BM5x
-
-widescreen BMBT uses a different select... 
-possibly due non-backwards compatible SELECT UI states
-but not tone interestingly... 
-
-## Tone/Select `0x37`
-## GT UI `0x45`
-## Radio UI `0x46`
