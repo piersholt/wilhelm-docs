@@ -1,11 +1,7 @@
 ## Addresses
 
-- 8-bit addressing
-- Addresses are assigned fro
-- Addresses are programed from the factory
-- The addresses are preprogramed from the factory
-
-- Device addresses are preprogramed from the factory
+- 8-bit addressing (256 unique addressess).
+- Bus devices have a preassigned address from factory
 - The 8-bit address pool is shared between every model that utilises this bus system. e.g. once the address `0x69` was allocated to the elektronic bodymodule of the E31, it was not used again, even on models to which the device was not applicable to.
 
 ### Address Index
