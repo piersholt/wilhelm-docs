@@ -22,7 +22,7 @@ It has two uses which work in sequence:
 1. edit the configuration via the GT/BMBT
 2. save the configuration to the IKE
 
-### Properties
+## Properties
 
 The message length is fixed, irrespective of the number of enabled functions. Any redundant trailing bytes have a known void value of `0xff`.
 
@@ -59,7 +59,7 @@ Property|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.
 ---|---|---|---|---|---|---|---|---|---|---|---|---
 **Data**|`10`|`02`|`06`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`
 
-## Function [1 - 12]
+### Function [1 - 12]
 
 1 byte. Combination bit field.
     
@@ -79,7 +79,9 @@ Property|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.
     
     VOID          = 0b1111_1111   # 0xff
 
-## 1. Edit Configuration
+## Use Cases
+
+### Edit Configuration
 
 IKE will send the current configuration to GT, which in turn will load the "Remote Control" screen with applicable functions preselected.
 
@@ -97,7 +99,7 @@ Property|Func.|Func.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.
 **Data**|`07`|`09`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`
 **Function**|`Distance`|`Limit`|`--`|`--`|`--`|`--`|`--`|`--`|`--`|`--`|`--`|`--`
 
-## 2. Save Configuration
+### Save Configuration
 
 GT will send the selected functions to IKE, at which point the configuration is updated. 
 
