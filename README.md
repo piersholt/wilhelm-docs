@@ -106,7 +106,7 @@ Command|Description
 `0x38`|CDC Status Request
 `0x39`|CDC Status
 `0x3b`|[MFL Buttons](mfl/3b.md)
-`0x40`|Variable Input
+`0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
 `0x42`|[Remote Control](ike/prog.md)
 `0x45`|Radio UI Request
