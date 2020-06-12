@@ -1,12 +1,17 @@
 ## Addresses
 
 - 8-bit addressing (256 unique addressess).
-- Bus devices have a preassigned address from factory
-- The 8-bit address pool is shared between every model that utilises this bus system. e.g. once the address `0x69` was allocated to the elektronic bodymodule of the E31, it was not used again, even on models to which the device was not applicable to.
+- Addresses are preallocated, and remain fixed.
+- Multicast, and broadcast addresses.
+- All buses are within the 8-bit scope, i.e. an address is unique across the I, K, and D buses.
+- The adress pool is shared by all models that utilise this bus system. i.e. once the address `0x69` was allocated to the E31 body module, it was not reallocated, even on models to which the device was not applicable to.
+- Variants of a device will have the same address, e.g. the address `0x80` is used by the low cluster (KOMBI), high clusters (IKE, IKI).
 
 ### Address Index
 
-ID    |Description
+*Only common I and K bus device addresses are listed.*
+
+Address|Device(s)
 ------|----------
 `0x00`|General Module (GM)
 `0x08`|Tilt/Slide Sunroof
@@ -44,9 +49,9 @@ ID    |Description
 `0xa7`|Rear Compartment Heating/Air Conditioning
 `0xac`|Electronic Height Control (EHC)
 `0xb0`|Speech Recognition System (SES)
-`0xb9`|Compact Remote Control (RF/Infra.)
+`0xb9`|Compact Remote Control (RF/IR)
 `0xbb`|Navigation (Japan)
-`0xbf`|Multi/Broadcast 📣
+`0xbf`|Broadcast 📣
 `0xc0`|Multi-information Display (MID)
 `0xc8`|Telephone
 `0xcd`|Multi Information Display (OBC) [E31]
@@ -59,4 +64,4 @@ ID    |Description
 `0xed`|Video Module
 `0xf0`|On-board Computer Control Panel (BMBT)
 `0xf5`|Lamp control module [E31]
-`0xff`|Multi/Broadcast 📣
+`0xff`|Broadcast 📣
