@@ -54,7 +54,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 #### **Diagnosis Bus** (D-Bus)
 > The D-Bus was introduced as TXD (and RXD) in 1987. The term D-Bus was adopted with the introduction of the E38 in 1995, however it is still referred to as TXD in the ETM [electrical troubleshooting manual].
 >
-> All modules in the vehicle are not connected directly to the D-Bus, some systems are connected through a gateway such as the IKE or cluster. The gateway handles all diag- nostic “traffic” and routes the necessary information to the correct bus system.
+> All modules in the vehicle are not connected directly to the D-Bus, some systems are connected through a gateway such as the IKE or cluster. The gateway handles all diagnostic “traffic” and routes the necessary information to the correct bus system.
  
 #### **Gateway**
 > On vehicles equipped with an I-Bus (E38, E39, E53 High) messages to be sent back and forth between the K-Bus and I-Bus have to be transferred via a Gateway. This Gateway is the IKE. The IKE determines by the address of the message recipient whether the message needs to be passed along to the other bus.
@@ -74,11 +74,10 @@ MINI and Range Rover (early L322) implementations are not discussed.
 ## Device Index
 
 - 8-bit addressing (256 unique addressess).
-- Multicast, and broadcast addresses.
-- Addresses are preallocated, and fixed.
-- The adress pool is shared by all models that utilise this bus system. i.e. once the address `0x69` was allocated to the E31 body module, it was not reallocated, even on models to which the device was not applicable to.
-- Variants of a device will have the same address, e.g. the address `0x80` is used by the low cluster (KOMBI), high clusters (IKE, IKI).
 - All buses are within the 8-bit scope, i.e. an address is unique across the I, K, and D buses.
+- Multicast, and broadcast addresses.
+- Addresses are preassigned, and static.
+- Variants of a device will have the same address, e.g. the address `0x80` is used by the low cluster (KOMBI), high clusters (IKE, IKI).
 
 *Only common I and K bus device addresses are listed.*
 
