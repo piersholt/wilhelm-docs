@@ -17,10 +17,10 @@ No.|Function|Display
 11.|Auxiliary Timer 1|`"*TIMER1 11:03 PM"`
 12.|Auxiliary Timer 2|`" TIMER2  2:54 AM"`
 
-It has two uses which work in sequence:
+It has two use cases which work in sequence:
 
-1. edit the configuration via the GT/BMBT
-2. save the configuration to the IKE
+1. edit the configuration via the GT/BMBT (Cluster `0x80` → GT `0x3b`)
+2. memorise the configuration to the IKE (GT `0x3b` → Cluster `0x80`)
 
 ## Properties
 
@@ -83,6 +83,8 @@ Property|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.
 
 ### Edit Configuration
 
+Cluster `0x80` → GT `0x3b`
+
 IKE will send the current configuration to GT, which in turn will load the "Remote Control" screen with applicable functions preselected.
 
 Note: the options *Delete all* and *Memorise* are handled by the GT, so neither will return `0x31` like radio or telephone menus. 
@@ -99,7 +101,9 @@ Property|Func.|Func.|F.|F.|F.|F.|F.|F.|F.|F.|F.|F.
 **Data**|`07`|`09`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`|`FF`
 **Function**|`Distance`|`Limit`|`--`|`--`|`--`|`--`|`--`|`--`|`--`|`--`|`--`|`--`
 
-### Save Configuration
+### Memorise Configuration
+
+GT `0x3b` → Cluster `0x80`
 
 GT will send the selected functions to IKE, at which point the configuration is updated. 
 
