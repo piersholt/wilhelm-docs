@@ -103,7 +103,8 @@ Device|Bus|Description
 `0x30`|I|Check Control Module (CCM) [E38]
 `0x31`|D|*MINI EHPR50*
 `0x32`|D|Transmission
-`0x35`|D|Steering Column Memory (LSM) [E31/E32/E34] <!--up to here?-->
+`0x35`|D|Steering Column Memory (LSM) [E31/E32/E34]
+`....`|.|**up to here...**
 `0x3b`|I|Graphics Stage (GT)
 `0x3f`|K/I|Diagnostics (via [gateway](#))
 `0x40`|K|Remote Control for Central Locking
