@@ -14,18 +14,22 @@ A number of modules will not activate unless the required ignition status is bro
 
 It's not the ignition switch position itself that drives the ignition status, but the associated supply circuit to the cluster that the switch closes. Thus, if the applicable supply is not closed due to a blown fuse, the cluster will not broadcast the applicable igntition status.
 
-## Ignition `0b0000_0111`
-
-The command has a single byte bit field, of which the least significant 3 bits are represent ignition state.
-
-    KL_30   = 0b0000_0000   # Position 0
-    KL_R    = 0b0000_0001   # Position 1
-    KL_15   = 0b0000_0011   # Position 2
-    KL_50   = 0b0000_0111   # Position 3
-
-### Examples
+## Examples
 
     80 04 BF 11 00 2A   # KL-30
     80 04 BF 11 01 2B   # KL-R
     80 04 BF 11 03 29   # KL-15
     80 04 BF 11 07 2D   # KL-50
+
+## Parameters
+
+1-byte bit field. Fixed length.
+
+    IGNITION = 0b0000_0111
+
+### Ignition `0b0000_0111`
+
+    IGNITION_KL_30   = 0b0000_0000   # Key Position 0
+    IGNITION_KL_R    = 0b0000_0001   # Key Position 1
+    IGNITION_KL_15   = 0b0000_0011   # Key Position 2
+    IGNITION_KL_50   = 0b0000_0111   # Key Position 3
