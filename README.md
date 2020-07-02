@@ -85,7 +85,7 @@ Device|Bus|Description
 `0x00`|K|General Module (GM)
 `0x08`|K|Tilt/Slide Sunroof (SHD)
 `0x10`|D|Engine Management
-`0x11`|D|Centrol Body Electronics [ZKE1, ZKE2]
+`0x11`|D|Central Body Electronics (ZKE1/2)
 `0x12`|D|Engine Management
 `0x13`|D|Engine Management
 `0x14`|D|Engine Management
@@ -104,27 +104,35 @@ Device|Bus|Description
 `0x31`|D|*MINI EHPR50*
 `0x32`|D|Transmission
 `0x35`|D|Steering Column Memory (LSM) [E31/E32/E34]
-`....`|.|**up to here...**
+`0x36`|D|Anti-Lock Braking System (ABS)/Automatic Stability Control (ASC+T)
 `0x3b`|I|Graphics Stage (GT)
 `0x3f`|K/I|Diagnostics (via [gateway](#))
-`0x40`|K|Remote Control for Central Locking
+`0x40`|K|Remote Control for Central Locking (FBZV) [E31]
 `0x44`|K|Drive Away Protection System (EWS)
 `0x45`|K|Anti-Theft System (DWA)
 `0x46`|I|Central Information Display (CID) [E83/E85]
-`0x47`|I|Rear Compartment Monitor (RCM) [E38]
+`0x47`|I|Rear Compartment Monitor (RCM) [E38] **{FOND_BT} check this**
 `0x48`|?|Telephone (Japan)
 `0x50`|K/I|Multifunction Steering Wheel (MFL)
 `0x51`|K|Mirror Memory: Passenger (ZKE5)
+`0x56`|D|ABS/ASC/DSC
+`0x57`|D|Steering Angle Sensor (LWS)
+`0x59`|D|IHKA [E31, E36]
+`0x5a`|D|Electric Steering Lock (ELV) [E52]
 `0x5b`|K|Automatic Heating/Air Conditioning (IHKA)
 `0x60`|K/I|Park Distance Control (PDC)
+`0x65`|D|Fuel Pump (EKP)
 `0x66`|K|Active Light Control (ALC)
 `0x68`|K/I|Radio
 `0x69`|K|Body Module [E31]
 `0x6a`|K/I|Digital Sound Processor (DSP)
 `0x6b`|K|Auxiliary Heating "Webasto" (D-Bus?)
+`0x6c`|D|Transmission **{control unit/module?}**
+`....`|.|**up to here...**
 `0x70`|K|Tire Pressure Control/Warning (RDC)
-`0x71`|K|Mirror Memory: Driver (ZKE5)
-`0x72`|K|Seat Memory: Driver (ZKE5)
+`0x71`|K|Mirror Memory {Driver?} (SPM) (ZKE5) [E46], Seat Memory (SM_RD) [E31]
+`0x72`|K|Seat Memory: Driver (ZKE5) [E46, E53]
+`0x74`|D|**{OC3???}**
 `0x76`|K|CD Player (Business)
 `0x7f`|I|Navigation
 `0x80`|K/I|Instrument Cluster (IKE/KOMBI)
@@ -138,8 +146,10 @@ Device|Bus|Description
 `0xbb`|?|Navigation (Japan)
 `0xbf`|K|Broadcast 📣
 `0xc0`|K/I?|Multi-information Display (MID)
+`0xc2`|D|Servotronic (SVT)
 `0xc8`|K/I|Telephone
 `0xcd`|K|Multi Information Display (OBC) [E31]
+`0xce`|D|Seat Occupancy Detection (SBE)
 `0xd0`|K/I|Lamp Check Module (LCM), Light Switch Center (LSZ)
 `0xda`|K|Seat Memory: Passenger (ZKE5)
 `0xe0`|K|Integrated Radio and Information System (IRIS)
