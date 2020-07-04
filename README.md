@@ -80,30 +80,17 @@ MINI and Range Rover (early L322) implementations are not discussed.
 - Variants of a device will have the same address, e.g. the address `0x80` is used by the low cluster (KOMBI), high clusters (IKE, IKI).
 - The adress pool is shared by all models that utilise this bus system. An address is rarely reallocated even if the originally allocated device is not applicable to a new model.
 
+### K/I-Bus
+
 Device|Bus|Description
 ------|---|-----------
 `0x00`|K|General Body Electronics (ZKE 3/4/5)
 `0x08`|K|Tilt/Slide Sunroof (SHD)
-`0x10`|D|Engine Management
-`0x11`|D|Central Body Electronics (ZKE 1/2) [E31, E34]
-`0x12`|D|Engine Management
-`0x13`|D|Engine Management
-`0x14`|D|Engine Management
-`0x15`|D|Double Sunroof (DDSHD) [E34]
-`0x16`|D|Thermal Level Oil Sensor [E36]
 `0x18`|K/I|CD Changer (CDC)
-`0x19`|D|*Range Rover*
-`0x20`|D|Electronic Engine Power Control (EML) [M70]
-`0x21`|D|Central locking module [E34, ?, E36]
-`0x22`|D|Electronic Engine Power Control (EML) [M73]
 `0x24`|K|Trunk Lid Module (HKM) [E38]
 `0x28`|I|Radio Clock Control (RCC) [E38]
 `0x2e`|K|Electronic Damper Control (EDC)
 `0x30`|I|Check Control Module (CCM) [E38]
-`0x31`|D|*MINI*
-`0x32`|D|Transmission
-`0x35`|D|Steering Column Memory (LSM) [E31/E32/E34]
-`0x36`|D|ABS/ASC (Concept 1/2)
 `0x3b`|I|Graphics Stage (GT)
 `0x3f`|K/I|Diagnostics (via [gateway](#gateway))
 `0x40`|K|Remote Control for Central Locking (FBZV) [E31]
@@ -114,36 +101,25 @@ Device|Bus|Description
 `0x48`|?|Telephone (Japan)
 `0x50`|K/I|Multifunction Steering Wheel (MFL)
 `0x51`|K|Mirror Memory: Passenger [E46]
-`0x56`|D|ABS/ASC/DSC (DS2)
-`0x57`|D|Steering Angle Sensor (LWS)
-`0x59`|D|Automatic Heating/Air Conditioning (IHKA) [E31, E36]
-`0x5a`|D|Electric Steering Lock (ELV) [E52]
 `0x5b`|K|Automatic Heating/Air Conditioning (IHKA)
 `0x60`|K/I|Park Distance Control (PDC)
-`0x65`|D|Fuel Pump (EKP)
 `0x66`|K|Active Light Control (ALC)
 `0x68`|K/I|Radio
 `0x69`|K|Electronic Body Module (EKM) [E31]
 `0x6a`|K/I|Digital Sound Processor (DSP)
 `0x6b`|K|Auxiliary Heater "Webasto"
-`0x6c`|D|Gearbox Control Module
 `0x70`|K|Tire Pressure Control (RDC), Deflation Warning System (DWS)
 `0x71`|K|Seat Memory: Driver [E31, E34]
 `0x72`|K|Seat Memory: Driver [E46, E53]
-`0x74`|D|Seat Occupation Detection US (OC3) [E83, 85]
 `0x76`|K|CD Player (Business)
 `0x7f`|K/I|Navigation
 `0x80`|K/I|Instrument Cluster (IKE/KOMBI)
-`0x81`|D|Remote Instrument Pack (RIP)?
-`0x86`|D|Active Rear Axle Kinematics (AHK) [E31]
 `0x9a`|K/I|Automatic Headlight Vertical Aim Control (LWR)
 `0x9b`|K|Mirror Memory: Driver [E46], Convertible soft top module (CVM) [E36]
 `0x9c`|K|Convertible Soft Top Module (CVM) [E46]
 `0x9d`|K|Electronic disconnecting switch (ETS) [E38]
-`0x9e`|D|Rollover Sensor [E36]
 `0xa0`|I|Rear Multi-functional Display (MID) [E38]
 `0xa4`|K|Multiple Restraint System (MRS)
-`0xa6`|D|Cruise Control
 `0xa7`|K|Rear Compartment Heating/Air Conditioning
 `0xac`|K|Electronic Height Control (EHC)
 `0xb0`|K/I|Speech Input System (SES)
@@ -151,10 +127,8 @@ Device|Bus|Description
 `0xbb`|K/I|Navigation (Japan)
 `0xbf`|K|Broadcast 📣
 `0xc0`|K/I|Multi-functional Display (MID)
-`0xc2`|D|Servotronic (SVT)
 `0xc8`|K/I|Telephone
 `0xcd`|K|Multi-functional Display (OBC) [E31]
-`0xce`|D|Seat Occupancy Detection
 `0xda`|K|Seat Memory: Passenger [E46]
 `0xd0`|K/I|Lamp Check Module (LCM), Light Switch Center (LSZ)
 `0xe0`|K|Integrated Radio and Information System (IRIS)
@@ -165,6 +139,39 @@ Device|Bus|Description
 `0xf0`|I|On-board Computer Control Panel (BMBT)
 `0xf5`|K|Lamp control module (LKM2) [E31]
 `0xff`|K/I|Broadcast 📣
+
+### D-Bus
+
+Device|Bus|Description
+------|---|-----------
+`0x10`|D|Engine Management
+`0x11`|D|Central Body Electronics (ZKE 1/2) [E31, E34]
+`0x12`|D|Engine Management
+`0x13`|D|Engine Management
+`0x14`|D|Engine Management
+`0x15`|D|Double Sunroof (DDSHD) [E34]
+`0x16`|D|Thermal Level Oil Sensor [E36]
+`0x19`|D|*Range Rover*
+`0x20`|D|Electronic Engine Power Control (EML) [M70]
+`0x21`|D|Central locking module [E34, E36]
+`0x22`|D|Electronic Engine Power Control (EML) [M73]
+`0x31`|D|*MINI*
+`0x32`|D|Gearbox Control
+`0x35`|D|Steering Column Memory (LSM) [E31/E32/E34]
+`0x36`|D|ABS/ASC (Concept 1/2)
+`0x56`|D|ABS/ASC/DSC (DS2)
+`0x57`|D|Steering Angle Sensor (LWS)
+`0x59`|D|Automatic Heating/Air Conditioning (IHKA) [E31, E36]
+`0x5a`|D|Electric Steering Lock (ELV) [E52]
+`0x65`|D|Fuel Pump (EKP)
+`0x6c`|D|Gearbox Control
+`0x74`|D|Seat Occupation Detection US (OC3) [E83, 85]
+`0x81`|D|Remote Instrument Pack (RIP)?
+`0x86`|D|Active Rear Axle Kinematics (AHK) [E31]
+`0x9e`|D|Rollover Sensor [E36]
+`0xa6`|D|Cruise Control
+`0xc2`|D|Servotronic (SVT)
+`0xce`|D|Seat Occupancy Detection
 
 ## Command Index
 
