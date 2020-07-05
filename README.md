@@ -19,8 +19,8 @@ This documentation should not be considered authouratative. While great care, an
 1. [Applicable Models](#applicable-models)
 1. [Glossary](#glossary)
 1. Device Index
-    1. [K/I-Bus](#k_i_bus)
-    1. [D-Bus](#d_bus)
+    1. [K/I-Bus](#ki-bus)
+    1. [D-Bus](#d-bus)
 1. [Command Index](#command-index)
 1. Commands by Device
     1. [Telephone](#telephone)
