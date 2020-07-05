@@ -144,6 +144,8 @@ Device|Bus|Description
 
 ### D-Bus
 
+The shared address space might suggest it's possible to communicate with D-Bus devices from the K/I-Bus, however that's not the case. This is purely a function of diagnostics, in which all devices must be addressable from the D-Bus.
+
 Device|Bus|Description
 ------|---|-----------
 `0x10`|D|Engine Management
