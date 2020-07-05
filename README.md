@@ -50,7 +50,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 
 ## Glossary
 
-#### **Body (Karosserie] Bus** (K-Bus)
+#### **Body [Karosserie) Bus** (K-Bus)
 > K-Bus was added to the E38 along with the I-Bus. Models without Navigation or IKE will use the K-Bus only. Both of these bus systems are technically identical, the only difference is their use by model.
 
 #### **Diagnosis Bus** (D-Bus)
