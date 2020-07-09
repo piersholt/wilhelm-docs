@@ -243,7 +243,7 @@ Command|Description
 `0x78`|Memory
 `0x79`|Door Status Request
 `0x7a`|Door Status
-`0xa2`|Telematics Coordinates
+`0xa2`|[Telematics Coordinates](nav/a2.md)
 `0xa4`|Telematics Location
 `0xa5`|Body Text (Telematics, MP3)
 `0xa6`|[SMS Icon](telephone/icon.md)
