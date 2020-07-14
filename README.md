@@ -50,7 +50,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 
 ## Glossary
 
-#### **Body [Karosserie) Bus** (K-Bus)
+#### **Body [Karosserie] Bus** (K-Bus)
 > K-Bus was added to the E38 along with the I-Bus. Models without Navigation or IKE will use the K-Bus only. Both of these bus systems are technically identical, the only difference is their use by model.
 
 #### **Diagnosis Bus** (D-Bus)
@@ -96,6 +96,7 @@ Device|Bus|Description
 `0x3b`|I|Graphics Stage (GT)
 `0x3f`|K/I|Diagnostics (via [gateway](#gateway))
 `0x40`|K|Remote Control for Central Locking (FBZV) [E31]
+`0x43`|I|Unconfirmed: Rear Graphics Stage (GT) [E38]
 `0x44`|K|Drive Away Protection System (EWS)
 `0x45`|K|Anti-Theft System (DWA)
 `0x46`|I|Central Information Display (CID) [E83, E85]
@@ -103,6 +104,7 @@ Device|Bus|Description
 `0x48`|?|Telephone (Japan)
 `0x50`|K/I|Multifunction Steering Wheel (MFL)
 `0x51`|K|Mirror Memory: Passenger [E46]
+`0x53`|K/I|Unconfirmed: Multicast 📣
 `0x5b`|K|Automatic Heating/Air Conditioning (IHKA)
 `0x60`|K/I|Park Distance Control (PDC)
 `0x66`|K|Active Light Control (ALC)
@@ -170,7 +172,7 @@ Device|Bus|Description
 `0x65`|D|Fuel Pump (EKP)
 `0x6c`|D|Gearbox Control
 `0x74`|D|Seat Occupation Detection US (OC3) [E83, 85]
-`0x81`|D|Remote Instrument Pack (RIP)?
+`0x81`|D|*MINI*
 `0x86`|D|Active Rear Axle Kinematics (AHK) [E31]
 `0x9e`|D|Rollover Sensor [E36]
 `0xa6`|D|Cruise Control
