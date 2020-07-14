@@ -204,6 +204,7 @@ Command|Description
 `0x22`|Menu Text Buffer
 `0x23`|Title Text
 `0x24`|[OBC Text](ike/24.md)
+`0x27`|IKE → MID (TBC)
 `0x2a`|[OBC Status](ike/2a.md)
 `0x2b`|[Telephone LEDs](telephone/led.md)
 `0x2c`|[Telephone Status](telephone/status.md)
@@ -225,6 +226,7 @@ Command|Description
 `0x49`|[BMBT Navigation Dial](bmbt/49.md)
 `0x4a`|Tape Control/Radio LED
 `0x4b`|Tape Status
+`0x4e`|GT → Radio (TBC)
 `0x4f`|[BMBT Monitor Control](bmbt/monitor.md)
 `0x50`|Check Control Status Request
 `0x51`|Check Control Status
@@ -238,19 +240,35 @@ Command|Description
 `0x5b`|Lamp Status
 `0x5c`|Instrument Backlighting (58G)
 `0x5d`|Instrument Backlighting (58G) Request
+`0x61`|EHC → GLO (TBC)
+`0x70`|MRS → GLO (TBC)
 `0x71`|Remote (Keyless) Entry Request
 `0x72`|Remote (Keyless) Entry
 `0x73`|Key Status Request
 `0x74`|Key Status
+`0x75`|RLS → GM (TBC)
+`0x76`|Remote (Keyless) Entry (TBC)
+`0x77`|GM → RLS (TBC)
 `0x78`|Memory
 `0x79`|Door Status Request
 `0x7a`|Door Status
+`0x7c`|SHD → GLO (TBC)
+`0x7d`|GM → SHD (TBC)
+`0x82`|IHKA → GLO (TBC)
+`0x83`|IHKA → IKE (TBC)
+`0x86`|IHKA → Nav. (TBC)
+`0x87`|Nav. → IHKA (TBC)
+`0x9e`|GT → RCM (TBC)
 `0xa2`|[Telematics Coordinates](nav/a2.md)
 `0xa4`|Telematics Location
 `0xa5`|Body Text (Telematics, MP3)
 `0xa6`|[SMS Icon](telephone/icon.md)
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
+`0xa9`|BMW Assist Data
+`0xaa`|Rear Nav. Control
+`0xab`|Forward Nav. Control
+`0xaf`|Nav. → SES (TBC)
 
 ## Telephone
 1. `0x02` [Announce](announce.md#telephone-0xc8)
