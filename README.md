@@ -250,8 +250,8 @@ Command|Description
 `0x76`|Remote (Keyless) Entry (TBC)
 `0x77`|GM → RLS (TBC)
 `0x78`|Memory
-`0x79`|Door Status Request
-`0x7a`|Door Status
+`0x79`|[Door/Lid Status Request](gm/79.md)
+`0x7a`|[Door/Lid Status](gm/7a.md)
 `0x7c`|SHD → GLO (TBC)
 `0x7d`|GM → SHD (TBC)
 `0x82`|IHKA → GLO (TBC)
