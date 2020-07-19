@@ -272,23 +272,27 @@ Command|Description
 
 ## Telephone
 1. `0x02` [Announce](02.md#telephone-0xc8)
-1. `0x20` [Main Menu](telephone/main_menu.md)
-1. `0x21` UI
-	1. `0x00` [Default](telephone/layout/default.md)
-	1. `0x05` [Pin-Code](telephone/layout/pin.md)
-	1. `0x42` [Dial](telephone/layout/dial.md)
-		1. [Last Numbers](telephone/layout/last_numbers.md)
-	1. `0x43` [Directory](telephone/layout/directory.md)
-	1. `0x80` [Top 8](telephone/layout/top_8.md)
-	1. `0x90` [Info](telephone/layout/info.md)
-	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
-	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
+1. `0x20` [MID Button: Telephone](telephone/20.md)
+1. `0x21` [Menu: Telephone](telephone/21.md)
+1. `0x23` [Title: Telephone](telephone/23.md)
+1. `0x24` [OBC: Telephone](telephone/24.md)
 1. `0x2b` [Telephone LEDs](telephone/2b.md)
 1. `0x2c` [Telephone Status](telephone/2c.md)
 1. `0xa6` [SMS Icon](telephone/a6.md)
 
+### Displays
+
+1. [Default](telephone/21/00.md)
+1. [Pin-Code](telephone/21/05.md)
+1. [Dial](telephone/21/42.md)
+1. [Last Numbers](telephone/21/last_numbers.md)
+1. [Directory](telephone/21/43.md)
+1. [Info](telephone/21/90.md)
+1. [SMS Index](telephone/21/f0.md)
+1. [SMS Message/Emergency](telephone/21/f1.md)
+
 1. Appendix
-    1. [SMS Overview](telephone/layout/sms.md)
+    1. [SMS Overview](telephone/sms.md)
 
 ## On-board Computer Control Panel (BMBT)
 
