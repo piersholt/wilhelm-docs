@@ -184,13 +184,13 @@ Device|Bus|Description
 Command|Description
 :--|:--
 `0x01`|Ping
-`0x02`|[Pong & Announce](announce.md)
-`0x10`|[Ignition Request](ike/ignition_request.md)
-`0x11`|[Ignition](ike/ignition.md)
+`0x02`|[Pong & Announce](02.md)
+`0x10`|[Ignition Request](ike/10.md)
+`0x11`|[Ignition](ike/11.md)
 `0x12`|Sensors Request
 `0x13`|Sensors
-`0x14`|[Language & Region Request](ike/region_request.md)
-`0x15`|[Language & Region](ike/region.md)
+`0x14`|[Language & Region Request](ike/14.md)
+`0x15`|[Language & Region](ike/15.md)
 `0x16`|Mileage Request
 `0x17`|Mileage
 `0x18`|Speed
@@ -198,7 +198,7 @@ Command|Description
 `0x1a`|Check Control Message
 `0x1b`|Check Control Message Buffer
 `0x1d`|Temperature Request
-`0x1f`|[GPS Time](nav/gpst.md)
+`0x1f`|[GPS Time](nav/1f.md)
 `0x20`|MID Button
 `0x21`|Menu Text
 `0x22`|Menu Text Buffer
@@ -206,8 +206,8 @@ Command|Description
 `0x24`|[OBC Text](ike/24.md)
 `0x27`|IKE → MID (TBC)
 `0x2a`|[OBC Status](ike/2a.md)
-`0x2b`|[Telephone LEDs](telephone/led.md)
-`0x2c`|[Telephone Status](telephone/status.md)
+`0x2b`|[Telephone LEDs](telephone/2b.md)
+`0x2c`|[Telephone Status](telephone/2c.md)
 `0x31`|Menu Button
 `0x32`|[BMBT Volume](bmbt/32.md) & [MFL Volume](mfl/32.md)
 `0x34`|DSP Control
@@ -218,7 +218,7 @@ Command|Description
 `0x3b`|[MFL Buttons](mfl/3b.md)
 `0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
-`0x42`|[Remote Control](ike/prog.md)
+`0x42`|[Remote Control](ike/42.md)
 `0x45`|Radio UI Request
 `0x46`|Radio UI
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
@@ -227,7 +227,7 @@ Command|Description
 `0x4a`|Tape Control/Radio LED
 `0x4b`|Tape Status
 `0x4e`|GT → Radio (TBC)
-`0x4f`|[BMBT Monitor Control](bmbt/monitor.md)
+`0x4f`|[BMBT Monitor Control](bmbt/4f.md)
 `0x50`|Check Control Status Request
 `0x51`|Check Control Status
 `0x52`|Check Control Message Relay
@@ -262,7 +262,7 @@ Command|Description
 `0xa2`|[Telematics Coordinates](nav/a2.md)
 `0xa4`|Telematics Location
 `0xa5`|Body Text (Telematics, MP3)
-`0xa6`|[SMS Icon](telephone/icon.md)
+`0xa6`|[SMS Icon](telephone/a6.md)
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
 `0xa9`|BMW Assist Data
@@ -271,7 +271,7 @@ Command|Description
 `0xaf`|Nav. → SES (TBC)
 
 ## Telephone
-1. `0x02` [Announce](announce.md#telephone-0xc8)
+1. `0x02` [Announce](02.md#telephone-0xc8)
 1. `0x20` [Main Menu](telephone/main_menu.md)
 1. `0x21` UI
 	1. `0x00` [Default](telephone/layout/default.md)
@@ -283,17 +283,17 @@ Command|Description
 	1. `0x90` [Info](telephone/layout/info.md)
 	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
 	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
-1. `0x2b` [Telephone LEDs](telephone/led.md)
-1. `0x2c` [Telephone Status](telephone/status.md)
-1. `0xa6` [SMS Icon](telephone/icon.md)
+1. `0x2b` [Telephone LEDs](telephone/2b.md)
+1. `0x2c` [Telephone Status](telephone/2c.md)
+1. `0xa6` [SMS Icon](telephone/a6.md)
 
 1. Appendix
     1. [SMS Overview](telephone/layout/sms.md)
 
 ## On-board Computer Control Panel (BMBT)
 
-1. `0x02` [Announce](announce.md#bmbt-0xf0)
-1. `0x4f` [Monitor Control](bmbt/monitor.md)
+1. `0x02` [Announce](02.md#bmbt-0xf0)
+1. `0x4f` [Monitor Control](bmbt/4f.md)
 
 ##### Controls
 1. `0x48` [Buttons](bmbt/48.md)
@@ -309,11 +309,11 @@ Command|Description
 
 ## Instrument Cluster (IKE)
 
-1. `0x10` [Ignition Request](ike/ignition_request.md)
-1. `0x11` [Ignition](ike/ignition.md)
-1. `0x14` [Language & Region Request](ike/region_request.md)
-1. `0x15` [Language & Region](ike/region.md)
-1. `0x42` [Remote Control](ike/prog.md)
+1. `0x10` [Ignition Request](ike/10.md)
+1. `0x11` [Ignition](ike/11.md)
+1. `0x14` [Language & Region Request](ike/14.md)
+1. `0x15` [Language & Region](ike/15.md)
+1. `0x42` [Remote Control](ike/42.md)
 
 ##### Redundant Data Storage
 1. `0x53` [Redundant Data Request](ike/53.md)
@@ -322,5 +322,5 @@ Command|Description
 
 ## Navigation
 
-1. `0x02` [Announce](announce.md#nav-computer-0x7f)
-1. `0x1f` [GPS Time](nav/gpst.md)
+1. `0x02` [Announce](02.md#nav-computer-0x7f)
+1. `0x1f` [GPS Time](nav/1f.md)
