@@ -187,8 +187,8 @@ Command|Description
 `0x02`|[Pong & Announce](02.md)
 `0x10`|[Ignition Request](ike/10.md)
 `0x11`|[Ignition](ike/11.md)
-`0x12`|Sensors Request
-`0x13`|Sensors
+`0x12`|[Sensors Request](ike/12.md)
+`0x13`|[Sensors](ike/13.md)
 `0x14`|[Language & Region Request](ike/14.md)
 `0x15`|[Language & Region](ike/15.md)
 `0x16`|Mileage Request
