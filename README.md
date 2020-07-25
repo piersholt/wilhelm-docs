@@ -218,7 +218,7 @@ Command|Description
 `0x3b`|[MFL Buttons](mfl/3b.md)
 `0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
-`0x42`|[Remote Control](ike/42.md)
+`0x42`|[OBC Remote Control](ike/42.md)
 `0x45`|Radio UI Request
 `0x46`|Radio UI
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
