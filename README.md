@@ -211,14 +211,14 @@ Command|Description
 `0x31`|Menu Button
 `0x32`|[BMBT Volume](bmbt/32.md) & [MFL Volume](mfl/32.md)
 `0x34`|DSP Control
-`0x36`|Radio EQ.
-`0x37`|Radio Tone/Select
+`0x36`|[Radio EQ](radio/36.md)
+`0x37`|[Radio Tone/Select](radio/37.md)
 `0x38`|CDC Status Request
 `0x39`|CDC Status
 `0x3b`|[MFL Buttons](mfl/3b.md)
 `0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
-`0x42`|[Remote Control](ike/42.md)
+`0x42`|[OBC Remote Control](ike/42.md)
 `0x45`|Radio UI Request
 `0x46`|Radio UI
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
