@@ -211,8 +211,8 @@ Command|Description
 `0x31`|Menu Button
 `0x32`|[BMBT Volume](bmbt/32.md) & [MFL Volume](mfl/32.md)
 `0x34`|DSP Control
-`0x36`|Radio EQ.
-`0x37`|Radio Tone/Select
+`0x36`|[Radio EQ](radio/36.md)
+`0x37`|[Radio Tone/Select](radio/37.md)
 `0x38`|CDC Status Request
 `0x39`|CDC Status
 `0x3b`|[MFL Buttons](mfl/3b.md)
