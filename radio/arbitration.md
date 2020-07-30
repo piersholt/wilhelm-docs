@@ -1,6 +1,6 @@
 # Radio UI and Display Contention
 
-0x45 and 0x46 are, for the best part, to manage *when* the radio is in the foreground, and to a lesser extent, *how* it behaves in the foreground.
+`0x45` and `0x46` are, for the best part, to manage *when* the radio is in the foreground, and to a lesser extent, *how* it behaves in the foreground.
 
 The need for this is a function of how how the GT UI came to be, which was by shoehorning an aftermarket standalone navigation system into what I'd argue was BMW's first in-vehicle infotainment (IVI) system, while avoiding change how anything else worked!
 
