@@ -282,12 +282,13 @@ Command|Description
 
 ### Displays
 
-1. [Default](telephone/21/00.md)
-1. [Pin-Code](telephone/21/05.md)
+1. [Default](telephone/23/00.md)
+1. [Pin-Code](telephone/23/05.md)
 1. [Dial](telephone/21/42.md)
-1. [Last Numbers](telephone/21/last_numbers.md)
+1. [Last Numbers](telephone/23/42.md)
 1. [Directory](telephone/21/43.md)
-1. [Info](telephone/21/90.md)
+1. [Top 8](telephone/21/80.md)
+1. [Info](telephone/24/90.md)
 1. [SMS Index](telephone/21/f0.md)
 1. [SMS Message/Emergency](telephone/21/f1.md)
 
