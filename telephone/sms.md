@@ -1,6 +1,6 @@
 # SMS Overview
 
-![Telephone SMS Option](21/42/dial_create.JPG)
+![Telephone SMS Option](dial/dial_create.JPG)
 
 When I installed the MK4, the Telephone menu had a new option **SMS** which sparked my interest.
 
@@ -38,6 +38,6 @@ The **SMS index** layout is seemingly a repurposed **Directory/Top 8**, which I 
 The **SMS view** layout appears to just a repurposed **SOS/Emergency** layout.
 
 
-![Example SMS](21/f1/reference_sms_message.jpeg)
+![Example SMS](detail/reference_sms_message.jpeg)
 
 ![Example SOS](sms/sms_emergency.jpg)

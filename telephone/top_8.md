@@ -1,12 +1,12 @@
-# Top 8
+# Telephone: Top 8
 
 Top 8 is essentially identical to Directory, with only the absence of "<<" and ">>" inputs. It still has a limit of 8 contacts.
 
-![Top 8 Example](80/top_8_create.JPG)
+![Top 8 Example](top_8/top_8_create.JPG)
 
 ## Create
 
-![Create Top 8 Layout](80/top_8_21.JPG)
+![Create Top 8 Layout](top_8/top_8_21.JPG)
 	
 	# Identical to Directory- just replace 0x43 with 0x80
 	C8 <LEN> 3B 21 43 01 60 06 "A" 06 "B" <CS> # Directory
@@ -15,7 +15,7 @@ Top 8 is essentially identical to Directory, with only the absence of "<<" and "
 
 ## Inputs
 
-![Top 8 Inputs](80/top_8_31.JPG)
+![Top 8 Inputs](top_8/top_8_31.JPG)
 
 	 # Identical to Directory- just expect 0x80 in place of 0x43.
 	 # Note: Press event only!
@@ -36,7 +36,7 @@ Top 8 is essentially identical to Directory, with only the absence of "<<" and "
 ### Contact Selection
 #### Top 8 Contact Name
 
-![Top 8 Contact Name](80/top_8_name.JPG)
+![Top 8 Contact Name](top_8/top_8_name.JPG)
 
 
     # Contact Name
@@ -45,7 +45,7 @@ Top 8 is essentially identical to Directory, with only the absence of "<<" and "
 
 ##### Top 8 Contact Number
 
-![Top 8 Contact Number](80/top_8_number.JPG)
+![Top 8 Contact Number](top_8/top_8_number.JPG)
 
     # Contact Number
     C8 <LEN> 3B 23 82 00 "555 1234" <CS>

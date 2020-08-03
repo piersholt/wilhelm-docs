@@ -1,6 +1,6 @@
-# Info
+# Telephone: Info
 
-![Info Example](90/info_create.JPG)
+![Info Example](info/info_create.JPG)
 
 ## Create
 
@@ -27,7 +27,7 @@
 - once a field is set, it's not possible to hide it.
 	- _TODO: try null-terminated string!_
 
-![Info Subset](90/info_subset.JPG)
+![Info Subset](info/info_subset.JPG)
 
     # Subset of Info fields
     C8 11 3B 24 91 b3 5a 5a 5a 5a 5a 5a <CS> # Strength
@@ -37,7 +37,7 @@
 ### Usage?
 I'm not entirely sure if this is displayed automatically upon accepting a call, but if so, presumably the text might be the caller name/number.
 
-![NOT FOUND](90/info_title.JPG)
+![NOT FOUND](info/info_title.JPG)
 
     # Info Title
     C8 <LEN> 3B 24 91 00 "Info Title" <CS>

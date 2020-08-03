@@ -4,14 +4,14 @@ Squeezed into **Dial** is **Last Numbers**.
 
 ## Inputs
 
-![Last Numbers Example](42/open.JPG)
+![Last Numbers Example](last_numbers/open.JPG)
 
     # Open "Last Numbers"
     3B 06 C8 31 00 00 0D C8
 
 As this command is also used for "next" last number, a number is rendered upon open.
 
-![Open Last Numbers](42/last_numbers_create.JPG)
+![Open Last Numbers](last_numbers/last_numbers_create.JPG)
 
 
     # Close "Last Numbers"
@@ -20,11 +20,11 @@ As this command is also used for "next" last number, a number is rendered upon o
 Last Numbers is closed by confirming with the rotary knob. A `0x31` command isn't sent to the telephone, meaning the last written number remains on the display unless otherwise cleared. This may be normal behaviour, but TBC.
 
 
-![Close Last Numbers](42/last_numbers_destroy.JPG)
+![Close Last Numbers](last_numbers/last_numbers_destroy.JPG)
 
 Navigating the numbers is then done with the rotary knob. Unlike volume controls, there's no "magnitude", and rotating the control at a faster rate simply sends the same command at a higher frequency.
 
-![NOT FOUND](42/number.JPG)
+![NOT FOUND](last_numbers/number.JPG)
 
     # Previous Number (Rotary Left Turn)
     3B 06 C8 31 00 00 0C C9
