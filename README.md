@@ -200,10 +200,10 @@ Command|Description
 `0x1d`|Temperature Request
 `0x1f`|[GPS Time](nav/1f.md)
 `0x20`|MID Button
-`0x21`|Menu Text
+`0x21`|Menu Text: [Telephone](telephone/21.md)
 `0x22`|Menu Text Buffer
-`0x23`|Title Text
-`0x24`|[OBC Text](ike/24.md)
+`0x23`|Title Text: [Telephone](telephone/23.md)
+`0x24`|OBC Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)
 `0x27`|IKE → MID (TBC)
 `0x2a`|[OBC Status](ike/2a.md)
 `0x2b`|[Telephone LEDs](telephone/2b.md)
@@ -261,7 +261,7 @@ Command|Description
 `0x9e`|GT → RCM (TBC)
 `0xa2`|[Telematics Coordinates](nav/a2.md)
 `0xa4`|Telematics Location
-`0xa5`|Body Text (Telematics, MP3)
+`0xa5`|Body Text: [Telephone](telephone/a5.md) / Radio
 `0xa6`|[SMS Icon](telephone/a6.md)
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
