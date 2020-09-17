@@ -289,8 +289,10 @@ Command|Description
 1. [Directory](telephone/directory.md)
 1. [Top 8](telephone/top_8.md)
 1. [Info](telephone/info.md)
+1. [Bluetooth Pairing](telephone/list.md)
 1. [SMS Index](telephone/list.md)
-1. [SMS Message/Emergency](telephone/detail.md)
+1. [SMS Message](telephone/detail.md)
+1. [SOS/Emergency](telephone/detail.md)
 
 1. Appendix
     1. [SMS Overview](telephone/sms.md)
