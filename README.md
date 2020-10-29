@@ -273,9 +273,9 @@ Command|Description
 ## Telephone
 1. `0x02` [Announce](02.md#telephone-0xc8)
 1. `0x20` [MID Button: Telephone](telephone/20.md)
-1. `0x21` [Menu: Telephone](telephone/21.md)
-1. `0x23` [Title: Telephone](telephone/23.md)
-1. `0x24` [OBC: Telephone](telephone/24.md)
+1. `0x21` [Menu Text: Telephone](telephone/21.md)
+1. `0x23` [Title Text: Telephone](telephone/23.md)
+1. `0x24` [OBC Text: Telephone](telephone/24.md)
 1. `0x2b` [Telephone LEDs](telephone/2b.md)
 1. `0x2c` [Telephone Status](telephone/2c.md)
 1. `0xa6` [SMS Icon](telephone/a6.md)
