@@ -18,20 +18,19 @@ _The need for arbitration is a result of heretounforeseen resource contention. T
 
 Module|Variant|Note|Command|Argument
 :-----|:------|:---|:------|:-------
-Radio|C23|Hide Overlay|`46`|`0b0000_1110`
-Radio|C23|Menu (Reply?)|`46`|`0b0000_0001`
-Radio|C23|Hide Tone|`46`|`0b0000_1000`
-Radio|C23|Hide Select|`46`|`0b0000_0100`
-Radio|C23|Turn Off|`46`|`0b0000_1110`
-
-Module|Variant|Note|Command|Argument
-:-----|:------|:---|:------|:-------
 GT|MK1|Ignition|`45`|`0b0000_0000`
 GT|MK1|Menu|`45`|`0b0000_0001`
 GT|MK1|Audio OBC|`45`|`0b0000_0011`
 GT|VM|Ignition|`45`|`0b0000_0000`
 GT|VM|Ignition|`46`|`0b0000_0001`
 
+Module|Variant|Note|Command|Argument
+:-----|:------|:---|:------|:-------
+Radio|C23|Hide Overlay|`46`|`0b0000_1110`
+Radio|C23|Menu (Reply?)|`46`|`0b0000_0001`
+Radio|C23|Hide Tone|`46`|`0b0000_1000`
+Radio|C23|Hide Select|`46`|`0b0000_0100`
+Radio|C23|Turn Off|`46`|`0b0000_1110`
 
 ----
 
@@ -104,17 +103,23 @@ GT|VM|Ignition|`46`|`0b0000_0001`
 
 #### hide overlay
 
-    bmbt  rad	BMBT-RAD* 	0x30 (0011 0000) :bmbt_overlay [Overlay] Press 
+    bmbt  rad	BMBT-RAD* 	0x30 (0011 0000) :bmbt_overlay [Overlay] Press
+    
     rad   gt	UI-RAD    	state: 0x0e ((0000 1110) Hide: Menu, Hide Header: [ON])
+    
     bmbt  rad	BMBT-RAD* 	0xb0 (1011 0000) :bmbt_overlay [Overlay] Release
     
 #### menu button
-    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press 
+
+    bmbt  glo_h	BMBT-GLO  	0x34 (0011 0100) :bmbt_menu [Menu] Press
+    
     gt    rad	UI-GT     	config: 0x01 ((0000 0001) Main Menu: [ON])
     rad   gt	UI-RAD    	state: 0x01 ((0000 0001) Hide: --, Main Menu: [ON])
+    
     bmbt  glo_h	BMBT-GLO  	0xb4 (1011 0100) :bmbt_menu [Menu] Release
     
 #### radio off
+
     bmbt    rad     BMBT-RAD* 	0x06 (0000 0110) :bmbt_power     	[Power]        	Press 
     rad     bmbt	RAD-LED   	led: 00 ((LED) Off)
     rad	    gt    	UI-RAD    	state: 0x0e ((0000 1110) Hide: Menu, Hide Header: [ON])
