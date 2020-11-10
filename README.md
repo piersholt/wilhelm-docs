@@ -196,7 +196,7 @@ Command|Description
 `0x18`|Speed
 `0x19`|Temperature
 `0x1a`|Check Control Message
-`0x1b`|Check Control Message Buffer
+`0x1b`|Check Control Priority
 `0x1d`|Temperature Request
 `0x1f`|[GPS Time](nav/1f.md)
 `0x20`|MID Button
