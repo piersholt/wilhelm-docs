@@ -30,6 +30,19 @@ This is, near as makes no difference, the same as creating radio layouts with a 
     # 0xA5 will both set the title and render layout
     C8 <LEN> 3B A5 F1 00 00 "a5 F1 00 00 Title" <CS>
 
+### Offset
+
+The `0xa5` command was seemingly introduced to allow defining an offset (akin to string buffer cursor pos). This allows writing to a the same index/line where using a single message will exceed the frame limit, thus causing buffer overflow.
+
+    # Offset
+    # 5 LSBs in first argument can be used to pad text
+
+    C8 <LEN> 3B A5 01 00 <CHARS> <CS> # Offset 0
+    C8 <LEN> 3B A5 02 00 <CHARS> <CS> # Offset 1
+    C8 <LEN> 3B A5 03 00 <CHARS> <CS> # Offset 2
+    C8 <LEN> 3B A5 04 00 <CHARS> <CS> # Offset 3
+    C8 <LEN> 3B A5 05 00 <CHARS> <CS> # Offset 4
+    C8 <LEN> 3B A5 06 00 <CHARS> <CS> # Offset 5
 
 ### Buttons
 - the buttons will only be displayed if their label is set

@@ -85,20 +85,6 @@ Lines and Inputs can be omitted, and just the title set, ala "BLUETOOTH PAIRING"
     # Title Only
     C8 <LEN> 3B A5 F0 00 00 "BLUETOOTH PAIRING" <CS>
 
-### Title Padding
-
-[![Default Flash](http://img.youtube.com/vi/pcbNSaBiFt4/0.jpg)](https://www.youtube.com/watch?v=pcbNSaBiFt4)
-
-    # Tittle Padding
-    # 5 LSBs in first argument can be used to pad text
-
-    C8 <LEN> 3B A5 01 00 <CHARS> <CS> # No padding
-    C8 <LEN> 3B A5 02 00 <CHARS> <CS> # Pad 1
-    C8 <LEN> 3B A5 03 00 <CHARS> <CS> # Pad 2
-    C8 <LEN> 3B A5 04 00 <CHARS> <CS> # Pad 3
-    C8 <LEN> 3B A5 05 00 <CHARS> <CS> # Pad 4
-    C8 <LEN> 3B A5 06 00 <CHARS> <CS> # Pad 5
-
 ## Inputs
 
 ![Input Press](list/index_input_press.JPG)
