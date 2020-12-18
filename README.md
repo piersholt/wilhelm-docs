@@ -203,7 +203,7 @@ Command|Description
 `0x21`|Menu Text: [Telephone](telephone/21.md)
 `0x22`|Menu Text Buffer
 `0x23`|Title Text: [Telephone](telephone/23.md)
-`0x24`|OBC Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)
+`0x24`|Property Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)
 `0x27`|IKE → MID (TBC)
 `0x2a`|[OBC Status](ike/2a.md)
 `0x2b`|[Telephone LEDs](telephone/2b.md)
@@ -275,7 +275,7 @@ Command|Description
 1. `0x20` [MID Button: Telephone](telephone/20.md)
 1. `0x21` [Menu Text: Telephone](telephone/21.md)
 1. `0x23` [Title Text: Telephone](telephone/23.md)
-1. `0x24` [OBC Text: Telephone](telephone/24.md)
+1. `0x24` [Property Text: Telephone](telephone/24.md)
 1. `0x2b` [Telephone LEDs](telephone/2b.md)
 1. `0x2c` [Telephone Status](telephone/2c.md)
 1. `0xa6` [SMS Icon](telephone/a6.md)
