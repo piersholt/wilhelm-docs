@@ -200,10 +200,10 @@ Command|Description
 `0x1d`|[Temperature Request](ike/1d.md)
 `0x1f`|[GPS Time](nav/1f.md)
 `0x20`|MID Button
-`0x21`|Menu Text
+`0x21`|Menu Text: [Telephone](telephone/21.md)
 `0x22`|Menu Text Buffer
-`0x23`|Title Text
-`0x24`|[OBC Text](ike/24.md)
+`0x23`|Title Text: [Telephone](telephone/23.md)
+`0x24`|Property Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)
 `0x27`|IKE → MID (TBC)
 `0x2a`|[OBC Status](ike/2a.md)
 `0x2b`|[Telephone LEDs](telephone/2b.md)
@@ -261,7 +261,7 @@ Command|Description
 `0x9e`|GT → RCM (TBC)
 `0xa2`|[Telematics Coordinates](nav/a2.md)
 `0xa4`|Telematics Location
-`0xa5`|Body Text (Telematics, MP3)
+`0xa5`|Body Text: [Telephone](telephone/a5.md) / Radio
 `0xa6`|[SMS Icon](telephone/a6.md)
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
@@ -272,23 +272,28 @@ Command|Description
 
 ## Telephone
 1. `0x02` [Announce](02.md#telephone-0xc8)
-1. `0x20` [Main Menu](telephone/main_menu.md)
-1. `0x21` UI
-	1. `0x00` [Default](telephone/layout/default.md)
-	1. `0x05` [Pin-Code](telephone/layout/pin.md)
-	1. `0x42` [Dial](telephone/layout/dial.md)
-		1. [Last Numbers](telephone/layout/last_numbers.md)
-	1. `0x43` [Directory](telephone/layout/directory.md)
-	1. `0x80` [Top 8](telephone/layout/top_8.md)
-	1. `0x90` [Info](telephone/layout/info.md)
-	1. `0xf0` [SMS Index](telephone/layout/sms/index.md)
-	1. `0xf1` [SMS Message/Emergency](telephone/layout/sms/message.md)
+1. `0x20` [MID Button: Telephone](telephone/20.md)
+1. `0x21` [Menu Text: Telephone](telephone/21.md)
+1. `0x23` [Title Text: Telephone](telephone/23.md)
+1. `0x24` [Property Text: Telephone](telephone/24.md)
 1. `0x2b` [Telephone LEDs](telephone/2b.md)
 1. `0x2c` [Telephone Status](telephone/2c.md)
+1. `0xa5` [Body Text: Telephone](telephone/a5.md)
 1. `0xa6` [SMS Icon](telephone/a6.md)
 
-1. Appendix
-    1. [SMS Overview](telephone/layout/sms.md)
+### Displays
+
+1. [Default](telephone/default.md)
+1. [Pin-Code](telephone/pin.md)
+1. [Dial](telephone/dial.md)
+1. [Last Numbers](telephone/last_numbers.md)
+1. [Directory](telephone/directory.md)
+1. [Top 8](telephone/top_8.md)
+1. [Info](telephone/info.md)
+1. [Bluetooth Pairing](telephone/list.md)
+1. [SMS Index](telephone/list.md)
+1. [SMS Message](telephone/detail.md)
+1. [SOS/Emergency](telephone/detail.md)
 
 ## On-board Computer Control Panel (BMBT)
 

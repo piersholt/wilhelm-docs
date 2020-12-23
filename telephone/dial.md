@@ -1,4 +1,4 @@
-# Dial
+# Telephone: Dial
 
 ![Example Dial Layout](dial/dial_create.JPG)
 

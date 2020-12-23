@@ -1,12 +1,12 @@
-# SMS Message
+# Telephone: SMS Message & Emergency
 
-![SMS Message Reference](message/reference_sms_message.jpeg)
+![SMS Message Reference](detail/reference_sms_message.jpeg)
 
 ## Create
 
 This is, near as makes no difference, the same as creating radio layouts with a few minor differences.
 
-![Create SMS Layout](message/message_create.JPG)
+![Create SMS Layout](detail/message_create.JPG)
 
     # Lines
     C8 <LEN> 3B 21 F1 00 60 "Line 0" <CS> # Always grey!
@@ -30,12 +30,25 @@ This is, near as makes no difference, the same as creating radio layouts with a 
     # 0xA5 will both set the title and render layout
     C8 <LEN> 3B A5 F1 00 00 "a5 F1 00 00 Title" <CS>
 
+### Offset
+
+The `0xa5` command was seemingly introduced to allow defining an offset (akin to string buffer cursor pos). This allows writing to a the same index/line where using a single message will exceed the frame limit, thus causing buffer overflow.
+
+    # Offset
+    # 5 LSBs in first argument can be used to pad text
+
+    C8 <LEN> 3B A5 01 00 <CHARS> <CS> # Offset 0
+    C8 <LEN> 3B A5 02 00 <CHARS> <CS> # Offset 1
+    C8 <LEN> 3B A5 03 00 <CHARS> <CS> # Offset 2
+    C8 <LEN> 3B A5 04 00 <CHARS> <CS> # Offset 3
+    C8 <LEN> 3B A5 05 00 <CHARS> <CS> # Offset 4
+    C8 <LEN> 3B A5 06 00 <CHARS> <CS> # Offset 5
 
 ### Buttons
 - the buttons will only be displayed if their label is set
 - this includes the "Back" button, which can also be omitted
 
-![Subset Of Buttons](message/message_buttons.JPG)
+![Subset Of Buttons](detail/message_buttons.JPG)
 
     # Display only "Back" and middle buttons
     # Lines...
@@ -67,7 +80,7 @@ _Once the button ID is set, it cannot be changed!_ It's not until GT renders Mai
 
 Set the highlighted button:
 
-![Default Button](message/message_button_left.JPG)
+![Default Button](detail/message_button_left.JPG)
 
     # Select LEFT button by default
 
@@ -83,7 +96,7 @@ Set the highlighted button:
     C8 <LEN> 3B A5 F1 00 00 "Vote Left! 0xd1" <CS>
 
 
-![Default Button 2](message/message_button_right.JPG)
+![Default Button 2](detail/message_button_right.JPG)
 
     # Select RIGHT button by default
     # 0b1000_000|0x52 => 0xd2
@@ -96,7 +109,7 @@ Set the highlighted button:
 
 These must be used with care. The GT definitely has a fixed buffer size, and exceeding it causes all kinds of mayhem!
 
-![Line Break](message/message_cr.JPG)
+![Line Break](detail/message_cr.JPG)
 
     # Line Break
     C8 <LEN> 3B 21 F1 00 60 "Line 0" <CS>
@@ -125,7 +138,7 @@ Ensure the "flush" bit isn't set on any commands, which will otherwise clear the
 
 ### Add Button
 
-![Add Button](message/message_button_update_add.JPG)
+![Add Button](detail/message_button_update_add.JPG)
 
     # Add a button
     C8 <LEN> 3B 21 F1 00 52 "I'm new" <CS>
@@ -137,7 +150,7 @@ Ensure the "flush" bit isn't set on any commands, which will otherwise clear the
 
 ### Remove Button
 
-![Remove Button](message/message_button_update_remove.JPG)
+![Remove Button](detail/message_button_update_remove.JPG)
 
     # Remove a button
     # Use null-terminated string

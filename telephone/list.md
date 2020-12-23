@@ -1,12 +1,12 @@
-# SMS Index
+# Telephone: SMS Index
 
-![SMS Index Example](index/reference_sms_index.jpeg)
+![SMS Index Example](list/reference_sms_index.jpeg)
 
 ## Create
 
 This is very similar to using radio layouts.
 
-![SMS Index Create](index/index_create.JPG)
+![SMS Index Create](list/index_create.JPG)
 
 
     # Items
@@ -31,7 +31,7 @@ This is very similar to using radio layouts.
 
 ### Default Selected Item
 
-![Default Item](index/index_default.JPG)
+![Default Item](list/index_default.JPG)
 
     # Highlight 5th Item
     # Add 0b1000_0000 (0x80) to last argument (0x44)
@@ -43,7 +43,7 @@ This is very similar to using radio layouts.
 
 The value returned by `0x31` can be specified.
 
-![User Defined IDs](index/index_custom_id.JPG)
+![User Defined IDs](list/index_custom_id.JPG)
 
     # User Defined IDs denoted by: [XX]
 
@@ -67,7 +67,7 @@ The value returned by `0x31` can be specified.
     C8 <LEN> 3B A5 F0 00 00 "User Defined ID" <CS>
 
 **User Defined IDs Returned by `0x31`**
-![User Defined IDs](index/index_custom_id_input.JPG)
+![User Defined IDs](list/index_custom_id_input.JPG)
 
 
 #### _Warning!_
@@ -77,31 +77,17 @@ _Once the button ID is set, it cannot be changed!_ It's not until GT renders Mai
 
 Lines and Inputs can be omitted, and just the title set, ala "BLUETOOTH PAIRING".
 
-![Title Only Reference](index/reference_pairing.jpg)
+![Title Only Reference](list/reference_pairing.jpg)
 
 
-![Title Only](index/index_title.JPG)
+![Title Only](list/index_title.JPG)
 
     # Title Only
     C8 <LEN> 3B A5 F0 00 00 "BLUETOOTH PAIRING" <CS>
 
-### Title Padding
-
-[![Default Flash](http://img.youtube.com/vi/pcbNSaBiFt4/0.jpg)](https://www.youtube.com/watch?v=pcbNSaBiFt4)
-
-    # Tittle Padding
-    # 5 LSBs in first argument can be used to pad text
-
-    C8 <LEN> 3B A5 01 00 <CHARS> <CS> # No padding
-    C8 <LEN> 3B A5 02 00 <CHARS> <CS> # Pad 1
-    C8 <LEN> 3B A5 03 00 <CHARS> <CS> # Pad 2
-    C8 <LEN> 3B A5 04 00 <CHARS> <CS> # Pad 3
-    C8 <LEN> 3B A5 05 00 <CHARS> <CS> # Pad 4
-    C8 <LEN> 3B A5 06 00 <CHARS> <CS> # Pad 5
-
 ## Inputs
 
-![Input Press](index/index_input_press.JPG)
+![Input Press](list/index_input_press.JPG)
 
     # Press
     3B <LEN> C8 31 F0 00 00 <CS>
@@ -118,11 +104,11 @@ Lines and Inputs can be omitted, and just the title set, ala "BLUETOOTH PAIRING"
     3B <LEN> C8 31 F0 00 10 <CS> # Back Button
     3B <LEN> C8 31 F0 00 13 <CS> # Top Right
 
-![Input Hold](index/index_input_hold.JPG)
+![Input Hold](list/index_input_hold.JPG)
 
     # Add 0x20 to last byte
 
-![Input Release](index/index_input_release.JPG)
+![Input Release](list/index_input_release.JPG)
 
     # Add 0x40 to last byte
 
