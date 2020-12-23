@@ -278,6 +278,7 @@ Command|Description
 1. `0x24` [Property Text: Telephone](telephone/24.md)
 1. `0x2b` [Telephone LEDs](telephone/2b.md)
 1. `0x2c` [Telephone Status](telephone/2c.md)
+1. `0xa5` [Body Text: Telephone](telephone/a5.md)
 1. `0xa6` [SMS Icon](telephone/a6.md)
 
 ### Displays
@@ -293,9 +294,6 @@ Command|Description
 1. [SMS Index](telephone/list.md)
 1. [SMS Message](telephone/detail.md)
 1. [SOS/Emergency](telephone/detail.md)
-
-1. Appendix
-    1. [SMS Overview](telephone/sms.md)
 
 ## On-board Computer Control Panel (BMBT)
 
