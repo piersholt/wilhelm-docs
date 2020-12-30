@@ -1,11 +1,10 @@
-# Pin-Code
+# Telephone: Pin-Code
 
 This may have only been pertinent to the earlier factory built in phones, but it's useful for other purposes.
 
 ![BMBT Pin-Code Example](pin/pin_gt.JPG)
 
 ![IKE Pin-Code Example](pin/pin_ike.JPG)
-
 
 ## Create
 
