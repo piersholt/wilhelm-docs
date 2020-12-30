@@ -247,7 +247,7 @@ Command|Description
 `0x73`|Key Status Request
 `0x74`|Key Status
 `0x75`|RLS → GM (TBC)
-`0x76`|Remote (Keyless) Entry (TBC)
+`0x76`|[Visual Indicators](gm/76.md)
 `0x77`|GM → RLS (TBC)
 `0x78`|Memory
 `0x79`|[Door/Lid Status Request](gm/79.md)
