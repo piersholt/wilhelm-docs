@@ -202,7 +202,7 @@ Command|Description
 `0x20`|MID Button
 `0x21`|Menu Text: [Telephone](telephone/21.md)
 `0x22`|Menu Text Buffer
-`0x23`|Title Text: [Telephone](telephone/23.md)
+`0x23`|Title Text: [Radio](radio/23.md) / [Telephone](telephone/23.md)
 `0x24`|Property Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)
 `0x27`|IKE → MID (TBC)
 `0x2a`|[OBC Status](ike/2a.md)
