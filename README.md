@@ -141,7 +141,7 @@ Device|Bus|Description
 `0xea`|I|DSP Controler [E38]
 `0xed`|I|Video Module
 `0xf0`|I|On-board Computer Control Panel (BMBT)
-`0xf5`|K|Lamp control module (LKM2) [E31]
+`0xf5`|K|Center Console Switch Center (SZM), Lamp control module (LKM2) [E31]
 `0xff`|K/I|Broadcast 📣
 
 ### D-Bus
