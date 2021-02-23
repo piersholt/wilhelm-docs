@@ -1,4 +1,4 @@
-# Top 8
+# Telephone: Top 8
 
 Top 8 is essentially identical to Directory, with only the absence of "<<" and ">>" inputs. It still has a limit of 8 contacts.
 

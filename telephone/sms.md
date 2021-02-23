@@ -38,6 +38,6 @@ The **SMS index** layout is seemingly a repurposed **Directory/Top 8**, which I 
 The **SMS view** layout appears to just a repurposed **SOS/Emergency** layout.
 
 
-![Example SMS](sms/message/reference_sms_message.jpeg)
+![Example SMS](detail/reference_sms_message.jpeg)
 
 ![Example SOS](sms/sms_emergency.jpg)
