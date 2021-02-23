@@ -236,8 +236,8 @@ Command|Description
 `0x55`|[Replicate Data](ike/55.md)
 `0x57`|Check Control/Remote Control Buttons
 `0x59`|Rain/driving Lights Status
-`0x5a`|Lamp Status Request
-`0x5b`|Lamp Status
+`0x5a`|[Cluster Indicators Request](lcm/5a.md)
+`0x5b`|[Cluster Indicators](lcm/5b.md)
 `0x5c`|Instrument Backlighting (58G)
 `0x5d`|Instrument Backlighting (58G) Request
 `0x61`|EHC → GLO (TBC)
