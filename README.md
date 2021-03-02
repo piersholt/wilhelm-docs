@@ -22,13 +22,16 @@ This documentation should not be considered authouratative. While great care, an
     1. [K/I-Bus](#ki-bus)
     1. [D-Bus](#d-bus)
 1. [Command Index](#command-index)
-1. Commands by Device
+1. Features
+    1. [Sensors](#sensors)
+    1. [OBC](#obc)
+    1. [Redundant Data Storage](#redundant-data-storage)
+    1. [Controls](#controls)
+    1. [Radio](#radio)
     1. [Telephone](#telephone)
-    1. [On-board Monitor Control Panel](#on-board-computer-control-panel-bmbt)
-    1. [Multi-function Steering Wheel](#multifunctional-steering-wheel-mfl)
-    1. [Instrument Cluster](#instrument-cluster-ike)
     1. [Navigation](#navigation)
-
+    1. [Lighting](#lighting)
+    1. [Body](#body)
 
 ## Applicable Models
 
@@ -270,18 +273,62 @@ Command|Description
 `0xab`|Forward Nav. Control
 `0xaf`|Nav. → SES (TBC)
 
-## Telephone
-1. `0x02` [Announce](02.md#telephone-0xc8)
+## Features
+
+### Sensors
+
+1. `0x10` [Ignition Request](ike/10.md)
+1. `0x11` [Ignition](ike/11.md)
+1. `0x12` [Sensors Request](ike/12.md)
+1. `0x13` [Sensors](ike/13.md)
+1. `0x19` [Temperature](ike/19.md)
+1. `0x1d` [Temperature Request](ike/1d.md)
+
+### OBC
+
+1. `0x14` [Language & Region Request](ike/14.md)
+1. `0x15` [Language & Region](ike/15.md)
+1. `0x24` [Property Text: IKE](ike/24.md)
+1. `0x2a` [OBC Status](ike/2a.md)
+1. `0x40` [OBC Input](gt/40.md)
+1. `0x41` [OBC Control](gt/41.md)
+1. `0x42` [Remote Control](ike/42.md)
+
+### Redundant Data Storage
+
+1. `0x53` [Redundant Data Request](ike/53.md)
+1. `0x54` [Redundant Data](ike/54.md)
+1. `0x55` [Replicate Data](ike/55.md)
+
+### Controls
+
 1. `0x20` [MID Button: Telephone](telephone/20.md)
+1. `0x31` BMBT/MID Menu Button
+1. `0x32` [MFL Volume](mfl/32.md)
+1. `0x3b` [MFL Buttons](mfl/3b.md)
+1. `0x32` [BMBT Volume Dial](bmbt/32.md)
+1. `0x48` [BMBT Buttons](bmbt/48.md)
+1. `0x47` [BMBT "Soft" Buttons (i.e. INFO)](bmbt/47.md)
+1. `0x49` [Navigation Dial](bmbt/49.md)
+
+### Radio
+
+1. `0x23` [Title Text: Radio](radio/23.md)
+1. `0x36` [Radio EQ](radio/36.md)
+1. `0x37` [Radio Tone/Select](radio/37.md)
+
+### Telephone
+
+1. `0x02` [Announce: Telephone](02.md#telephone-0xc8)
+1. `0x2b` [Telephone LEDs](telephone/2b.md)
+1. `0x2c` [Telephone Status](telephone/2c.md)
 1. `0x21` [Menu Text: Telephone](telephone/21.md)
 1. `0x23` [Title Text: Telephone](telephone/23.md)
 1. `0x24` [Property Text: Telephone](telephone/24.md)
-1. `0x2b` [Telephone LEDs](telephone/2b.md)
-1. `0x2c` [Telephone Status](telephone/2c.md)
 1. `0xa5` [Body Text: Telephone](telephone/a5.md)
 1. `0xa6` [SMS Icon](telephone/a6.md)
 
-### Displays
+#### Displays
 
 1. [Default](telephone/default.md)
 1. [Pin-Code](telephone/pin.md)
@@ -295,37 +342,25 @@ Command|Description
 1. [SMS Message](telephone/detail.md)
 1. [SOS/Emergency](telephone/detail.md)
 
-## On-board Computer Control Panel (BMBT)
+### Navigation
 
-1. `0x02` [Announce](02.md#bmbt-0xf0)
+1. `0x02` [Announce: BMBT](02.md#bmbt-0xf0)
+1. `0x02` [Announce: GT](02.md#gt-0x3b)
+1. `0x02` [Announce: Nav.](02.md#nav-computer-0x7f)
+1. `0x1f` [GPS Time](nav/1f.md)
 1. `0x4f` [Monitor Control](bmbt/4f.md)
 
-##### Controls
-1. `0x48` [Buttons](bmbt/48.md)
-1. `0x47` ["Soft" Buttons (i.e. INFO)](bmbt/47.md)
-1. `0x32` [Volume Dial](bmbt/32.md)
-1. `0x49` [Navigation Dial](bmbt/49.md)
+#### Telematics
 
-## Multifunctional Steering Wheel (MFL)
+1. `0xa2` [Telematics Coordinates](nav/a2.md)
 
-##### Controls
-1. `0x3b` [Buttons](mfl/3b.md)
-1. `0x32` [Volume](mfl/32.md)
+### Lighting
 
-## Instrument Cluster (IKE)
+1. `0x5a` [Cluster Indicators Request](lcm/5a.md)
+1. `0x5b` [Cluster Indicators](lcm/5b.md)
 
-1. `0x10` [Ignition Request](ike/10.md)
-1. `0x11` [Ignition](ike/11.md)
-1. `0x14` [Language & Region Request](ike/14.md)
-1. `0x15` [Language & Region](ike/15.md)
-1. `0x42` [Remote Control](ike/42.md)
+### Body
 
-##### Redundant Data Storage
-1. `0x53` [Redundant Data Request](ike/53.md)
-1. `0x54` [Redundant Data](ike/54.md)
-1. `0x55` [Replicate Data](ike/55.md)
-
-## Navigation
-
-1. `0x02` [Announce](02.md#nav-computer-0x7f)
-1. `0x1f` [GPS Time](nav/1f.md)
+1. `0x76` [Visual Indicators](gm/76.md)
+1. `0x79` [Door/Lid Status Request](gm/79.md)
+1. `0x7a` [Door/Lid Status](gm/7a.md)
