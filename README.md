@@ -198,7 +198,7 @@ Command|Description
 `0x17`|Mileage
 `0x18`|Speed
 `0x19`|[Temperature](ike/19.md)
-`0x1a`|Check Control Message
+`0x1a`|[Check Control Message](lcm/1a.md)
 `0x1b`|Check Control Priority
 `0x1d`|[Temperature Request](ike/1d.md)
 `0x1f`|[GPS Time](nav/1f.md)
