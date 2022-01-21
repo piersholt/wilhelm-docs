@@ -30,10 +30,10 @@ Any given command usually relates to a specific feature set, for which there's u
 
 > - `0x21` Menu Text: Radio
 > - `0x21` Menu Text: Cluster
-> - `0x23` [Title Text: Telephone](23.md)
-> - `0x24` [Property Text: Telephone](24.md)
+> - `0x23` [Title Text: Telephone](radio/23.md)
+> - `0x24` [Property Text: Telephone](telephone/24.md)
 > - `0x31` Menu Button: Telephone
-> - `0xa5` [Body Text: Telephone](a5.md)
+> - `0xa5` [Body Text: Telephone](telephone/a5.md)
 
 ### Example Frames
 
