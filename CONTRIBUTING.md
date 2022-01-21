@@ -6,7 +6,7 @@ If you would like to contribute to this project:
 
 1. Open an [issue](https://github.com/piersholt/wilhelm-docs/issues) to discuss what you'd like to contribute. Some documentation may already be in development, so it's best to confirm the contribution before getting started. 
 
-1. Please use refer to this [format guide](template.md). The documentation format has admittedly changed over time and continues to evolve, however this guide reflects the current format.
+1. Please use refer to this [format guide](guide.md). The documentation format has admittedly changed over time and continues to evolve, however this guide reflects the current format.
 
 1. I would ask that contributions are limited to completed documentation. If you need assistance to complete a piece of documentation, open an issue and I will do my best to answer any questions.
 
