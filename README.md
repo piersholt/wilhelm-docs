@@ -237,7 +237,7 @@ Command|Description
 `0x53`|[Redundant Data Request](ike/53.md)
 `0x54`|[Redundant Data](ike/54.md)
 `0x55`|[Replicate Data](ike/55.md)
-`0x57`|Check Control/Remote Control Buttons
+`0x57`|[Cluster Buttons](ike/57.md)
 `0x59`|Rain/driving Lights Status
 `0x5a`|[Cluster Indicators Request](lcm/5a.md)
 `0x5b`|[Cluster Indicators](lcm/5b.md)
@@ -310,6 +310,7 @@ Command|Description
 1. `0x48` [BMBT Buttons](bmbt/48.md)
 1. `0x47` [BMBT "Soft" Buttons (i.e. INFO)](bmbt/47.md)
 1. `0x49` [Navigation Dial](bmbt/49.md)
+1. `0x57` [Cluster Buttons](ike/57.md)
 
 ### Radio
 
