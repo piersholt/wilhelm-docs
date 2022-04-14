@@ -216,8 +216,8 @@ Command|Description
 `0x34`|DSP Control
 `0x36`|[Radio EQ](radio/36.md)
 `0x37`|[Radio Tone/Select](radio/37.md)
-`0x38`|CDC Status Request
-`0x39`|CDC Status
+`0x38`|CDC Request
+`0x39`|[CDC Status](cdc/39.md)
 `0x3b`|[MFL Buttons](mfl/3b.md)
 `0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
@@ -317,6 +317,7 @@ Command|Description
 1. `0x23` [Title Text: Radio](radio/23.md)
 1. `0x36` [Radio EQ](radio/36.md)
 1. `0x37` [Radio Tone/Select](radio/37.md)
+1. `0x39` [CDC Status](cdc/39.md)
 
 ### Telephone
 
