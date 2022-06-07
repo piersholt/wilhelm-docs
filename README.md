@@ -238,6 +238,7 @@ Command|Description
 `0x54`|[Redundant Data](ike/54.md)
 `0x55`|[Replicate Data](ike/55.md)
 `0x57`|[Cluster Buttons](ike/57.md)
+`0x58`|RLS → GM (TBC)
 `0x59`|Rain/driving Lights Status
 `0x5a`|[Cluster Indicators Request](lcm/5a.md)
 `0x5b`|[Cluster Indicators](lcm/5b.md)
