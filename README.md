@@ -219,7 +219,7 @@ Command|Description
 `0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
 `0x42`|[OBC Remote Control](ike/42.md)
-`0x45`|Radio UI Request
+`0x45`|[Radio UI Request](gt/45.md)
 `0x46`|Radio UI
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
 `0x48`|[BMBT Buttons](bmbt/48.md)
