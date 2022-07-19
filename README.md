@@ -222,7 +222,7 @@ Command|Description
 `0x40`|[OBC Input](gt/40.md)
 `0x41`|[OBC Control](gt/41.md)
 `0x42`|[OBC Remote Control](ike/42.md)
-`0x45`|Radio UI Request
+`0x45`|[Radio UI Request](gt/45.md)
 `0x46`|Radio UI
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
 `0x48`|[BMBT Buttons](bmbt/48.md)
@@ -238,6 +238,7 @@ Command|Description
 `0x54`|[Redundant Data](ike/54.md)
 `0x55`|[Replicate Data](ike/55.md)
 `0x57`|[Cluster Buttons](ike/57.md)
+`0x58`|RLS → GM (TBC)
 `0x59`|Rain/driving Lights Status
 `0x5a`|[Cluster Indicators Request](lcm/5a.md)
 `0x5b`|[Cluster Indicators](lcm/5b.md)
