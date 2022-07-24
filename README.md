@@ -220,7 +220,7 @@ Command|Description
 `0x41`|[OBC Control](gt/41.md)
 `0x42`|[OBC Remote Control](ike/42.md)
 `0x45`|[Radio UI Request](gt/45.md)
-`0x46`|Radio UI
+`0x46`|[Radio UI](radio/46.md)
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
 `0x48`|[BMBT Buttons](bmbt/48.md)
 `0x49`|[BMBT Navigation Dial](bmbt/49.md)
