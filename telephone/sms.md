@@ -33,7 +33,7 @@ The **SMS index** layout is seemingly a repurposed **Directory/Top 8**, which I 
 
 ![Real Directory](sms/directory_real.JPG)
 
-## SMS View/Emergency `0xf0`
+## SMS View/Emergency `0xf1`
 
 The **SMS view** layout appears to just a repurposed **SOS/Emergency** layout.
 
