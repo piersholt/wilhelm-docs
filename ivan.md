@@ -27,7 +27,9 @@
 > 
 > Following the command *"gas station at current location"* all gas stations in your vicinity are listed on the on-board computer.
 > 
-> If you have entered a destination in the navigation system, you can **also** call up with the command *"gas station at destination"* a list of all gas stations in the vicinity of the destination specified. Browse up and down the list with the rotary knob for the on-board computer (see Owner's Manual for on-board com- puter).
+> If you have entered a destination in the navigation system, you can **also** call up with the command *"gas station at destination"* a list of all gas stations in the vicinity of the destination specified. Browse up and down the list with the rotary knob for the on-board computer.
+> 
+> The same principle applies to calling up information on **parking lots**, **hotels** or **restaurants**.
 
     B0 05 7F AA 20 00 40  # Hotels: at destination
     B0 05 7F AA 20 01 41  # Hotels: at current location
