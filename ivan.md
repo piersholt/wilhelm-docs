@@ -1,107 +1,42 @@
-Ivan, please excuse the programmatic formatting.
+# `0xaa`
 
-## `0x4e`
+## Scale KM
 
-I haven't confirmed this as my BlueBus-esq solution didn't have a radio! Ted will probably know more about this command.
+> When the map mode has been activated, you can call up all valid scales with the commands *"scale 400 feet"* to *"scale 50 miles"*.
+> 
+> Valid scales are:  
+> - 400 or 800 feet  > - 0.25, 0.5, 1, 2.5, 5, 10, 25 or 50 miles.
 
-    0x4E: # SRC-SND
-      :properties:
-        :short_name: SRC-SND
-        :long_name: Source volume...?
-      :klass: Base
-      :meta:
-        - 3B 05 68 4E 00 00 18 (TV off/voice command end)
-        - 3B 05 68 4E 01 00 18 (TV on) MUTE?
-        - 3B 05 68 4E XX 3F 4B (Voice command/set navi. volume)
-        - telephone mute is switched input (not bus command)
+    B0 05 7F AA 10 01 71  # 100m
+    B0 05 7F AA 10 02 72  # 200m
+    B0 05 7F AA 10 04 74  # 500m
+    B0 05 7F AA 10 10 60  # 1km
+    B0 05 7F AA 10 11 61  # 2km
+    B0 05 7F AA 10 12 62  # 5km
+    B0 05 7F AA 10 13 63  # 10m
+    B0 05 7F AA 10 14 64  # 20km
+    B0 05 7F AA 10 15 64  # 50km
+    B0 05 7F AA 10 16 66  # 100km
+    B0 05 7F AA 10 18 68  # 200km
+    B0 05 7F AA 10 19 69  # 500km
+    B0 05 7F AA 10 1A 6A  # 1000km
 
-### `0x4e` Frames
+## Inputs
 
-    # Adjusting nav voice volume via 'Set'
-    # These values seem to change a little bit so there might a bitfield mixed in?
+> **Information on current position or destination**  
+> 
+> Following the command *"gas station at current location"* all gas stations in your vicinity are listed on the on-board computer.
+> 
+> If you have entered a destination in the navigation system, you can **also** call up with the command *"gas station at destination"* a list of all gas stations in the vicinity of the destination specified. Browse up and down the list with the rotary knob for the on-board computer (see Owner's Manual for on-board com- puter).
+
+    B0 05 7F AA 20 00 40  # Hotels: at destination
+    B0 05 7F AA 20 01 41  # Hotels: at current location
     
-    3B 05 68 4E 04 3F 23
-    3B 05 68 4E 1C 3F 3B
-    3B 05 68 4E 2C 3F 0B
-    3B 05 68 4E 3C 3F 1B
-    3B 05 68 4E 5C 3F 7B
-    3B 05 68 4E 6C 3F 4B
-    3B 05 68 4E 7C 3F 5B
-    3B 05 68 4E 9C 3F BB
-    3B 05 68 4E AC 3F 8B
-    3B 05 68 4E BC 3F 9B
-    3B 05 68 4E DC 3F FB
-    3B 05 68 4E EC 3F CB
-    3B 05 68 4E FC 3F DB
-
-    # The current volume would be sent multiple times during a journey,
-    # so I think it's just setting the nav voice volume each time the nav 'speaks'
+    B0 05 7F AA 20 02 42  # Petrol Stations: at destination
+    B0 05 7F AA 20 03 43  # Petrol Stations: at current location
     
-    3B 05 68 4E 6C 3F 4B
-
-## `0xaa` & `0xab`
-
-You mentioned `0xaa` which I've only seen in the context of the rear compartment monitor (RCM).
-
-This is based on my limited blackbox testing of what I believed were the rear compartment monitor (RCM) commands.
-
-I'm pretty sure device `0x43` is the rear GT.
-
-### `0xaa`
-
-    0xAA: # GT2-NAV-AA
-      :properties:
-        :short_name: GT2-NAV-AA
-        :long_name: Request NAV GT switch to navigation for routing to RCM
-      :klass: Base
-      :meta:
-        - control from rear GT (E38 3 socket TV module)
-        - seemingly limited to switching navi. GT to GPS Navigation
-        - rear monitor controls then likely routed directly to navi. GT
-
-#### `0xaa` Frames
-
-No frames as I don't have rear GT! :P
-
-### `0xab`
-
-    0xAB: # NAV-GT2-AB
-      :properties:
-        :short_name: NAV-GT2-AB
-        :long_name: NAV GT UI state?
-      :klass: Base
-      :meta:
-        - 0x01: nav (only ever received upon using 0xAA)
-        - 0x20: seems to immediately preceed 0x21 (only if 0xAA is sent)
-        - 0x21: main menu (what i've received until now)
-        - 0x11: resume guidance/directions (rare!)
-
-#### `0xab` Frames
-
-    7F 04 43 AB 01 92
-    7F 04 43 AB 11 82
-    7F 04 43 AB 20 B3
-    7F 04 43 AB 21 B2
- 
-## `0xaf`
+    B0 05 7F AA 20 04 44  # Parking: at destination
+    B0 05 7F AA 20 05 45  # Parking: at current location
     
-    0xAF: # NAV-VOICE-AF
-      :properties:
-        :short_name: NAV-VOICE-AF
-        :long_name: Query if voice recognition present?
-      :klass: Base
-      :meta:
-        - 7F 04 B0 AF 04 60
-
-### `0xaf` Frames
-
-    # I get this regularly.. so.. a presence query maybe?
-    
-    ./2019-02-19.log:7F 04 B0 AF 04 60
-    ./2019-02-20.log:7F 04 B0 AF 04 60
-    ./2019-02-21.log:7F 04 B0 AF 04 60
-    ./2019-02-22.log:7F 04 B0 AF 04 60
-    ./2019-02-23.log:7F 04 B0 AF 04 60
-    ./2019-02-24.log:7F 04 B0 AF 04 60
-    ./2019-02-26.log:7F 04 B0 AF 04 60
-    ./2019-02-27.log:7F 04 B0 AF 04 60
+    B0 05 7F AA 20 06 45  # Restaurants: at destination
+    B0 05 7F AA 20 07 45  # Restaurants: at current location
