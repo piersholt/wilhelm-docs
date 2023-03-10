@@ -1,6 +1,10 @@
-# `0xaa`
+# `0xaa` Voice Input
 
-## Scale KM
+## Use Cases
+
+### Navigation
+
+#### Map Scale (KM)
 
 > When the map mode has been activated, you can call up all valid scales with the commands *"scale 400 feet"* to *"scale 50 miles"*.
 > 
@@ -21,7 +25,7 @@
     B0 05 7F AA 10 19 69  # 500km
     B0 05 7F AA 10 1A 6A  # 1000km
 
-## Inputs
+#### Information
 
 > **Information on current position or destination**  
 > 
