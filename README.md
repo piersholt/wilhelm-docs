@@ -232,7 +232,7 @@ Command|Description
 `0x4e`|GT → Radio (TBC)
 `0x4f`|[BMBT Monitor Control](bmbt/4f.md)
 `0x50`|Check Control Status Request
-`0x51`|Check Control Status
+`0x51`|[Check Control Status](lcm/51.md)
 `0x52`|Check Control Message Relay
 `0x53`|[Redundant Data Request](ike/53.md)
 `0x54`|[Redundant Data](ike/54.md)
