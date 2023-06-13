@@ -203,7 +203,7 @@ Command|Description
 `0x1d`|[Temperature Request](ike/1d.md)
 `0x1f`|[GPS Time](nav/1f.md)
 `0x20`|MID Button
-`0x21`|Menu Text: [Telephone](telephone/21.md)
+`0x21`|Menu Text: [Radio](radio/21.md) / [Telephone](telephone/21.md)
 `0x22`|Menu Text Buffer
 `0x23`|Title Text: [Radio](radio/23.md) / [Telephone](telephone/23.md)
 `0x24`|Property Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)
