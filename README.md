@@ -252,7 +252,7 @@ Command|Description
 `0x75`|RLS → GM (TBC)
 `0x76`|[Visual Indicators](gm/76.md)
 `0x77`|GM → RLS (TBC)
-`0x78`|Memory
+`0x78`|[Memory](gm/78.md)
 `0x79`|[Door/Lid Status Request](gm/79.md)
 `0x7a`|[Door/Lid Status](gm/7a.md)
 `0x7c`|SHD → GLO (TBC)
