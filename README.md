@@ -195,8 +195,8 @@ Command|Description
 `0x14`|[Language & Region Request](ike/14.md)
 `0x15`|[Language & Region](ike/15.md)
 `0x16`|Mileage Request
-`0x17`|Mileage
 `0x18`|Speed
+`0x17`|[Mileage](ike/17.md)
 `0x19`|[Temperature](ike/19.md)
 `0x1a`|[Check Control Message](lcm/1a.md)
 `0x1b`|Check Control Priority
