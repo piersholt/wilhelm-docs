@@ -188,6 +188,8 @@ Command|Description
 :--|:--
 `0x01`|Ping
 `0x02`|[Pong & Announce](02.md)
+`0x05`|[BMBT Service Mode Request](gt/05.md)
+`0x06`|[BMBT Service Mode Reply](bmbt/06.md)
 `0x10`|[Ignition Request](ike/10.md)
 `0x11`|[Ignition](ike/11.md)
 `0x12`|[Sensors Request](ike/12.md)
