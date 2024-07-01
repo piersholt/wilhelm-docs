@@ -285,6 +285,8 @@ Command|Description
 1. `0x11` [Ignition](ike/11.md)
 1. `0x12` [Sensors Request](ike/12.md)
 1. `0x13` [Sensors](ike/13.md)
+1. `0x16` [Odometer Request](ike/16.md)
+1. `0x17` [Odometer](ike/17.md)
 1. `0x19` [Temperature](ike/19.md)
 1. `0x1d` [Temperature Request](ike/1d.md)
 
