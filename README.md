@@ -72,7 +72,8 @@ MINI and Range Rover (early L322) implementations are not discussed.
 >
 > The M-Bus was introduced on the E38 climate control system (IHKA). The M-Bus was also installed on subsequent models equipped with IHKA and IHKR.
 
-#### **Peripheral Bus** (P-Bus)> The P-Bus is a single wire serial communications bus that is used exclusively on vehicle that are equipped with ZKE III. These vehicles are the E38, E39 and E53.
+#### **Peripheral Bus** (P-Bus)
+> The P-Bus is a single wire serial communications bus that is used exclusively on vehicle that are equipped with ZKE III. These vehicles are the E38, E39 and E53.
 >
 > The P-Bus provides the Central Body Electronics system with a low speed bus for use by the General Module (GM) to control various functions. 
 
@@ -196,8 +197,8 @@ Command|Description
 `0x13`|[Sensors](ike/13.md)
 `0x14`|[Language & Region Request](ike/14.md)
 `0x15`|[Language & Region](ike/15.md)
-`0x16`|Mileage Request
-`0x17`|Mileage
+`0x16`|[Odometer Request](ike/16.md)
+`0x17`|[Odometer](ike/17.md)
 `0x18`|Speed
 `0x19`|[Temperature](ike/19.md)
 `0x1a`|[Check Control Message](lcm/1a.md)
