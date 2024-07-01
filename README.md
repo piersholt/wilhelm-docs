@@ -214,6 +214,7 @@ Command|Description
 `0x2a`|[OBC Status](ike/2a.md)
 `0x2b`|[Telephone LEDs](telephone/2b.md)
 `0x2c`|[Telephone Status](telephone/2c.md)
+`0x2d`|[Telephone Direct Dial](telephone/2d.md)
 `0x31`|Menu Button
 `0x32`|[BMBT Volume](bmbt/32.md) & [MFL Volume](mfl/32.md)
 `0x34`|DSP Control
@@ -330,6 +331,7 @@ Command|Description
 1. `0x02` [Announce: Telephone](02.md#telephone-0xc8)
 1. `0x2b` [Telephone LEDs](telephone/2b.md)
 1. `0x2c` [Telephone Status](telephone/2c.md)
+1. `0x2d` [Telephone Direct Dial](telephone/2d.md)
 1. `0x21` [Menu Text: Telephone](telephone/21.md)
 1. `0x23` [Title Text: Telephone](telephone/23.md)
 1. `0x24` [Property Text: Telephone](telephone/24.md)
