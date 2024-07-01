@@ -243,7 +243,7 @@ Command|Description
 `0x55`|[Replicate Data](ike/55.md)
 `0x57`|[Cluster Buttons](ike/57.md)
 `0x58`|RLS → GM (TBC)
-`0x59`|Rain/driving Lights Status
+`0x59`|[Light Sensor Status](rls/59.md)
 `0x5a`|[Cluster Indicators Request](lcm/5a.md)
 `0x5b`|[Cluster Indicators](lcm/5b.md)
 `0x5c`|Instrument Backlighting (58G)
@@ -366,6 +366,7 @@ Command|Description
 
 ### Lighting
 
+1. `0x59` [Light Sensor Status](rls/59.md)
 1. `0x5a` [Cluster Indicators Request](lcm/5a.md)
 1. `0x5b` [Cluster Indicators](lcm/5b.md)
 
