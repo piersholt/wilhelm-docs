@@ -25,7 +25,7 @@
 - only the fields which are written will be displayed
 - to exclude costs for example, simply omit fields `0x93` and `0x94`
 - once a field is set, it's not possible to hide it.
-	- _TODO: try null-terminated string!_
+- fun fact: you can set the number of bars displayed in the strength field by adjusting the number of bytes.
 
 ![Info Subset](info/info_subset.JPG)
 
