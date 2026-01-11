@@ -233,8 +233,8 @@ Command|Description
 `0x49`|[BMBT Navigation Dial](bmbt/49.md)
 `0x4a`|Tape Control/Radio LED
 `0x4b`|Tape Status
-`0x4e`|GT → Radio (TBC)
-`0x4f`|[BMBT Monitor Control](bmbt/4f.md)
+`0x4e`|[Radio Input Source](rad/4e.md)
+`0x4f`|[BMBT Monitor Control](bmbt/4f.md) & Video Module Source
 `0x50`|Check Control Status Request
 `0x51`|[Check Control Status](lcm/51.md)
 `0x52`|Check Control Message Relay
