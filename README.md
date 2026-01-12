@@ -100,7 +100,7 @@ Device|Bus|Description
 `0x3b`|I|Graphics Stage (GT)
 `0x3f`|K/I|Diagnostics (via [gateway](#gateway))
 `0x40`|K|Remote Control for Central Locking (FBZV) [E31]
-`0x43`|I|Unconfirmed: Rear Graphics Stage (GT) [E38]
+`0x43`|I|Rear Graphics Stage (GTF) [E38]
 `0x44`|K|Drive Away Protection System (EWS)
 `0x45`|K|Anti-Theft System (DWA)
 `0x46`|I|Central Information Display (CID) [E83, E85]
@@ -275,7 +275,7 @@ Command|Description
 `0xa8`|Traffic Management Channel
 `0xa9`|BMW Assist Data
 `0xaa`|[Navigation Control](nav/aa.md)
-`0xab`|Forward Nav. Control
+`0xab`|[Navigation View Status](nav/ab.md)
 `0xaf`|Nav. → SES (TBC)
 
 ## Features

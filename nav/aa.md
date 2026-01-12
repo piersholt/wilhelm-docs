@@ -13,7 +13,7 @@ So obviously, the command was extended with the development of the SES module.
 
 ### Related Commands
 
-- `0xab` Forward Nav. Control
+- `0xab` [Navigation View Status](ab.md)
 
 ### Example Frames
     
