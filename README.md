@@ -302,6 +302,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0xaa`  | [Navigation Control](nav/aa.md)                                 |
 | `0xab`  | [Navigation View Status](nav/ab.md)                             |
 | `0xaf`  | Nav. → SES (TBC)                                                |
+| `0xd4`  | [NG-Radio Station List](radio/d4.md)                            |
 
 ## Features
 
@@ -351,6 +352,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 3. `0x37` [Radio Tone/Select](radio/37.md)
 4. `0x39` [CDC Status](cdc/39.md)
 5. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
+6. `0xd4` [NG-Radio Station List](radio/d4.md)
 
 ### Telephone
 
@@ -383,10 +385,10 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 1. `0x02` [Announce: BMBT](02.md#bmbt-0xf0)
 2. `0x02` [Announce: GT](02.md#gt-0x3b)
 3. `0x02` [Announce: Nav.](02.md#nav-computer-0x7f)
-4. `0xaa` [Navigation Control](nav/aa.md)
-5. `0xab` [Navigation View Status](nav/ab.md)
-6. `0x1f` [GPS Time](nav/1f.md)
-7. `0x4f` [Monitor Control](bmbt/4f.md)
+4. `0x1f` [GPS Time](nav/1f.md)
+5. `0x4f` [Monitor Control](bmbt/4f.md)
+6. `0xaa` [Navigation Control](nav/aa.md)
+7. `0xab` [Navigation View Status](nav/ab.md)
 
 #### Telematics
 
