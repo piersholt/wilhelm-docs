@@ -33,3 +33,7 @@ Else, there will be no message at all.
 ### Nav Not Focused `0b0010_0000`
 
 Only set when the navigation view is **not** focused.
+
+## Use Cases
+
+The GTF uses this to determine if it should pass the GT video through to the FMBT (Rear Screen).
