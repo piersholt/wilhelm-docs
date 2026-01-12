@@ -12,43 +12,43 @@ This is an ongoing project, and the documentation will be expanded as time allow
 
 #### Warning!
 
-This documentation should not be considered authouratative. While great care, and effort has been taken in creating it,
+This documentation should not be considered authoritative. While great care, and effort has been taken in creating it,
 if you choose to use it, you do so at your own risk.
 
 ## Contents
 
 1. [Applicable Models](#applicable-models)
-1. [Glossary](#glossary)
-1. Device Index
+2. [Glossary](#glossary)
+3. Device Index
     1. [K/I-Bus](#ki-bus)
-    1. [D-Bus](#d-bus)
-1. [Command Index](#command-index)
-1. Features
+    2. [D-Bus](#d-bus)
+4. [Command Index](#command-index)
+5. Features
     1. [Sensors](#sensors)
-    1. [OBC](#obc)
-    1. [Redundant Data Storage](#redundant-data-storage)
-    1. [Controls](#controls)
-    1. [Radio](#radio)
-    1. [Telephone](#telephone)
-    1. [Navigation](#navigation)
-    1. [Lighting](#lighting)
-    1. [Body](#body)
+    2. [OBC](#obc)
+    3. [Redundant Data Storage](#redundant-data-storage)
+    4. [Controls](#controls)
+    5. [Radio](#radio)
+    6. [Telephone](#telephone)
+    7. [Navigation](#navigation)
+    8. [Lighting](#lighting)
+    9. [Body](#body)
 
 ## Applicable Models
 
 This protocol applies to the bus system in the models listed below.
 
- Model | Series   | Period      | I-Bus | K-Bus 
-:------|:---------|:------------|:------|:------
- E31   | 8 Series | 1989 - 1999 | ✅     |
- E38   | 7 Series | 1999 - 2001 | ✅     | ✅     
- E39   | 5 Series | 1995 - 2004 | ✅     | ✅     
- E46   | 3 Series | 1997 - 2006 |       | ✅     
- E52   | Z8       | 2000 - 2003 |       | ✅     
- E53   | X5       | 1999 - 2006 | ✅     | ✅     |
- E83   | X3       | 2003 - 2010 |       | ✅     
- E85   | Z4       | 2002 - 2008 |       | ✅     
- E87   | 1 series | 2004 - 2013 |       | ✅     
+| Model | Series   | Period      | I-Bus | K-Bus |
+|-------|:---------|:------------|:------|:------|
+| E31   | 8 Series | 1989 - 1999 | ✅     |       |
+| E38   | 7 Series | 1999 - 2001 | ✅     | ✅     |
+| E39   | 5 Series | 1995 - 2004 | ✅     | ✅     |
+| E46   | 3 Series | 1997 - 2006 |       | ✅     |
+| E52   | Z8       | 2000 - 2003 |       | ✅     |
+| E53   | X5       | 1999 - 2006 | ✅     | ✅     ||
+| E83   | X3       | 2003 - 2010 |       | ✅     |
+| E85   | Z4       | 2002 - 2008 |       | ✅     |
+| E87   | 1 series | 2004 - 2013 |       | ✅     |
 
 MINI and Range Rover (early L322) implementations are not discussed.
 
@@ -84,7 +84,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 #### **M-Bus**
 
 > The M-Bus is used exclusively in the climate control systems for the control of the “smart:” stepper motors. These
-> stepper motors are used to control various air distribu- tion flaps.
+> stepper motors are used to control various air distribution flaps.
 >
 > The M-Bus was introduced on the E38 climate control system (IHKA). The M-Bus was also installed on subsequent models
 > equipped with IHKA and IHKR.
@@ -258,7 +258,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x49`  | [BMBT Navigation Dial](bmbt/49.md)                              |
 | `0x4a`  | [BMBT Tape/LED Control](bmbt/4a.md)                             |
 | `0x4b`  | BMBT Tape Status                                                |
-| `0x4e`  | [Radio Input Source](rad/4e.md)                                 |
+| `0x4e`  | [Radio Input Source](radio/4e.md)                               |
 | `0x4f`  | [BMBT Monitor Control](bmbt/4f.md) & Video Module Source        |
 | `0x50`  | Check Control Status Request                                    |
 | `0x51`  | [Check Control Status](lcm/51.md)                               |
@@ -308,99 +308,99 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 ### Sensors
 
 1. `0x10` [Ignition Request](ike/10.md)
-1. `0x11` [Ignition](ike/11.md)
-1. `0x12` [Sensors Request](ike/12.md)
-1. `0x13` [Sensors](ike/13.md)
-1. `0x16` [Odometer Request](ike/16.md)
-1. `0x17` [Odometer](ike/17.md)
-1. `0x19` [Temperature](ike/19.md)
-1. `0x1d` [Temperature Request](ike/1d.md)
+2. `0x11` [Ignition](ike/11.md)
+3. `0x12` [Sensors Request](ike/12.md)
+4. `0x13` [Sensors](ike/13.md)
+5. `0x16` [Odometer Request](ike/16.md)
+6. `0x17` [Odometer](ike/17.md)
+7. `0x19` [Temperature](ike/19.md)
+8. `0x1d` [Temperature Request](ike/1d.md)
 
 ### OBC
 
 1. `0x14` [Language & Region Request](ike/14.md)
-1. `0x15` [Language & Region](ike/15.md)
-1. `0x24` [Property Text: IKE](ike/24.md)
-1. `0x2a` [OBC Status](ike/2a.md)
-1. `0x40` [OBC Input](gt/40.md)
-1. `0x41` [OBC Control](gt/41.md)
-1. `0x42` [Remote Control](ike/42.md)
+2. `0x15` [Language & Region](ike/15.md)
+3. `0x24` [Property Text: IKE](ike/24.md)
+4. `0x2a` [OBC Status](ike/2a.md)
+5. `0x40` [OBC Input](gt/40.md)
+6. `0x41` [OBC Control](gt/41.md)
+7. `0x42` [Remote Control](ike/42.md)
 
 ### Redundant Data Storage
 
 1. `0x53` [Redundant Data Request](ike/53.md)
-1. `0x54` [Redundant Data](ike/54.md)
-1. `0x55` [Replicate Data](ike/55.md)
+2. `0x54` [Redundant Data](ike/54.md)
+3. `0x55` [Replicate Data](ike/55.md)
 
 ### Controls
 
 1. `0x20` [MID Button: Telephone](telephone/20.md)
-1. `0x31` BMBT/MID Menu Button
-1. `0x32` [MFL Volume](mfl/32.md)
-1. `0x3b` [MFL Buttons](mfl/3b.md)
-1. `0x32` [BMBT Volume Dial](bmbt/32.md)
-1. `0x48` [BMBT Buttons](bmbt/48.md)
-1. `0x47` [BMBT "Soft" Buttons (i.e. INFO)](bmbt/47.md)
-1. `0x49` [Navigation Dial](bmbt/49.md)
-1. `0x57` [Cluster Buttons](ike/57.md)
+2. `0x31` BMBT/MID Menu Button
+3. `0x32` [MFL Volume](mfl/32.md)
+4. `0x3b` [MFL Buttons](mfl/3b.md)
+5. `0x32` [BMBT Volume Dial](bmbt/32.md)
+6. `0x48` [BMBT Buttons](bmbt/48.md)
+7. `0x47` [BMBT "Soft" Buttons (i.e. INFO)](bmbt/47.md)
+8. `0x49` [Navigation Dial](bmbt/49.md)
+9. `0x57` [Cluster Buttons](ike/57.md)
 
 ### Radio
 
 1. `0x23` [Title Text: Radio](radio/23.md)
-1. `0x36` [Radio EQ](radio/36.md)
-1. `0x37` [Radio Tone/Select](radio/37.md)
-1. `0x39` [CDC Status](cdc/39.md)
-1. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
+2. `0x36` [Radio EQ](radio/36.md)
+3. `0x37` [Radio Tone/Select](radio/37.md)
+4. `0x39` [CDC Status](cdc/39.md)
+5. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
 
 ### Telephone
 
 1. `0x02` [Announce: Telephone](02.md#telephone-0xc8)
-1. `0x2b` [Telephone LEDs](telephone/2b.md)
-1. `0x2c` [Telephone Status](telephone/2c.md)
-1. `0x2d` [Telephone Direct Dial](telephone/2d.md)
-1. `0x21` [Menu Text: Telephone](telephone/21.md)
-1. `0x23` [Title Text: Telephone](telephone/23.md)
-1. `0x24` [Property Text: Telephone](telephone/24.md)
-1. `0xa5` [Body Text: Telephone](telephone/a5.md)
-1. `0xa6` [SMS Icon](telephone/a6.md)
+2. `0x2b` [Telephone LEDs](telephone/2b.md)
+3. `0x2c` [Telephone Status](telephone/2c.md)
+4. `0x2d` [Telephone Direct Dial](telephone/2d.md)
+5. `0x21` [Menu Text: Telephone](telephone/21.md)
+6. `0x23` [Title Text: Telephone](telephone/23.md)
+7. `0x24` [Property Text: Telephone](telephone/24.md)
+8. `0xa5` [Body Text: Telephone](telephone/a5.md)
+9. `0xa6` [SMS Icon](telephone/a6.md)
 
 #### Displays
 
 1. [Default](telephone/default.md)
-1. [Pin-Code](telephone/pin.md)
-1. [Dial](telephone/dial.md)
-1. [Last Numbers](telephone/last_numbers.md)
-1. [Directory](telephone/directory.md)
-1. [Top 8](telephone/top_8.md)
-1. [Info](telephone/info.md)
-1. [Bluetooth Pairing](telephone/list.md)
-1. [SMS Index](telephone/list.md)
-1. [SMS Message](telephone/detail.md)
-1. [SOS/Emergency](telephone/detail.md)
+2. [Pin-Code](telephone/pin.md)
+3. [Dial](telephone/dial.md)
+4. [Last Numbers](telephone/last_numbers.md)
+5. [Directory](telephone/directory.md)
+6. [Top 8](telephone/top_8.md)
+7. [Info](telephone/info.md)
+8. [Bluetooth Pairing](telephone/list.md)
+9. [SMS Index](telephone/list.md)
+10. [SMS Message](telephone/detail.md)
+11. [SOS/Emergency](telephone/detail.md)
 
 ### Navigation
 
 1. `0x02` [Announce: BMBT](02.md#bmbt-0xf0)
-1. `0x02` [Announce: GT](02.md#gt-0x3b)
-1. `0x02` [Announce: Nav.](02.md#nav-computer-0x7f)
-1. `0xaa` [Navigation Control](nav/aa.md)
-1. `0xab` [Navigation View Status](nav/ab.md)
-1. `0x1f` [GPS Time](nav/1f.md)
-1. `0x4f` [Monitor Control](bmbt/4f.md)
+2. `0x02` [Announce: GT](02.md#gt-0x3b)
+3. `0x02` [Announce: Nav.](02.md#nav-computer-0x7f)
+4. `0xaa` [Navigation Control](nav/aa.md)
+5. `0xab` [Navigation View Status](nav/ab.md)
+6. `0x1f` [GPS Time](nav/1f.md)
+7. `0x4f` [Monitor Control](bmbt/4f.md)
 
 #### Telematics
 
 1. `0xa2` [Telematics Coordinates](nav/a2.md)
-1. `0xa4` [Telematics Location](nav/a4.md)
+2. `0xa4` [Telematics Location](nav/a4.md)
 
 ### Lighting
 
 1. `0x59` [Light Sensor Status](rls/59.md)
-1. `0x5a` [Cluster Indicators Request](lcm/5a.md)
-1. `0x5b` [Cluster Indicators](lcm/5b.md)
+2. `0x5a` [Cluster Indicators Request](lcm/5a.md)
+3. `0x5b` [Cluster Indicators](lcm/5b.md)
 
 ### Body
 
 1. `0x76` [Visual Indicators](gm/76.md)
-1. `0x79` [Door/Lid Status Request](gm/79.md)
-1. `0x7a` [Door/Lid Status](gm/7a.md)
+2. `0x79` [Door/Lid Status Request](gm/79.md)
+3. `0x7a` [Door/Lid Status](gm/7a.md)

@@ -25,14 +25,14 @@
 
 The MK1 GT has support for service mode despite C23 not using it?
 
-Parameters           |Description
-:--------------------|:----------
-**Serial Number**    | Displays the radio serial number. (PN?)
-**Software Version** | Displays the radio software version in format (mm/yy?)
-**GAL**              | Speed dependent volume control
-**F & Q**            | Field Strength (F) & Quality (Q)
-**DSP**              | DSP
-**Seek Level**       | ???
-**TP Volume**        | Provides adjustment for traffic report minimum value.
-**AF**               | Alternative-frequency radio setting
-**Region**           | View/edit radio region.
+| Parameters           | Description                                            |
+|:---------------------|:-------------------------------------------------------|
+ | **Serial Number**    | Displays the radio serial number. (PN?)                |
+ | **Software Version** | Displays the radio software version in format (mm/yy?) |
+ | **GAL**              | Speed dependent volume control                         |
+ | **F & Q**            | Field Strength (F) & Quality (Q)                       |
+ | **DSP**              | DSP                                                    |
+ | **Seek Level**       | ???                                                    |
+ | **TP Volume**        | Provides adjustment for traffic report minimum value.  |
+ | **AF**               | Alternative-frequency radio setting                    |
+ | **Region**           | View/edit radio region.                                |

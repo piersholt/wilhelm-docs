@@ -2,31 +2,31 @@ The properties maintained by the cluster have a unique ID that is used by severa
 
 The table below denotes which properties are applicable to which commands.
 
-ID|Property|`0x24`|`0x2a`|`0x40`|`0x41`|`0x42`
-:--|-------|------|------|------|------|------
-`0x01`|Time|✅|❌|✅|✅|✅
-`0x02`|Date|✅|❌|✅|✅|✅
-`0x03`|Temperature|✅|❌|❌|✅|❌
-`0x04`|Consump. 1|✅|❌|❌|✅|✅
-`0x05`|Consump. 2|✅|❌|❌|✅|✅
-`0x06`|Range|✅|❌|❌|✅|✅
-`0x07`|Distance|✅|❌|✅|✅|✅
-`0x08`|Arrival|✅|❌|❌|✅|✅
-`0x09`|Limit|✅|✅|✅|✅|✅
-`0x0a`|Avg. Speed|✅|❌|❌|✅|✅
-`0x0b`|_PROG_|❌|❌|❌|❌|❌
-`0x0c`|Memo|❌|✅|❌|✅|❌
-`0x0d`|Code|✅|✅|✅|✅|❌
-`0x0e`|Timer|✅|✅|❌|✅|✅
-`0x0f`|Aux. Timer 1|✅|✅|✅|✅|✅
-`0x10`|Aux. Timer 2|✅|✅|✅|✅|✅
-`0x11`|Aux. Heat. (Off)|❌|✅|❌|✅|❌
-`0x12`|Aux. Heat. (On)|❌|✅|❌|✅|❌
-`0x13`|Aux. Vent. (Off)|❌|✅|❌|✅|❌
-`0x14`|Aux. Vent. (On)|❌|✅|❌|✅|❌
-`0x16`|Emergency Disarm|✅|❌|❌|❌|❌
-`0x1a`|Timer (Lap)|✅|❌|❌|✅|❌
-`0x1b`|Aux. Status|❌|❌|❌|✅|❌
+| ID     | Property         | `0x24` | `0x2a` | `0x40` | `0x41` | `0x42` |
+|:-------|------------------|--------|--------|--------|--------|--------|
+ | `0x01` | Time             | ✅      | ❌      | ✅      | ✅      | ✅      |
+ | `0x02` | Date             | ✅      | ❌      | ✅      | ✅      | ✅      |
+ | `0x03` | Temperature      | ✅      | ❌      | ❌      | ✅      | ❌      |
+ | `0x04` | Consump. 1       | ✅      | ❌      | ❌      | ✅      | ✅      |
+ | `0x05` | Consump. 2       | ✅      | ❌      | ❌      | ✅      | ✅      |
+ | `0x06` | Range            | ✅      | ❌      | ❌      | ✅      | ✅      |
+ | `0x07` | Distance         | ✅      | ❌      | ✅      | ✅      | ✅      |
+ | `0x08` | Arrival          | ✅      | ❌      | ❌      | ✅      | ✅      |
+ | `0x09` | Limit            | ✅      | ✅      | ✅      | ✅      | ✅      |
+ | `0x0a` | Avg. Speed       | ✅      | ❌      | ❌      | ✅      | ✅      |
+ | `0x0b` | _PROG_           | ❌      | ❌      | ❌      | ❌      | ❌      |
+ | `0x0c` | Memo             | ❌      | ✅      | ❌      | ✅      | ❌      |
+ | `0x0d` | Code             | ✅      | ✅      | ✅      | ✅      | ❌      |
+ | `0x0e` | Timer            | ✅      | ✅      | ❌      | ✅      | ✅      |
+ | `0x0f` | Aux. Timer 1     | ✅      | ✅      | ✅      | ✅      | ✅      |
+ | `0x10` | Aux. Timer 2     | ✅      | ✅      | ✅      | ✅      | ✅      |
+ | `0x11` | Aux. Heat. (Off) | ❌      | ✅      | ❌      | ✅      | ❌      |
+ | `0x12` | Aux. Heat. (On)  | ❌      | ✅      | ❌      | ✅      | ❌      |
+ | `0x13` | Aux. Vent. (Off) | ❌      | ✅      | ❌      | ✅      | ❌      |
+ | `0x14` | Aux. Vent. (On)  | ❌      | ✅      | ❌      | ✅      | ❌      |
+ | `0x16` | Emergency Disarm | ✅      | ❌      | ❌      | ❌      | ❌      |
+ | `0x1a` | Timer (Lap)      | ✅      | ❌      | ❌      | ✅      | ❌      |
+ | `0x1b` | Aux. Status      | ❌      | ❌      | ❌      | ✅      | ❌      |
 
 # `0x24` Output String
 
@@ -36,11 +36,11 @@ Cluster `0x80` → Displays `0xe7`
 
 Variable length.
 
-Property|Index|Length|Note
-:---|:---|:---|:---
-**Property**|`0`|`1`|_See table above_
-**Unknown**|`1`|`1`|_Default `00`_
-**String**|`2`|`-1`|_Length is fixed for given property_
+| Property     | Index | Length | Note                                 |
+|:-------------|:------|:-------|:-------------------------------------|
+| **Property** | `0`   | `1`    | _See table above_                    |
+| **Unknown**  | `1`   | `1`    | _Default `00`_                       |
+| **String**   | `2`   | `-1`   | _Length is fixed for given property_ |
 
 ### Examples
 
@@ -91,10 +91,10 @@ GT `0x3b` → Cluster `0x80`
 
 ## Properties
 
-Property|Index|Length|Note
-:---|:---|:---|:---
-**Property**|`0`|`1`|_See table above_
-**String**|`1`|`-1`|_Fixed length for given property_
+| Property     | Index | Length | Note                              |
+|:-------------|:------|:-------|:----------------------------------|
+| **Property** | `0`   | `1`    | _See table above_                 |
+| **String**   | `1`   | `-1`   | _Fixed length for given property_ |
 
 ### Examples
 
@@ -169,28 +169,28 @@ Does what it says on the tin.
 
 ## Overview
 
-ID|Property|String|Boolean|On|Off|Recalc.|Set.
-:--|-------|------|------|------|------|------|------
-`0x01`|Time|✅|||||
-`0x02`|Date|✅|||||
-`0x03`|Temperature|✅|||||
-`0x04`|Consump. 1|✅||||✅|
-`0x05`|Consump. 2|✅||||✅|
-`0x06`|Range|✅|||||
-`0x07`|Distance|✅|||||
-`0x08`|Arrival|✅|||||
-`0x09`|Limit|✅|✅|✅|✅||✅
-`0x0a`|Avg. Speed|✅||||✅|
-`0x0b`|_PROG_||||||
-`0x0c`|Memo|✅|✅|✅|✅||
-`0x0d`|Code||✅||||
-`0x0e`|Timer|✅|✅|✅|✅||
-`0x0f`|Aux. Timer 1|✅|✅|✅|✅||
-`0x10`|Aux. Timer 2|✅|✅|✅|✅||
-`0x11`|Aux. Heat. (Off)|||⚠️|⚠️||
-`0x12`|Aux. Heat. (On)|||⚠️|⚠️||
-`0x13`|Aux. Vent. (Off)|||⚠️|⚠️||
-`0x14`|Aux. Vent. (On)|||⚠️|⚠️||
-`0x16`|Emergency Disarm||||||
-`0x1a`|Timer (Lap)|✅|||||
-`0x1b`|Aux. Status|✅|✅||||
+| ID     | Property         | String | Boolean | On | Off | Recalc. | Set. |
+|:-------|------------------|--------|---------|----|-----|---------|------|
+| `0x01` | Time             | ✅      |         |    |     |         |      |
+| `0x02` | Date             | ✅      |         |    |     |         |      |
+| `0x03` | Temperature      | ✅      |         |    |     |         |      |
+| `0x04` | Consump. 1       | ✅      |         |    |     | ✅       |      |
+| `0x05` | Consump. 2       | ✅      |         |    |     | ✅       |      |
+| `0x06` | Range            | ✅      |         |    |     |         |      |
+| `0x07` | Distance         | ✅      |         |    |     |         |      |
+| `0x08` | Arrival          | ✅      |         |    |     |         |      |
+| `0x09` | Limit            | ✅      | ✅       | ✅  | ✅   |         | ✅    |
+| `0x0a` | Avg. Speed       | ✅      |         |    |     | ✅       |      |
+| `0x0b` | _PROG_           |        |         |    |     |         |      |
+| `0x0c` | Memo             | ✅      | ✅       | ✅  | ✅   |         |      |
+| `0x0d` | Code             |        | ✅       |    |     |         |      |
+| `0x0e` | Timer            | ✅      | ✅       | ✅  | ✅   |         |      |
+| `0x0f` | Aux. Timer 1     | ✅      | ✅       | ✅  | ✅   |         |      |
+| `0x10` | Aux. Timer 2     | ✅      | ✅       | ✅  | ✅   |         |      |
+| `0x11` | Aux. Heat. (Off) |        |         | ⚠️ | ⚠️  |         |      |
+| `0x12` | Aux. Heat. (On)  |        |         | ⚠️ | ⚠️  |         |      |
+| `0x13` | Aux. Vent. (Off) |        |         | ⚠️ | ⚠️  |         |      |
+| `0x14` | Aux. Vent. (On)  |        |         | ⚠️ | ⚠️  |         |      |
+| `0x16` | Emergency Disarm |        |         |    |     |         |      |
+| `0x1a` | Timer (Lap)      | ✅      |         |    |     |         |      |
+| `0x1b` | Aux. Status      | ✅      | ✅       |    |     |         |      |
