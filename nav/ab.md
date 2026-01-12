@@ -36,4 +36,4 @@ Only set when the navigation view is **not** focused.
 
 ## Use Cases
 
-The GTF uses this to determine if it should pass the GT video through to the FMBT (Rear Screen).
+The GTF uses this to determine if it should pass the GT/NAV video through to the FMBT (Rear Screen).
