@@ -263,7 +263,7 @@ Command|Description
 `0x7c`|SHD → GLO (TBC)
 `0x7d`|GM → SHD (TBC)
 `0x82`|IHKA → GLO (TBC)
-`0x83`|[IHKA AC Control](ihka/83.md)
+`0x83`|IHKA AC Control
 `0x86`|IHKA → Nav. (TBC)
 `0x87`|Nav. → IHKA (TBC)
 `0x9e`|GT → RCM (TBC)
