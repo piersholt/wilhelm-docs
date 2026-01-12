@@ -231,8 +231,8 @@ Command|Description
 `0x47`|[BMBT "Soft" Buttons](bmbt/47.md)
 `0x48`|[BMBT Buttons](bmbt/48.md)
 `0x49`|[BMBT Navigation Dial](bmbt/49.md)
-`0x4a`|Tape Control/Radio LED
-`0x4b`|Tape Status
+`0x4a`|[BMBT Tape/LED Control](bmbt/4a.md)
+`0x4b`|BMBT Tape Status
 `0x4e`|[Radio Input Source](rad/4e.md)
 `0x4f`|[BMBT Monitor Control](bmbt/4f.md) & Video Module Source
 `0x50`|Check Control Status Request
