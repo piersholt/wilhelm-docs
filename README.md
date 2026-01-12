@@ -263,12 +263,12 @@ Command|Description
 `0x7c`|SHD → GLO (TBC)
 `0x7d`|GM → SHD (TBC)
 `0x82`|IHKA → GLO (TBC)
-`0x83`|IHKA → IKE (TBC)
+`0x83`|[IHKA AC Control](ihka/83.md)
 `0x86`|IHKA → Nav. (TBC)
 `0x87`|Nav. → IHKA (TBC)
 `0x9e`|GT → RCM (TBC)
 `0xa2`|[Telematics Coordinates](nav/a2.md)
-`0xa4`|Telematics Location
+`0xa4`|[Telematics Location](nav/a4.md)
 `0xa5`|Body Text: [Telephone](telephone/a5.md) / Radio
 `0xa6`|[SMS Icon](telephone/a6.md)
 `0xa7`|Traffic Management Channel Request
