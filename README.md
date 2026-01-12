@@ -274,7 +274,7 @@ Command|Description
 `0xa7`|Traffic Management Channel Request
 `0xa8`|Traffic Management Channel
 `0xa9`|BMW Assist Data
-`0xaa`|Rear Nav. Control
+`0xaa`|[Navigation Control](nav/aa.md)
 `0xab`|Forward Nav. Control
 `0xaf`|Nav. → SES (TBC)
 
