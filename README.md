@@ -298,7 +298,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x79`  | [Door/Lid Status Request](gm/79.md)                                      |
 | `0x7a`  | [Door/Lid Status](gm/7a.md)                                              |
 | `0x7c`  | [Sunroof Status](shd/7c.md)                                              |
-| `0x7d`  | [Sunroof Control](gm/7d.md)                                              |
+| `0x7d`  | [Sunroof Control](shd/7d.md)                                              |
 | `0x82`  | [IHKA Status](ihka/82.md)                                                |
 | `0x83`  | [IHKA A/C Control](ihka/83.md)                                           |
 | `0x86`  | [Rear Defroster Status](ihka/86.md)                                      |
