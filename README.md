@@ -240,7 +240,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x22`  | [Text Display Confirmation](common/22.md)                                |
 | `0x23`  | [Title Text](common/23.md)                                               |
 | `0x24`  | [Property Text](common/24.md)                                            |
-| `0x27`  | [MID Display Request](ike/27.md)                                         |
+| `0x27`  | MID Display Request                                                      |
 | `0x2a`  | [OBC Status](ike/2a.md)                                                  |
 | `0x2b`  | [Telephone LEDs](tel/2b.md)                                              |
 | `0x2c`  | [Telephone Status](tel/2c.md)                                            |
@@ -303,8 +303,8 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x83`  | [IHKA A/C Control](ihka/83.md)                                           |
 | `0x86`  | [Rear Defroster Status](ihka/86.md)                                      |
 | `0x87`  | [Rear Defroster Status Request](ihka/87.md)                              |
-| `0x9e`  | [Rear Monitor Control](fmbt/9e.md)                                  |
-| `0x9f`  | [Rear Monitor Status](fmbt/9f.md)                                   |
+| `0x9e`  | [Rear Monitor Control](fmbt/9e.md)                                       |
+| `0x9f`  | [Rear Monitor Status](fmbt/9f.md)                                        |
 | `0xa0`  | [TCU Emergency-Call Status](tcu/a0.md) / [Telephone Data](tel/a0.md)     |
 | `0xa2`  | [Telematics Coordinates](tel/a2.md)                                      |
 | `0xa4`  | [Telematics Location](tel/a4.md)                                         |
@@ -338,7 +338,6 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 1. `0x14` [Language & Region Request](ike/14.md)
 2. `0x15` [Language & Region](ike/15.md)
 3. `0x24` [Property Text: IKE](ike/24.md)
-4. `0x27` [MID Display Request](ike/27.md)
 5. `0x2a` [OBC Status](ike/2a.md)
 6. `0x40` [OBC Input](gt/40.md)
 7. `0x41` [OBC Control](gt/41.md)
