@@ -217,8 +217,8 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | Command | Description                                                              |
 |:--------|:-------------------------------------------------------------------------|
 | `0x00`  | [ONL Service](onl/00.md)                                                 |
-| `0x01`  | [Ping](common/01.md)                                                            |
-| `0x02`  | [Pong & Announce](common/02.md)                                                 |
+| `0x01`  | [Ping](common/01.md)                                                     |
+| `0x02`  | [Pong & Announce](common/02.md)                                          |
 | `0x05`  | [BMBT Service Mode Request](gt/05.md)                                    |
 | `0x06`  | Service Reply: [BMBT](bmbt/06.md) / [VID](vid/06.md)                     |
 | `0x10`  | [Ignition Request](ike/10.md)                                            |
@@ -237,7 +237,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x1f`  | [GPS Time](nav/1f.md)                                                    |
 | `0x20`  | MID Button                                                               |
 | `0x21`  | [Menu Text](common/21.md)                                                |
-| `0x22`  | [Text Display Confirmation](common/22.md)                                       |
+| `0x22`  | [Text Display Confirmation](common/22.md)                                |
 | `0x23`  | [Title Text](common/23.md)                                               |
 | `0x24`  | [Property Text](common/24.md)                                            |
 | `0x27`  | [MID Display Request](ike/27.md)                                         |
@@ -269,7 +269,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x4b`  | [BMBT Tape Status](bmbt/4b.md)                                           |
 | `0x4d`  | [Video Module State](vid/4d.md)                                          |
 | `0x4e`  | [Radio Source / Navigation Volume](rad/4e.md)                            |
-| `0x4f`  | [BMBT Monitor Control](bmbt/4f.md) & Video Module Source                 |
+| `0x4f`  | [BMBT Monitor Control](bmbt/4f.md) & [Video Module Source](vid/4f.md)    |
 | `0x50`  | [Check Control Status Request](lcm/50.md)                                |
 | `0x51`  | [Check Control Status](lcm/51.md)                                        |
 | `0x52`  | [Check Control Message Relay](lcm/52.md)                                 |
@@ -294,15 +294,17 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x75`  | [Wiper Status Request](gm/75.md)                                         |
 | `0x76`  | [Visual Indicators](gm/76.md)                                            |
 | `0x77`  | [Wiper Status](gm/77.md)                                                 |
-| `0x78`  | [Memory](gm/78.md)                                                          |
+| `0x78`  | [Memory](gm/78.md)                                                       |
 | `0x79`  | [Door/Lid Status Request](gm/79.md)                                      |
 | `0x7a`  | [Door/Lid Status](gm/7a.md)                                              |
 | `0x7c`  | [Sunroof Status](shd/7c.md)                                              |
 | `0x7d`  | [Sunroof Control](gm/7d.md)                                              |
 | `0x82`  | [IHKA Status](ihka/82.md)                                                |
 | `0x83`  | [IHKA A/C Control](ihka/83.md)                                           |
-| `0x9e`  | [FMBT Rear Monitor Control](fmbt/9e.md)                                  |
-| `0x9f`  | [FMBT Rear Monitor Status](fmbt/9f.md)                                   |
+| `0x86`  | [Rear Defroster Status](ihka/86.md)                                      |
+| `0x87`  | [Rear Defroster Status Request](ihka/87.md)                              |
+| `0x9e`  | [Rear Monitor Control](fmbt/9e.md)                                  |
+| `0x9f`  | [Rear Monitor Status](fmbt/9f.md)                                   |
 | `0xa0`  | [TCU Emergency-Call Status](tcu/a0.md) / [Telephone Data](tel/a0.md)     |
 | `0xa2`  | [Telematics Coordinates](tel/a2.md)                                      |
 | `0xa4`  | [Telematics Location](tel/a4.md)                                         |
@@ -310,7 +312,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0xa6`  | [SMS Icon](tel/a6.md)                                                    |
 | `0xa7`  | Traffic Management Channel Request                                       |
 | `0xa8`  | [Traffic Management Channel](rad/a8.md)                                  |
-| `0xa9`  | [BMW Assist Data](tel/a9.md)                                                 |
+| `0xa9`  | [BMW Assist Data](tel/a9.md)                                             |
 | `0xaa`  | Navigation Control: [SES](ses/aa.md) / [GTF](nav/aa.md)                  |
 | `0xab`  | [GTF Remote Control Status](nav/ab.md)                                   |
 | `0xaf`  | [SES Navigation Status](ses/af.md)                                       |
