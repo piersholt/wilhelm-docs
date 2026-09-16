@@ -36,16 +36,18 @@
 | `0x3b` | K   | Graphics Stage (GT)                                |
 | `0x3f` | K/I | Diagnostics (via [gateway](#))                     |
 | `0x40` | K   | Remote Control for Central Locking                 |
+| `0x43` | I   | Rear Graphics Stage (GTF) [E38]                    |
 | `0x44` | K   | Drive Away Protection System (EWS)                 |
 | `0x45` | K   | Anti-Theft System (DWA)                            |
-| `0x46` | K   | Central Information Display (CID) [E83/E85]        |
-| `0x47` | K   | Rear Compartment Monitor (RCM)                     |
+| `0x46` | I   | Central Information Display (CID) [E83/E85]        |
+| `0x47` | I   | Rear Control Panel (FMBT) [E38]                    |
 | `0x48` | K   | Telephone (Japan)                                  |
-| `0x50` | K   | Multifunction Steering Wheel (MFL)                 |
+| `0x50` | K/I | Multifunction Steering Wheel (MFL)                 |
 | `0x51` | K   | Mirror Memory: Passenger (ZKE5)                    |
 | `0x5b` | K   | Automatic Heating/Air Conditioning (IHKA)          |
 | `0x60` | K   | Park Distance Control (PDC)                        |
 | `0x66` | K   | Active Light Control (ALC)                         |
+| `0x67` | K/I | ONL: General Module logical GATS/service interface |
 | `0x68` | K   | Radio                                              |
 | `0x69` | K   | Body Module [E31]                                  |
 | `0x6a` | K   | Digital Sound Processor (DSP)                      |
@@ -53,6 +55,7 @@
 | `0x70` | K   | Tire Pressure Control/Warning (RDC)                |
 | `0x71` | K   | Mirror Memory: Driver (ZKE5)                       |
 | `0x72` | K   | Seat Memory: Driver (ZKE5)                         |
+| `0x73` | I   | Sirius Satellite Radio (SDRS)                      |
 | `0x76` | K   | CD Player (Business)                               |
 | `0x7f` | K   | Navigation                                         |
 | `0x80` | K   | Instrument Cluster (IKE/KOMBI)                     |
@@ -61,14 +64,15 @@
 | `0xa4` | K   | Multiple Restraint System (MRS)                    |
 | `0xa7` | K   | Rear Compartment Heating/Air Conditioning          |
 | `0xac` | K   | Electronic Height Control (EHC)                    |
-| `0xb0` | K   | Speech Recognition System (SES)                    |
+| `0xb0` | K/I | Speech Recognition System (SES)                    |
 | `0xb9` | K   | Compact Remote Control (RF/IR)                     |
 | `0xbb` | K   | Navigation (Japan)                                 |
-| `0xbf` | K   | Broadcast 📣                                       |
+| `0xbf` | K   | Global Broadcast 📣                                       |
 | `0xc0` | K   | Multi-information Display (MID)                    |
-| `0xc8` | K   | Telephone                                          |
+| `0xc8` | K   | Telephone logical interface                        |
+| `0xca` | I   | TCU / BMW Assist telematics interface              |
 | `0xcd` | K   | Multi Information Display (OBC) [E31]              |
-| `0xd0` | K   | Lamp Check Module (LCM), Light Switch Center (LSZ) |
+| `0xd0` | K/I | Lamp Check Module (LCM), Light Switch Center (LSZ) |
 | `0xda` | K   | Seat Memory: Passenger (ZKE5)                      |
 | `0xe0` | K   | Integrated Radio and Information System (IRIS)     |
 | `0xe7` | K   | Multicast: Displays 📣                             |
@@ -77,4 +81,8 @@
 | `0xed` | K   | Video Module                                       |
 | `0xf0` | K   | On-board Computer Control Panel (BMBT)             |
 | `0xf5` | K   | Lamp control module [E31]                          |
-| `0xff` | K   | Broadcast 📣                                       |
+| `0xff` | K   | Local Broadcast 📣                                       |
+
+### Integrated Check Control
+
+Later light modules integrate the Check Control function but continue to use logical address `0x30` for CCM traffic. `LCM`, for example, originates Check Control messages and requests with source `0x30` while using `0xd0` for lighting traffic.

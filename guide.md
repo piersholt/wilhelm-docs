@@ -6,17 +6,17 @@ List of possible recipients.
  
 A given command mightn't be limited to a single sender, or receiver.
  
-#### Example: `0x23` [Title Text: Radio](radio/23.md).
+#### Example: `0x23` [Title Text](common/23.md).
 
 > Radio `0x68` → GT `0x3b`  
 > Radio `0x68` → IKE `0x80`  
-> Radio `0x68` → Broadcast `0xff`
+> Radio `0x68` → Local Broadcast `0xff`
 
 ### Overview
 
 General overview of the command, and it's purpose. Detailed usage can be discussed in *Use Cases*.
 
-#### Example: `0x37` [Radio Tone/Select](radio/37.md).
+#### Example: `0x37` [Radio Tone/Select](rad/37.md).
 
 > This command allows the radio to load the appropriate **Tone** (EQ) and **Select** (playback options) menus.
 > 
@@ -26,14 +26,14 @@ General overview of the command, and it's purpose. Detailed usage can be discuss
 
 Any given command usually relates to a specific feature set, for which there's usually a number of applicable commands.
 
-#### Example: `0x21` [Menu Text: Telephone](telephone/21.md).
+#### Example: `0x21` [Menu Text](common/21.md).
 
 > - `0x21` Menu Text: Radio
 > - `0x21` Menu Text: Cluster
-> - `0x23` [Title Text: Telephone](radio/23.md)
-> - `0x24` [Property Text: Telephone](telephone/24.md)
+> - `0x23` [Title Text](common/23.md)
+> - `0x24` [Property Text](common/24.md)
 > - `0x31` Menu Button: Telephone
-> - `0xa5` [Body Text: Telephone](telephone/a5.md)
+> - `0xa5` [Body Text](common/a5.md)
 
 ### Example Frames
 
@@ -68,8 +68,8 @@ Make sure you don't unwittingly publish personal data!
 
 Good examples of this risk are:
 
-- Your location via `0xa2` [Telematics: Coordinates](nav/a2.md)
-- Your telephone contacts via `0x23` [Title Text: Telephone](telephone/23.md)
+- Your location via `0xa2` [Telematics: Coordinates](tel/a2.md)
+- Your telephone contacts via `0x23` [Title Text: Telephone](tel/23.md)
 
 ## Parameters
 
@@ -79,8 +79,8 @@ As a rule of thumb, the formatting depends on the number of parameters, and the 
 
 This general rule is demonstrated in the following examples:
 
-- `0xa2` [Telematics: Coordinates](nav/a2.md) has a large number of parameters and numerous types, so it's broken down in detail.
-- `0x21` [Menu Text: Telephone](telephone/21.md) has a medium number of parameters/types, so it's not broken down to the same degree as `0xa2`.
+- `0xa2` [Telematics: Coordinates](tel/a2.md) has a large number of parameters and numerous types, so it's broken down in detail.
+- `0x21` [Menu Text](common/21.md) has a medium number of parameters/types, so it's not broken down to the same degree as `0xa2`.
 - `0x7a` [Door/Lid Status](gm/7a.md) has a small number of parameters of only the bitfield type. As the bitfield is comprised of multiple, smaller combination bitfields, each combination bitfield broken down in detail.
 - `0x5b` [Cluster Indicators](lcm/5b.md), like `0x7a`, has a small number of parameters, but has *effectively* no combination bitfields, i.e. 1 bit = 1 distinct thing.
 
@@ -92,6 +92,6 @@ This section is a newer addition to the documentation format. It arose from need
 
 Good examples of *Use Cases* are:
 
-- `0x36` [Radio EQ](radio/36.md): _Set EQ Treble_
+- `0x36` [Radio EQ](rad/36.md): _Set EQ Treble_
 - `0x40` [OBC Input](gt/40.md): _Setting Time_
 - `0x42` [OBC Remote Control](ike/42.md): _Edit Configuration_

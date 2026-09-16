@@ -30,9 +30,10 @@ if you choose to use it, you do so at your own risk.
     4. [Controls](#controls)
     5. [Radio](#radio)
     6. [Telephone](#telephone)
-    7. [Navigation](#navigation)
-    8. [Lighting](#lighting)
-    9. [Body](#body)
+    7. [TCU and BMW Assist](#tcu-and-bmw-assist)
+    8. [Navigation](#navigation)
+    9. [Lighting](#lighting)
+    10. [Body](#body)
 
 ## Applicable Models
 
@@ -134,6 +135,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 | `0x5b` | K   | IHKA         | Automatic Heating/Air Conditioning               |               |
 | `0x60` | K/I | PDC          | Park Distance Control                            |               |
 | `0x66` | K   | ALC          | Active Light Control                             |               |
+| `0x67` | K/I | ONL          | General Module logical GATS/service interface    |               |
 | `0x68` | K/I | RAD          | Radio                                            |               |
 | `0x69` | K   | EKM          | Electronic Body Module                           | E31           |
 | `0x6a` | K/I | DSP          | Digital Sound Processor                          |               |
@@ -141,6 +143,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 | `0x70` | K   | RDC/DWS      | Tire Pressure Control & Deflation Warning System |               |
 | `0x71` | K   | SMF          | Seat Memory: Driver                              | E31           |
 | `0x72` | K   | SMF          | Seat Memory: Driver                              | E46, E53      |
+| `0x73` | I   | SDRS         | Sirius Satellite Radio                           |               |
 | `0x76` | K   | CDC          | CD Changer (DIN?)                                |               |
 | `0x7f` | K/I | NAV          | Navigation                                       |               |
 | `0x80` | K/I | KMB/IKE      | Instrument Cluster                               |               |
@@ -156,9 +159,10 @@ MINI and Range Rover (early L322) implementations are not discussed.
 | `0xb0` | K/I | SES          | Speech Input System                              |               |
 | `0xb9` | K   | RF/IR        | Compact Remote Control                           |               |
 | `0xbb` | K/I | NAJ          | Navigation (Japan)                               |               |
-| `0xbf` | K   |              | Broadcast 📣                                     |               |
+| `0xbf` | K   |              | Global Broadcast 📣                                     |               |
 | `0xc0` | K/I | MID          | Multi-functional Display                         | E38, E39, E53 |
-| `0xc8` | K/I | TEL          | Telephone                                        |               |
+| `0xc8` | K/I | TEL          | Telephone logical interface                      |               |
+| `0xca` | I   | TCU          | BMW Assist / telematics interface                 |               |
 | `0xcd` | K   | MID          | Multi-functional Display                         | E31           |
 | `0xda` | K   | SMB          | Seat Memory: Passenger                           | E46           |
 | `0xd0` | K/I | LCM/LSZ      | Lamp Check Module & Light Switch Center          |               |
@@ -170,7 +174,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 | `0xf0` | I   | BMBT         | On-board Computer Control Panel                  |               |
 | `0xf5` | K   | LKM2         | Lamp Control Module 2                            | E31           |
 | `0xf5` | K   | SZM          | Center Console Switch Center                     |               |
-| `0xff` | K/I |              | Broadcast 📣                                     |               |
+| `0xff` | K/I |              | Local Broadcast 📣                                     |               |
 
 ### D-Bus
 
@@ -210,99 +214,108 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 
 ## Command Index
 
-| Command | Description                                                     |
-|:--------|:----------------------------------------------------------------|
-| `0x01`  | Ping                                                            |
-| `0x02`  | [Pong & Announce](02.md)                                        |
-| `0x05`  | [BMBT Service Mode Request](gt/05.md)                           |
-| `0x06`  | [BMBT Service Mode Reply](bmbt/06.md)                           |
-| `0x10`  | [Ignition Request](ike/10.md)                                   |
-| `0x11`  | [Ignition](ike/11.md)                                           |
-| `0x12`  | [Sensors Request](ike/12.md)                                    |
-| `0x13`  | [Sensors](ike/13.md)                                            |
-| `0x14`  | [Language & Region Request](ike/14.md)                          |
-| `0x15`  | [Language & Region](ike/15.md)                                  |
-| `0x16`  | [Odometer Request](ike/16.md)                                   |
-| `0x17`  | [Odometer](ike/17.md)                                           |
-| `0x18`  | Speed                                                           |
-| `0x19`  | [Temperature](ike/19.md)                                        |
-| `0x1a`  | [Check Control Message](lcm/1a.md)                              |
-| `0x1b`  | Check Control Priority                                          |
-| `0x1d`  | [Temperature Request](ike/1d.md)                                |
-| `0x1f`  | [GPS Time](nav/1f.md)                                           |
-| `0x20`  | MID Button                                                      |
-| `0x21`  | Menu Text: [Telephone](telephone/21.md)                         |
-| `0x22`  | Menu Text Buffer                                                |
-| `0x23`  | Title Text: [Radio](radio/23.md) / [Telephone](telephone/23.md) |
-| `0x24`  | Property Text: [IKE](ike/24.md) / [Telephone](telephone/24.md)  |
-| `0x27`  | IKE → MID (TBC)                                                 |
-| `0x2a`  | [OBC Status](ike/2a.md)                                         |
-| `0x2b`  | [Telephone LEDs](telephone/2b.md)                               |
-| `0x2c`  | [Telephone Status](telephone/2c.md)                             |
-| `0x2d`  | [Telephone Direct Dial](telephone/2d.md)                        |
-| `0x31`  | Menu Button                                                     |
-| `0x32`  | [BMBT Volume](bmbt/32.md) & [MFL Volume](mfl/32.md)             |
-| `0x34`  | DSP Control                                                     |
-| `0x36`  | [Radio EQ](radio/36.md)                                         |
-| `0x37`  | [Radio Tone/Select](radio/37.md)                                |
-| `0x38`  | CDC Request                                                     |
-| `0x39`  | [CDC Status](cdc/39.md)                                         |
-| `0x3b`  | [MFL Buttons](mfl/3b.md)                                        |
-| `0x40`  | [OBC Input](gt/40.md)                                           |
-| `0x41`  | [OBC Control](gt/41.md)                                         |
-| `0x42`  | [OBC Remote Control](ike/42.md)                                 |
-| `0x45`  | [Set Radio UI](gt/45.md)                                        |
-| `0x46`  | [Request Radio UI](radio/46.md)                                 |
-| `0x47`  | [BMBT "Soft" Buttons](bmbt/47.md)                               |
-| `0x48`  | [BMBT Buttons](bmbt/48.md)                                      |
-| `0x49`  | [BMBT Navigation Dial](bmbt/49.md)                              |
-| `0x4a`  | [BMBT Tape/LED Control](bmbt/4a.md)                             |
-| `0x4b`  | BMBT Tape Status                                                |
-| `0x4e`  | [Radio Input Source](radio/4e.md)                               |
-| `0x4f`  | [BMBT Monitor Control](bmbt/4f.md) & Video Module Source        |
-| `0x50`  | Check Control Status Request                                    |
-| `0x51`  | [Check Control Status](lcm/51.md)                               |
-| `0x52`  | Check Control Message Relay                                     |
-| `0x53`  | [Redundant Data Request](ike/53.md)                             |
-| `0x54`  | [Redundant Data](ike/54.md)                                     |
-| `0x55`  | [Replicate Data](ike/55.md)                                     |
-| `0x57`  | [Cluster Buttons](ike/57.md)                                    |
-| `0x58`  | RLS → GM (TBC)                                                  |
-| `0x59`  | [Light Sensor Status](rls/59.md)                                |
-| `0x5a`  | [Cluster Indicators Request](lcm/5a.md)                         |
-| `0x5b`  | [Cluster Indicators](lcm/5b.md)                                 |
-| `0x5c`  | Instrument Backlighting (58G)                                   |
-| `0x5d`  | Instrument Backlighting (58G) Request                           |
-| `0x61`  | EHC → GLO (TBC)                                                 |
-| `0x70`  | MRS → GLO (TBC)                                                 |
-| `0x71`  | Remote (Keyless) Entry Request                                  |
-| `0x72`  | Remote (Keyless) Entry                                          |
-| `0x73`  | Key Status Request                                              |
-| `0x74`  | Key Status                                                      |
-| `0x75`  | RLS → GM (TBC)                                                  |
-| `0x76`  | [Visual Indicators](gm/76.md)                                   |
-| `0x77`  | GM → RLS (TBC)                                                  |
-| `0x78`  | Memory                                                          |
-| `0x79`  | [Door/Lid Status Request](gm/79.md)                             |
-| `0x7a`  | [Door/Lid Status](gm/7a.md)                                     |
-| `0x7c`  | SHD → GLO (TBC)                                                 |
-| `0x7d`  | GM → SHD (TBC)                                                  |
-| `0x82`  | IHKA → GLO (TBC)                                                |
-| `0x83`  | IHKA AC Control                                                 |
-| `0x86`  | IHKA → Nav. (TBC)                                               |
-| `0x87`  | Nav. → IHKA (TBC)                                               |
-| `0x9e`  | GT → RCM (TBC)                                                  |
-| `0xa2`  | [Telematics Coordinates](nav/a2.md)                             |
-| `0xa4`  | [Telematics Location](nav/a4.md)                                |
-| `0xa5`  | Body Text: [Telephone](telephone/a5.md) / Radio                 |
-| `0xa6`  | [SMS Icon](telephone/a6.md)                                     |
-| `0xa7`  | Traffic Management Channel Request                              |
-| `0xa8`  | Traffic Management Channel                                      |
-| `0xa9`  | BMW Assist Data                                                 |
-| `0xaa`  | [Navigation Control](nav/aa.md)                                 |
-| `0xab`  | [Navigation View Status](nav/ab.md)                             |
-| `0xaf`  | Nav. → SES (TBC)                                                |
-| `0xd4`  | [NG-Radio Station List](radio/d4.md)                            |
+| Command | Description                                                              |
+|:--------|:-------------------------------------------------------------------------|
+| `0x00`  | [ONL Service](onl/00.md)                                                 |
+| `0x01`  | [Ping](common/01.md)                                                            |
+| `0x02`  | [Pong & Announce](common/02.md)                                                 |
+| `0x05`  | [BMBT Service Mode Request](gt/05.md)                                    |
+| `0x06`  | Service Reply: [BMBT](bmbt/06.md) / [VID](vid/06.md)                     |
+| `0x10`  | [Ignition Request](ike/10.md)                                            |
+| `0x11`  | [Ignition](ike/11.md)                                                    |
+| `0x12`  | [Sensors Request](ike/12.md)                                             |
+| `0x13`  | [Sensors](ike/13.md)                                                     |
+| `0x14`  | [Language & Region Request](ike/14.md)                                   |
+| `0x15`  | [Language & Region](ike/15.md)                                           |
+| `0x16`  | [Odometer Request](ike/16.md)                                            |
+| `0x17`  | [Odometer](ike/17.md)                                                    |
+| `0x18`  | [Speed / RPM](ike/18.md)                                                 |
+| `0x19`  | [Temperature](ike/19.md)                                                 |
+| `0x1a`  | [Check Control Message](lcm/1a.md)                                       |
+| `0x1b`  | [IKE Text Status](lcm/1b.md)                                             |
+| `0x1d`  | [Temperature Request](ike/1d.md)                                         |
+| `0x1f`  | [GPS Time](nav/1f.md)                                                    |
+| `0x20`  | MID Button                                                               |
+| `0x21`  | [Menu Text](common/21.md)                                                |
+| `0x22`  | [Text Display Confirmation](common/22.md)                                       |
+| `0x23`  | [Title Text](common/23.md)                                               |
+| `0x24`  | [Property Text](common/24.md)                                            |
+| `0x27`  | [MID Display Request](ike/27.md)                                         |
+| `0x2a`  | [OBC Status](ike/2a.md)                                                  |
+| `0x2b`  | [Telephone LEDs](tel/2b.md)                                              |
+| `0x2c`  | [Telephone Status](tel/2c.md)                                            |
+| `0x2d`  | [Telephone Direct Dial](tel/2d.md)                                       |
+| `0x31`  | Menu Button                                                              |
+| `0x32`  | Volume: [BMBT](bmbt/32.md) / [MFL](mfl/32.md) / [DSP](dsp/32.md)         |
+| `0x33`  | [TMC Station Status](rad/33.md)                                          |
+| `0x34`  | [DSP Equalizer Button](dsp/34.md)                                        |
+| `0x35`  | [DSP Status](dsp/35.md)                                                  |
+| `0x36`  | [Radio EQ](rad/36.md) / [DSP Control](dsp/36.md)                         |
+| `0x37`  | [Radio Tone/Select](rad/37.md)                                           |
+| `0x38`  | [CDC Request](cdc/38.md)                                                 |
+| `0x39`  | [CDC Status](cdc/39.md)                                                  |
+| `0x3b`  | [MFL Buttons](mfl/3b.md)                                                 |
+| `0x3c`  | [TMC Station List Text](rad/3c.md)                                       |
+| `0x3f`  | [CDC ID3 Text](cdc/3f.md)                                                |
+| `0x40`  | [OBC Input](gt/40.md)                                                    |
+| `0x41`  | [OBC Control](gt/41.md)                                                  |
+| `0x42`  | [OBC Remote Control](ike/42.md)                                          |
+| `0x45`  | [Set Radio UI](gt/45.md)                                                 |
+| `0x46`  | [Request Radio UI](rad/46.md)                                            |
+| `0x47`  | [BMBT "Soft" Buttons](bmbt/47.md)                                        |
+| `0x48`  | [BMBT Buttons](bmbt/48.md)                                               |
+| `0x49`  | [BMBT Navigation Dial](bmbt/49.md)                                       |
+| `0x4a`  | [BMBT Tape/LED Control](bmbt/4a.md)                                      |
+| `0x4b`  | [BMBT Tape Status](bmbt/4b.md)                                           |
+| `0x4d`  | [Video Module State](vid/4d.md)                                          |
+| `0x4e`  | [Radio Source / Navigation Volume](rad/4e.md)                            |
+| `0x4f`  | [BMBT Monitor Control](bmbt/4f.md) & Video Module Source                 |
+| `0x50`  | [Check Control Status Request](lcm/50.md)                                |
+| `0x51`  | [Check Control Status](lcm/51.md)                                        |
+| `0x52`  | [Check Control Message Relay](lcm/52.md)                                 |
+| `0x53`  | [Redundant Data Request](ike/53.md)                                      |
+| `0x54`  | [Redundant Data](ike/54.md)                                              |
+| `0x55`  | [Replicate Data](ike/55.md)                                              |
+| `0x56`  | [Rain/Driving-Light Status Request](rls/56.md)                           |
+| `0x57`  | [Cluster Buttons](ike/57.md)                                             |
+| `0x58`  | [RLS Wiper Interval Data](rls/58.md)                                     |
+| `0x59`  | [Rain/Driving-Light Status](rls/59.md)                                   |
+| `0x5a`  | [Cluster Indicators Request](lcm/5a.md)                                  |
+| `0x5b`  | [Cluster Indicators](lcm/5b.md)                                          |
+| `0x5c`  | [Instrument Backlighting (58G)](lcm/5c.md)                               |
+| `0x5d`  | [Instrument Backlighting (58G) Request](lcm/5d.md)                       |
+| `0x61`  | [EHC Status](ehc/61.md)                                                  |
+| `0x62`  | [RDC Status](rdc/62.md)                                                  |
+| `0x70`  | [MRS Status](mrs/70.md)                                                  |
+| `0x71`  | [Rain Sensor Status Request](gm/71.md)                                   |
+| `0x72`  | [Remote Key Buttons](gm/72.md) / [FBZV Check Control Status](fbzv/72.md) |
+| `0x73`  | [Immobiliser Status Request](ews/73.md)                                  |
+| `0x74`  | [Immobiliser Status](ews/74.md)                                          |
+| `0x75`  | [Wiper Status Request](gm/75.md)                                         |
+| `0x76`  | [Visual Indicators](gm/76.md)                                            |
+| `0x77`  | [Wiper Status](gm/77.md)                                                 |
+| `0x78`  | [Memory](gm/78.md)                                                          |
+| `0x79`  | [Door/Lid Status Request](gm/79.md)                                      |
+| `0x7a`  | [Door/Lid Status](gm/7a.md)                                              |
+| `0x7c`  | [Sunroof Status](shd/7c.md)                                              |
+| `0x7d`  | [Sunroof Control](gm/7d.md)                                              |
+| `0x82`  | [IHKA Status](ihka/82.md)                                                |
+| `0x83`  | [IHKA A/C Control](ihka/83.md)                                           |
+| `0x9e`  | [FMBT Rear Monitor Control](fmbt/9e.md)                                  |
+| `0x9f`  | [FMBT Rear Monitor Status](fmbt/9f.md)                                   |
+| `0xa0`  | [TCU Emergency-Call Status](tcu/a0.md) / [Telephone Data](tel/a0.md)     |
+| `0xa2`  | [Telematics Coordinates](tel/a2.md)                                      |
+| `0xa4`  | [Telematics Location](tel/a4.md)                                         |
+| `0xa5`  | [Body Text](common/a5.md)                                                |
+| `0xa6`  | [SMS Icon](tel/a6.md)                                                    |
+| `0xa7`  | Traffic Management Channel Request                                       |
+| `0xa8`  | [Traffic Management Channel](rad/a8.md)                                  |
+| `0xa9`  | [BMW Assist Data](tel/a9.md)                                                 |
+| `0xaa`  | Navigation Control: [SES](ses/aa.md) / [GTF](nav/aa.md)                  |
+| `0xab`  | [GTF Remote Control Status](nav/ab.md)                                   |
+| `0xaf`  | [SES Navigation Status](ses/af.md)                                       |
+| `0xd4`  | [NG-Radio Station List](rad/d4.md)                                       |
+| `0xd5`  | [CID Display Status](cid/d5.md)                                          |
 
 ## Features
 
@@ -314,18 +327,20 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 4. `0x13` [Sensors](ike/13.md)
 5. `0x16` [Odometer Request](ike/16.md)
 6. `0x17` [Odometer](ike/17.md)
-7. `0x19` [Temperature](ike/19.md)
-8. `0x1d` [Temperature Request](ike/1d.md)
+7. `0x18` [Speed / RPM](ike/18.md)
+8. `0x19` [Temperature](ike/19.md)
+9. `0x1d` [Temperature Request](ike/1d.md)
 
 ### OBC
 
 1. `0x14` [Language & Region Request](ike/14.md)
 2. `0x15` [Language & Region](ike/15.md)
 3. `0x24` [Property Text: IKE](ike/24.md)
-4. `0x2a` [OBC Status](ike/2a.md)
-5. `0x40` [OBC Input](gt/40.md)
-6. `0x41` [OBC Control](gt/41.md)
-7. `0x42` [Remote Control](ike/42.md)
+4. `0x27` [MID Display Request](ike/27.md)
+5. `0x2a` [OBC Status](ike/2a.md)
+6. `0x40` [OBC Input](gt/40.md)
+7. `0x41` [OBC Control](gt/41.md)
+8. `0x42` [Remote Control](ike/42.md)
 
 ### Redundant Data Storage
 
@@ -335,7 +350,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 
 ### Controls
 
-1. `0x20` [MID Button: Telephone](telephone/20.md)
+1. `0x20` [MID Button: Telephone](tel/20.md)
 2. `0x31` BMBT/MID Menu Button
 3. `0x32` [MFL Volume](mfl/32.md)
 4. `0x3b` [MFL Buttons](mfl/3b.md)
@@ -347,62 +362,104 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 
 ### Radio
 
-1. `0x23` [Title Text: Radio](radio/23.md)
-2. `0x36` [Radio EQ](radio/36.md)
-3. `0x37` [Radio Tone/Select](radio/37.md)
-4. `0x39` [CDC Status](cdc/39.md)
-5. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
-6. `0xd4` [NG-Radio Station List](radio/d4.md)
+1. `0x21` [Menu Text: Radio](rad/21.md)
+2. `0x23` [Title Text: Radio](rad/23.md)
+3. `0x24` [Property Text: Radio](rad/24.md)
+4. `0x32` [DSP Volume](dsp/32.md)
+5. `0x33` [TMC Station Status](rad/33.md)
+6. `0x34` [DSP Equalizer Button](dsp/34.md)
+7. `0x35` [DSP Status](dsp/35.md)
+8. `0x36` [Radio EQ](rad/36.md) / [DSP Control](dsp/36.md)
+9. `0x37` [Radio Tone/Select](rad/37.md)
+10. `0x38` [CDC Request](cdc/38.md)
+11. `0x39` [CDC Status](cdc/39.md)
+12. `0x3c` [TMC Station List Text](rad/3c.md)
+13. `0x3f` [CDC ID3 Text](cdc/3f.md)
+14. `0x46` [Request Radio UI](rad/46.md)
+15. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
+16. `0x4e` [Radio Source / Navigation Volume](rad/4e.md)
+17. `0xa5` [Body Text: Radio](rad/a5.md)
+18. `0xa8` [Traffic Management Channel](rad/a8.md)
+19. `0xd4` [NG-Radio Station List](rad/d4.md)
 
 ### Telephone
 
-1. `0x02` [Announce: Telephone](02.md#telephone-0xc8)
-2. `0x2b` [Telephone LEDs](telephone/2b.md)
-3. `0x2c` [Telephone Status](telephone/2c.md)
-4. `0x2d` [Telephone Direct Dial](telephone/2d.md)
-5. `0x21` [Menu Text: Telephone](telephone/21.md)
-6. `0x23` [Title Text: Telephone](telephone/23.md)
-7. `0x24` [Property Text: Telephone](telephone/24.md)
-8. `0xa5` [Body Text: Telephone](telephone/a5.md)
-9. `0xa6` [SMS Icon](telephone/a6.md)
+TEL `0xc8` is the logical telephone interface. It may be provided by a dedicated telephone module or by a TCU. An Everest TCU uses `0xc8` for the normal telephone UI/data path and may simultaneously use TCU address `0xca` for its BMW Assist/telematics path.
+
+1. `0x02` [Announce: Telephone](common/02.md#telephone-0xc8)
+2. `0x2b` [Telephone LEDs](tel/2b.md)
+3. `0x2c` [Telephone Status](tel/2c.md)
+4. `0x2d` [Telephone Direct Dial](tel/2d.md)
+5. `0x21` [Menu Text: Telephone](tel/21.md)
+6. `0x23` [Title Text: Telephone](tel/23.md)
+7. `0x24` [Property Text: Telephone](tel/24.md)
+8. `0xa0` [Telephone Data](tel/a0.md)
+9. `0xa5` [Body Text: Telephone](tel/a5.md)
+10. `0xa6` [SMS Icon](tel/a6.md)
+11. `0xa9` [BMW Assist Data](tel/a9.md)
 
 #### Displays
 
-1. [Default](telephone/default.md)
-2. [Pin-Code](telephone/pin.md)
-3. [Dial](telephone/dial.md)
-4. [Last Numbers](telephone/last_numbers.md)
-5. [Directory](telephone/directory.md)
-6. [Top 8](telephone/top_8.md)
-7. [Info](telephone/info.md)
-8. [Bluetooth Pairing](telephone/list.md)
-9. [SMS Index](telephone/list.md)
-10. [SMS Message](telephone/detail.md)
-11. [SOS/Emergency](telephone/detail.md)
+1. [Default](tel/default.md)
+2. [Pin-Code](tel/pin.md)
+3. [Dial](tel/dial.md)
+4. [Last Numbers](tel/last_numbers.md)
+5. [Directory](tel/directory.md)
+6. [Top 8](tel/top_8.md)
+7. [Info](tel/info.md)
+8. [Bluetooth Pairing](tel/list.md)
+9. [SMS Index](tel/list.md)
+10. [SMS Message](tel/detail.md)
+11. [SOS/Emergency](tel/detail.md)
+
+### TCU and BMW Assist
+
+TCU `0xca` is the additional BMW Assist/telematics interface. It does not replace TEL `0xc8`; a TCU that also provides telephone service can use both logical addresses.
+
+1. `0x02` [Announce: TCU](common/02.md#announce)
+2. `0x23` [Title Text: TCU](tcu/23.md)
+3. `0xa0` [TCU Emergency-Call Status](tcu/a0.md)
 
 ### Navigation
 
-1. `0x02` [Announce: BMBT](02.md#bmbt-0xf0)
-2. `0x02` [Announce: GT](02.md#gt-0x3b)
-3. `0x02` [Announce: Nav.](02.md#nav-computer-0x7f)
+1. `0x02` [Announce: BMBT](common/02.md#bmbt-0xf0)
+2. `0x02` [Announce: GT](common/02.md#gt-0x3b)
+3. `0x02` [Announce: Nav.](common/02.md#nav-computer-0x7f)
 4. `0x1f` [GPS Time](nav/1f.md)
 5. `0x4f` [Monitor Control](bmbt/4f.md)
-6. `0xaa` [Navigation Control](nav/aa.md)
-7. `0xab` [Navigation View Status](nav/ab.md)
+6. `0xaa` [GTF Navigation Control](nav/aa.md)
+7. `0xab` [GTF Remote Control Status](nav/ab.md)
 
 #### Telematics
 
-1. `0xa2` [Telematics Coordinates](nav/a2.md)
-2. `0xa4` [Telematics Location](nav/a4.md)
+1. `0xa2` [Telematics Coordinates](tel/a2.md)
+2. `0xa4` [Telematics Location](tel/a4.md)
+3. `0xa9` [BMW Assist Data](tel/a9.md)
+
+### Speech Input System
+
+1. `0xaa` [SES Navigation Control](ses/aa.md)
+2. `0xaf` [SES Navigation Status](ses/af.md)
 
 ### Lighting
 
-1. `0x59` [Light Sensor Status](rls/59.md)
-2. `0x5a` [Cluster Indicators Request](lcm/5a.md)
-3. `0x5b` [Cluster Indicators](lcm/5b.md)
+1. `0x56` [Rain/Driving-Light Status Request](rls/56.md)
+2. `0x59` [Rain/Driving-Light Status](rls/59.md)
+3. `0x5a` [Cluster Indicators Request](lcm/5a.md)
+4. `0x5b` [Cluster Indicators](lcm/5b.md)
+5. `0x5c` [Instrument Backlighting (58G)](lcm/5c.md)
+6. `0x5d` [Instrument Backlighting (58G) Request](lcm/5d.md)
 
 ### Body
 
-1. `0x76` [Visual Indicators](gm/76.md)
-2. `0x79` [Door/Lid Status Request](gm/79.md)
-3. `0x7a` [Door/Lid Status](gm/7a.md)
+1. `0x58` [RLS Wiper Interval Data](rls/58.md)
+2. `0x71` [Rain Sensor Status Request](gm/71.md)
+3. `0x72` [Remote Key Buttons](gm/72.md)
+4. `0x73` [Immobiliser Status Request](ews/73.md)
+5. `0x74` [Immobiliser Status](ews/74.md)
+6. `0x75` [Wiper Status Request](gm/75.md)
+7. `0x76` [Visual Indicators](gm/76.md)
+8. `0x77` [Wiper Status](gm/77.md)
+9. `0x78` [Memory](gm/78.md)
+10. `0x79` [Door/Lid Status Request](gm/79.md)
+11. `0x7a` [Door/Lid Status](gm/7a.md)
