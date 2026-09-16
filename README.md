@@ -158,11 +158,11 @@ MINI and Range Rover (early L322) implementations are not discussed.
 | `0xac` | K   | EHC          | Electronic Height Control                        |               |
 | `0xb0` | K/I | SES          | Speech Input System                              |               |
 | `0xb9` | K   | RF/IR        | Compact Remote Control                           |               |
-| `0xbb` | K/I | NAJ          | Navigation (Japan)                               |               |
-| `0xbf` | K   |              | Global Broadcast 📣                                     |               |
+| `0xbb` | I   | TV           | TV (in Video Module)                             |               |
+| `0xbf` | K/I |              | Global Broadcast 📣                              |               |
 | `0xc0` | K/I | MID          | Multi-functional Display                         | E38, E39, E53 |
 | `0xc8` | K/I | TEL          | Telephone logical interface                      |               |
-| `0xca` | I   | TCU          | BMW Assist / telematics interface                 |               |
+| `0xca` | I   | TCU          | BMW Assist / telematics interface                |               |
 | `0xcd` | K   | MID          | Multi-functional Display                         | E31           |
 | `0xda` | K   | SMB          | Seat Memory: Passenger                           | E46           |
 | `0xd0` | K/I | LCM/LSZ      | Lamp Check Module & Light Switch Center          |               |
@@ -174,7 +174,7 @@ MINI and Range Rover (early L322) implementations are not discussed.
 | `0xf0` | I   | BMBT         | On-board Computer Control Panel                  |               |
 | `0xf5` | K   | LKM2         | Lamp Control Module 2                            | E31           |
 | `0xf5` | K   | SZM          | Center Console Switch Center                     |               |
-| `0xff` | K/I |              | Local Broadcast 📣                                     |               |
+| `0xff` | K/I |              | Local Broadcast 📣                               |               |
 
 ### D-Bus
 
@@ -282,13 +282,13 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x59`  | [Rain/Driving-Light Status](rls/59.md)                                |
 | `0x5a`  | [Cluster Indicators Request](lcm/5a.md)                               |
 | `0x5b`  | [Cluster Indicators](lcm/5b.md)                                       |
-| `0x5c`  | [Instrument Backlighting (58G)](lcm/5c.md)                            |
-| `0x5d`  | [Instrument Backlighting (58G) Request](lcm/5d.md)                    |
+| `0x5c`  | [Instrument Backlight (58G)](lcm/5c.md)                            |
+| `0x5d`  | [Instrument Backlight (58G) Request](lcm/5d.md)                    |
 | `0x61`  | [EHC Status](ehc/61.md)                                               |
 | `0x62`  | [RDC Status](rdc/62.md)                                               |
 | `0x70`  | [MRS Status](mrs/70.md)                                               |
 | `0x71`  | [Rain Sensor Status Request](gm/71.md)                                |
-| `0x72`  | [Remote Key Buttons & Status & Status](gm/72.md)                               |
+| `0x72`  | [Remote Key Buttons & Status & Status](gm/72.md)                      |
 | `0x73`  | [Immobiliser Status Request](ews/73.md)                               |
 | `0x74`  | [Immobiliser Status](ews/74.md)                                       |
 | `0x75`  | [Wiper Status Request](gm/75.md)                                      |
@@ -448,8 +448,8 @@ TCU `0xca` is the additional BMW Assist/telematics interface. It does not replac
 2. `0x59` [Rain/Driving-Light Status](rls/59.md)
 3. `0x5a` [Cluster Indicators Request](lcm/5a.md)
 4. `0x5b` [Cluster Indicators](lcm/5b.md)
-5. `0x5c` [Instrument Backlighting (58G)](lcm/5c.md)
-6. `0x5d` [Instrument Backlighting (58G) Request](lcm/5d.md)
+5. `0x5c` [Instrument Backlight (58G)](lcm/5c.md)
+6. `0x5d` [Instrument Backlight (58G) Request](lcm/5d.md)
 
 ### Body
 
