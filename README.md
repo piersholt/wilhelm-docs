@@ -282,8 +282,8 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x59`  | [Rain/Driving-Light Status](rls/59.md)                                |
 | `0x5a`  | [Cluster Indicators Request](lcm/5a.md)                               |
 | `0x5b`  | [Cluster Indicators](lcm/5b.md)                                       |
-| `0x5c`  | [Instrument Backlight (58G)](lcm/5c.md)                            |
-| `0x5d`  | [Instrument Backlight (58G) Request](lcm/5d.md)                    |
+| `0x5c`  | [Instrument Backlight (58G)](lcm/5c.md)                               |
+| `0x5d`  | [Instrument Backlight (58G) Request](lcm/5d.md)                       |
 | `0x61`  | [EHC Status](ehc/61.md)                                               |
 | `0x62`  | [RDC Status](rdc/62.md)                                               |
 | `0x70`  | [MRS Status](mrs/70.md)                                               |
@@ -310,7 +310,7 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0xa4`  | [Telematics Location](tel/a4.md)                                      |
 | `0xa5`  | [Body Text](common/a5.md)                                             |
 | `0xa6`  | [SMS Icon](tel/a6.md)                                                 |
-| `0xa7`  | Traffic Management Channel Request                                    |
+| `0xa7`  | [Traffic Management Channel Request](rad/a7.md)                       |
 | `0xa8`  | [Traffic Management Channel](rad/a8.md)                               |
 | `0xa9`  | [BMW Assist Data](tel/a9.md)                                          |
 | `0xaa`  | Navigation Control: [SES](ses/aa.md) / [GTF](nav/aa.md)               |
@@ -380,7 +380,8 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 15. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
 16. `0x4e` [Radio Source / Navigation Volume](rad/4e.md)
 17. `0xa5` [Body Text: Radio](rad/a5.md)
-18. `0xa8` [Traffic Management Channel](rad/a8.md)
+18. `0xa7` [Traffic Management Channel Request](rad/a7.md)
+19. `0xa8` [Traffic Management Channel](rad/a8.md)
 19. `0xd4` [NG-Radio Station List](rad/d4.md)
 
 ### Telephone
