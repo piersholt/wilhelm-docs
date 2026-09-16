@@ -247,7 +247,6 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x2d`  | [Telephone Direct Dial](tel/2d.md)                                    |
 | `0x31`  | Menu Button                                                           |
 | `0x32`  | Volume: [BMBT](bmbt/32.md) / [MFL](mfl/32.md) / [DSP](dsp/32.md)      |
-| `0x33`  | [TMC Station Status](rad/33.md)                                       |
 | `0x34`  | [DSP Equalizer Button](dsp/34.md)                                     |
 | `0x35`  | [DSP Status](dsp/35.md)                                               |
 | `0x36`  | [Radio EQ](rad/36.md) / [DSP Control](dsp/36.md)                      |
@@ -255,7 +254,6 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 | `0x38`  | [CDC Request](cdc/38.md)                                              |
 | `0x39`  | [CDC Status](cdc/39.md)                                               |
 | `0x3b`  | [MFL Buttons](mfl/3b.md)                                              |
-| `0x3c`  | [TMC Station List Text](rad/3c.md)                                    |
 | `0x3f`  | [CDC ID3 Text](cdc/3f.md)                                             |
 | `0x40`  | [OBC Input](gt/40.md)                                                 |
 | `0x41`  | [OBC Control](gt/41.md)                                               |
@@ -367,14 +365,12 @@ not the case. This is purely a function of diagnostics, in which all devices mus
 2. `0x23` [Title Text: Radio](rad/23.md)
 3. `0x24` [Property Text: Radio](rad/24.md)
 4. `0x32` [DSP Volume](dsp/32.md)
-5. `0x33` [TMC Station Status](rad/33.md)
 6. `0x34` [DSP Equalizer Button](dsp/34.md)
 7. `0x35` [DSP Status](dsp/35.md)
 8. `0x36` [Radio EQ](rad/36.md) / [DSP Control](dsp/36.md)
 9. `0x37` [Radio Tone/Select](rad/37.md)
 10. `0x38` [CDC Request](cdc/38.md)
 11. `0x39` [CDC Status](cdc/39.md)
-12. `0x3c` [TMC Station List Text](rad/3c.md)
 13. `0x3f` [CDC ID3 Text](cdc/3f.md)
 14. `0x46` [Request Radio UI](rad/46.md)
 15. `0x4a` [BMBT Tape/LED Control](bmbt/4a.md)
